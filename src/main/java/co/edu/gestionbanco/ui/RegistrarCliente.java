@@ -10,11 +10,24 @@ package co.edu.gestionbanco.ui;
  */
 public class RegistrarCliente extends javax.swing.JInternalFrame {
 
+    String[] ciudades = {"Arauca", "Armenia", "Barranquilla", "Bogotá", "Bucaramanga", "Cali", "Cartagena", "Cúcuta", "Florencia", "Ibagué", "Leticia",
+        "Manizales", "Medellín", "Mitú", "Mocoa", "Montería", "Neiva", "Pasto", "Pereira", "Popayán", "Puerto Carreño",
+        "Puerto Inírida", "Quibdó", "Riohacha", "San Andrés", "San José del Guaviare", "Santa Marta", "Sincelejo",
+        "Tunja", "Valledupar", "Villavicencio", "Yopal"};
+
     /**
      * Creates new form RegistrarCliente
      */
     public RegistrarCliente() {
         initComponents();
+        inicializarComboBox();
+    }
+
+    public void inicializarComboBox() {
+        for (String ciudad : ciudades) {
+            combLugarExpedicion.addItem(ciudad);
+        }
+
     }
 
     /**
@@ -26,21 +39,303 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTitulo = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
+        txtNombres = new javax.swing.JTextField();
+        lblNombres = new javax.swing.JLabel();
+        txtOcupacion = new javax.swing.JTextField();
+        lblIdentificacion = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        lblCorreo = new javax.swing.JLabel();
+        txtNumContacto = new javax.swing.JTextField();
+        lblNumContacto = new javax.swing.JLabel();
+        txtCorreo1 = new javax.swing.JTextField();
+        lblFechaNacimiento = new javax.swing.JLabel();
+        lblFechaExpedicion = new javax.swing.JLabel();
+        lblFechaNacimiento1 = new javax.swing.JLabel();
+        ftxtFechaNacimiento = new javax.swing.JFormattedTextField();
+        ftxtFechaExpedicion = new javax.swing.JFormattedTextField();
+        txtIdentificacion = new javax.swing.JTextField();
+        lblFechaExpedicion1 = new javax.swing.JLabel();
+        combLugarExpedicion = new javax.swing.JComboBox<>();
+        btnResgistrar = new javax.swing.JButton();
+        btnLimpiar1 = new javax.swing.JButton();
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitulo.setText("Registrar cliente");
+
+        lblApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblApellidos.setText("Apellidos:");
+
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
+
+        lblNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombres.setText("Nombres:");
+
+        txtOcupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOcupacionActionPerformed(evt);
+            }
+        });
+
+        lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIdentificacion.setText("N° de identificacion:");
+
+        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidosActionPerformed(evt);
+            }
+        });
+
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCorreo.setText("Correo:");
+
+        txtNumContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumContactoActionPerformed(evt);
+            }
+        });
+
+        lblNumContacto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNumContacto.setText("N° de contacto");
+
+        txtCorreo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreo1ActionPerformed(evt);
+            }
+        });
+
+        lblFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaNacimiento.setText("Ocupacion:");
+
+        lblFechaExpedicion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaExpedicion.setText("Fecha de expedicion:");
+
+        lblFechaNacimiento1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaNacimiento1.setText("Fecha de nacimiento:");
+
+        ftxtFechaNacimiento.setText("2025/11/04");
+        ftxtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtFechaNacimientoActionPerformed(evt);
+            }
+        });
+
+        ftxtFechaExpedicion.setText("2025/11/04");
+        ftxtFechaExpedicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtFechaExpedicionActionPerformed(evt);
+            }
+        });
+
+        txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdentificacionActionPerformed(evt);
+            }
+        });
+
+        lblFechaExpedicion1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaExpedicion1.setText("Lugar de expedicion:");
+
+        btnResgistrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnResgistrar.setText("Registrar");
+        btnResgistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResgistrarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLimpiar1.setText("Limpiar");
+        btnLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblIdentificacion)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblApellidos)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblNombres)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(186, 186, 186)
+                                        .addComponent(btnLimpiar1)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblCorreo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblNumContacto)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblFechaExpedicion1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(combLugarExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(20, 20, 20))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(btnResgistrar)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFechaNacimiento1)
+                                        .addGap(14, 14, 14))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblFechaExpedicion)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ftxtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtFechaExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFechaNacimiento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addComponent(lblTitulo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblTitulo)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombres)
+                    .addComponent(lblCorreo)
+                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellidos)
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNumContacto)
+                    .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIdentificacion)
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaExpedicion)
+                    .addComponent(ftxtFechaExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaExpedicion1)
+                    .addComponent(combLugarExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaNacimiento1)
+                    .addComponent(ftxtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaNacimiento)
+                    .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnResgistrar)
+                    .addComponent(btnLimpiar1))
+                .addGap(66, 66, 66))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
+
+    private void txtOcupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOcupacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOcupacionActionPerformed
+
+    private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidosActionPerformed
+
+    private void txtNumContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumContactoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumContactoActionPerformed
+
+    private void txtCorreo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreo1ActionPerformed
+
+    private void ftxtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtFechaNacimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtFechaNacimientoActionPerformed
+
+    private void ftxtFechaExpedicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtFechaExpedicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtFechaExpedicionActionPerformed
+
+    private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdentificacionActionPerformed
+
+    private void btnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnResgistrarActionPerformed
+
+    private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLimpiar1;
+    private javax.swing.JButton btnResgistrar;
+    private javax.swing.JComboBox<String> combLugarExpedicion;
+    private javax.swing.JFormattedTextField ftxtFechaExpedicion;
+    private javax.swing.JFormattedTextField ftxtFechaNacimiento;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblFechaExpedicion;
+    private javax.swing.JLabel lblFechaExpedicion1;
+    private javax.swing.JLabel lblFechaNacimiento;
+    private javax.swing.JLabel lblFechaNacimiento1;
+    private javax.swing.JLabel lblIdentificacion;
+    private javax.swing.JLabel lblNombres;
+    private javax.swing.JLabel lblNumContacto;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCorreo1;
+    private javax.swing.JTextField txtIdentificacion;
+    private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtNumContacto;
+    private javax.swing.JTextField txtOcupacion;
     // End of variables declaration//GEN-END:variables
 }

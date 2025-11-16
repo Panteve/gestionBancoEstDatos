@@ -4,6 +4,8 @@
  */
 package co.edu.gestionbanco.ui;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author DIEGO
@@ -17,6 +19,15 @@ public class Escritorio extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void cerrarVentanasAbiertas() {
+        JInternalFrame[] paneles = panelPrincipal.getAllFrames();
+        for (int i = 0; i < paneles.length; i++) {
+            if (!"VisualizarTurnos".equals(paneles[i].getClass().getSimpleName())) {
+                paneles[i].dispose();
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +37,166 @@ public class Escritorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        panelPrincipal = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        tickets = new javax.swing.JMenu();
+        itemVisualTurnos = new javax.swing.JMenuItem();
+        itemGenerarTurno = new javax.swing.JMenuItem();
+        itemGestionTurno = new javax.swing.JMenuItem();
+        servicios = new javax.swing.JMenu();
+        itemRegistroCli = new javax.swing.JMenuItem();
+        itemAgregarPro = new javax.swing.JMenuItem();
+        itemPagoServi = new javax.swing.JMenuItem();
+        itemRetiroDeposito = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
+        );
+
+        tickets.setText("Gestion tickets");
+
+        itemVisualTurnos.setText("Visualizar turnos");
+        itemVisualTurnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemVisualTurnosActionPerformed(evt);
+            }
+        });
+        tickets.add(itemVisualTurnos);
+
+        itemGenerarTurno.setText("Crear turno");
+        itemGenerarTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemGenerarTurnoActionPerformed(evt);
+            }
+        });
+        tickets.add(itemGenerarTurno);
+
+        itemGestionTurno.setText("Gestionar turnos");
+        itemGestionTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemGestionTurnoActionPerformed(evt);
+            }
+        });
+        tickets.add(itemGestionTurno);
+
+        jMenuBar1.add(tickets);
+
+        servicios.setText("Gestion servicios");
+
+        itemRegistroCli.setText("Registrar cliente");
+        itemRegistroCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistroCliActionPerformed(evt);
+            }
+        });
+        servicios.add(itemRegistroCli);
+
+        itemAgregarPro.setText("Agregar producto");
+        itemAgregarPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAgregarProActionPerformed(evt);
+            }
+        });
+        servicios.add(itemAgregarPro);
+
+        itemPagoServi.setText("Pago de servicios");
+        itemPagoServi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemPagoServiActionPerformed(evt);
+            }
+        });
+        servicios.add(itemPagoServi);
+
+        itemRetiroDeposito.setText("Retiro/Deposito");
+        itemRetiroDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRetiroDepositoActionPerformed(evt);
+            }
+        });
+        servicios.add(itemRetiroDeposito);
+
+        jMenuBar1.add(servicios);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelPrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void itemVisualTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemVisualTurnosActionPerformed
+        cerrarVentanasAbiertas();
+        VisualizarTurnos visualizar = new VisualizarTurnos();
+        panelPrincipal.add(visualizar);
+        visualizar.setVisible(true);
+    }//GEN-LAST:event_itemVisualTurnosActionPerformed
+
+    private void itemGenerarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGenerarTurnoActionPerformed
+        cerrarVentanasAbiertas();
+        CrearTurno crear = new CrearTurno();
+        panelPrincipal.add(crear);
+        crear.setVisible(true);
+
+    }//GEN-LAST:event_itemGenerarTurnoActionPerformed
+
+    private void itemGestionTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGestionTurnoActionPerformed
+        cerrarVentanasAbiertas();
+        GestionarTurno gestionar = new GestionarTurno();
+        panelPrincipal.add(gestionar);
+        gestionar.setVisible(true);
+    }//GEN-LAST:event_itemGestionTurnoActionPerformed
+
+    private void itemRegistroCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistroCliActionPerformed
+        cerrarVentanasAbiertas();
+        RegistrarCliente registrar = new RegistrarCliente();
+        panelPrincipal.add(registrar);
+        registrar.setVisible(true);
+    }//GEN-LAST:event_itemRegistroCliActionPerformed
+
+    private void itemAgregarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarProActionPerformed
+        cerrarVentanasAbiertas();
+        AgregarProducto agregar = new AgregarProducto();
+        panelPrincipal.add(agregar);
+        agregar.setVisible(true);
+    }//GEN-LAST:event_itemAgregarProActionPerformed
+
+    private void itemPagoServiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPagoServiActionPerformed
+        cerrarVentanasAbiertas();
+        PagoServicios pago = new PagoServicios();
+        panelPrincipal.add(pago);
+        pago.setVisible(true);
+    }//GEN-LAST:event_itemPagoServiActionPerformed
+
+    private void itemRetiroDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRetiroDepositoActionPerformed
+        cerrarVentanasAbiertas();
+        RetiroDeposito retiroDeposito = new RetiroDeposito();
+        panelPrincipal.add(retiroDeposito);
+        retiroDeposito.setVisible(true);
+    }//GEN-LAST:event_itemRetiroDepositoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +234,18 @@ public class Escritorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemAgregarPro;
+    private javax.swing.JMenuItem itemGenerarTurno;
+    private javax.swing.JMenuItem itemGestionTurno;
+    private javax.swing.JMenuItem itemPagoServi;
+    private javax.swing.JMenuItem itemRegistroCli;
+    private javax.swing.JMenuItem itemRetiroDeposito;
+    private javax.swing.JMenuItem itemVisualTurnos;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JDesktopPane panelPrincipal;
+    private javax.swing.JMenu servicios;
+    private javax.swing.JMenu tickets;
     // End of variables declaration//GEN-END:variables
 }

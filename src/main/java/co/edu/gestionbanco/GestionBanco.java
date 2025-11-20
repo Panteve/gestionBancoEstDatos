@@ -4,6 +4,8 @@
 
 package co.edu.gestionbanco;
 
+import co.edu.gestionbanco.util.ConexionBD;
+
 /**
  *
  * @author DIEGO
@@ -11,6 +13,7 @@ package co.edu.gestionbanco;
 public class GestionBanco {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ConexionBD conexion = new ConexionBD();
+        conexion.getConectionDB();
     }
 }

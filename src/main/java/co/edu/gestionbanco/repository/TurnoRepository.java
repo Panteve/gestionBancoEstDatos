@@ -8,6 +8,6 @@ package co.edu.gestionbanco.repository;
  *
  * @author DIEGO
  */
-public class TicketRepository {
+public class TurnoRepository {
     
 }

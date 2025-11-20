@@ -179,7 +179,7 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void itemAgregarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarProActionPerformed
         cerrarVentanasAbiertas();
-        AgregarProducto agregar = new AgregarProducto();
+        VisualizarCliente agregar = new VisualizarCliente();
         panelPrincipal.add(agregar);
         agregar.setVisible(true);
     }//GEN-LAST:event_itemAgregarProActionPerformed

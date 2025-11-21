@@ -2,21 +2,21 @@ package co.edu.gestionbanco.entity;
 
 public class Turno {
     private String codigo;
+    private int usuario_id;
+    private int servicio_id;
+    private int prioridad_id;
+    private String estado;
     private String fecha;
     private String hora;
-    private int servicio_id;
-    private int cliente_id;
-    private String estado;
-    private int prioridad_id;
 
-    public Turno(String codigo, String fecha, String hora, int servicio_id, int cliente_id, String estado, int prioridad_id) {
+    public Turno(String codigo, int usuario_id, int servicio_id, int prioridad_id, String estado, String fecha, String hora) {
         this.codigo = codigo;
+        this.usuario_id = usuario_id;
+        this.servicio_id = servicio_id;
+        this.prioridad_id = prioridad_id;
+        this.estado = estado;
         this.fecha = fecha;
         this.hora = hora;
-        this.servicio_id = servicio_id;
-        this.cliente_id = cliente_id;
-        this.estado = estado;
-        this.prioridad_id = prioridad_id;
     }
 
     public String getCodigo() {
@@ -51,12 +51,12 @@ public class Turno {
         this.servicio_id = servicio_id;
     }
 
-    public int getCliente_id() {
-        return cliente_id;
+    public int getUsuario_id() {
+        return usuario_id;
     }
 
-    public void setCliente_id(int cliente_id) {
-        this.cliente_id = cliente_id;
+    public void setUsuario_id(int cliente_id) {
+        this.usuario_id = cliente_id;
     }
 
     public String getEstado() {
@@ -83,7 +83,7 @@ public class Turno {
         sb.append(", fecha=").append(fecha);
         sb.append(", hora=").append(hora);
         sb.append(", servicio_id=").append(servicio_id);
-        sb.append(", cliente_id=").append(cliente_id);
+        sb.append(", cliente_id=").append(usuario_id);
         sb.append(", estado=").append(estado);
         sb.append(", prioridad_id=").append(prioridad_id);
         sb.append('}');

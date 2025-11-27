@@ -9,7 +9,8 @@ package co.edu.gestionbanco.entity;
  * @author DIEGO
  */
 public class Empleado {
-
+    
+    private int id_empleado;
     private int documento;
     private String nombre;
     private String correo;
@@ -18,7 +19,8 @@ public class Empleado {
     private String contraseña;
     private int estado;
 
-    public Empleado(int documento, String nombre, String correo, String telefono, String cargo, String contraseña, int estado) {
+    public Empleado(int id_empleado, int documento, String nombre, String correo, String telefono, String cargo, String contraseña, int estado) {
+        this.id_empleado = id_empleado;
         this.documento = documento;
         this.nombre = nombre;
         this.correo = correo;
@@ -26,6 +28,17 @@ public class Empleado {
         this.cargo = cargo;
         this.contraseña = contraseña;
         this.estado = estado;
+    }
+
+    public Empleado() {
+    }
+
+    public int getId_empleado() {
+        return id_empleado;
+    }
+
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
     }
 
     public int getDocumento() {
@@ -88,7 +101,8 @@ public class Empleado {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Empleado{");
-        sb.append("documento=").append(documento);
+        sb.append("id_empleado=").append(id_empleado);
+        sb.append(", documento=").append(documento);
         sb.append(", nombre=").append(nombre);
         sb.append(", correo=").append(correo);
         sb.append(", telefono=").append(telefono);
@@ -98,6 +112,8 @@ public class Empleado {
         sb.append('}');
         return sb.toString();
     }
+    
+    
     
     
 }

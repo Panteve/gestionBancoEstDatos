@@ -5,7 +5,7 @@
 package co.edu.gestionbanco.entity;
 
 
-public enum Prioridad {
+public enum TriagePrioridad {
     LEVEL1("DISCAPACITADO",1),
     LEVEL2("EMBARAZADA",2),
     LEVEL3("MAYOR",3);
@@ -13,7 +13,7 @@ public enum Prioridad {
     private final int LEVEL;
     private final String DESCRIPTION;
     
-    private Prioridad(String description, int level) {
+    private TriagePrioridad(String description, int level) {
         this.LEVEL = level;
         this.DESCRIPTION = description;
     }
@@ -26,8 +26,8 @@ public enum Prioridad {
         return DESCRIPTION;
     }
     
-     public static Prioridad fromLevel(int level) {
-        for (Prioridad p : Prioridad.values()) {
+     public static TriagePrioridad fromLevel(int level) {
+        for (TriagePrioridad p : TriagePrioridad.values()) {
             if (p.getLEVEL() == level) {
                 return p;
             }

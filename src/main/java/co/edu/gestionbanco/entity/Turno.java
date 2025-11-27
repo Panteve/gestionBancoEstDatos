@@ -5,12 +5,12 @@ public class Turno {
     private String codigo;
     private int usuario_id;
     private int servicio_id;
-    public Prioridad prioridad;
+    public TriagePrioridad prioridad;
     private String estado;
     private String fecha;
     private String hora;
 
-    public Turno(int id_turno,String codigo, int usuario_id, int servicio_id, Prioridad prioridad, String estado, String fecha, String hora) {
+    public Turno(int id_turno,String codigo, int usuario_id, int servicio_id, TriagePrioridad prioridad, String estado, String fecha, String hora) {
         this.id_turno = id_turno;
         this.codigo = codigo;
         this.usuario_id = usuario_id;
@@ -37,11 +37,11 @@ public class Turno {
         this.id_turno = id_turno;
     }
 
-    public Prioridad getPrioridad() {
+    public TriagePrioridad getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(Prioridad prioridad) {
+    public void setPrioridad(TriagePrioridad prioridad) {
         this.prioridad = prioridad;
     }
     

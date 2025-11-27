@@ -9,16 +9,29 @@ package co.edu.gestionbanco.entity;
  * @author DIEGO
  */
 public class Producto {
+    private int id_producto;
     private int id_usuario;
     private String referencia;
     private String nombre;
     private int valor;
 
-    public Producto(int id_usuario, String referencia, String nombre, int valor) {
+    public Producto(int id_producto, int id_usuario, String referencia, String nombre, int valor) {
+        this.id_producto = id_producto;
         this.id_usuario = id_usuario;
         this.referencia = referencia;
         this.nombre = nombre;
         this.valor = valor;
+    }
+
+    public Producto() {
+    }
+
+    public int getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
     public int getId_usuario() {
@@ -55,14 +68,8 @@ public class Producto {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Producto{");
-        sb.append("id_usuario=").append(id_usuario);
-        sb.append(", referencia=").append(referencia);
-        sb.append(", nombre=").append(nombre);
-        sb.append(", valor=").append(valor);
-        sb.append('}');
-        return sb.toString();
+        return "Producto{" + "id_producto=" + id_producto + ", id_usuario=" + id_usuario + ", referencia=" + referencia + ", nombre=" + nombre + ", valor=" + valor + '}';
     }
+
     
 }

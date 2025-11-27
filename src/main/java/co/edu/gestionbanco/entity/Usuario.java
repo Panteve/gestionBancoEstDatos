@@ -9,6 +9,7 @@ package co.edu.gestionbanco.entity;
  * @author DIEGO
  */
 public class Usuario {
+    private int id_usuario;
     private int documento;
     private String nombre;
     private String correo;
@@ -16,13 +17,29 @@ public class Usuario {
     private String ocupacion;
     private int estado;
 
-    public Usuario(int documento, String nombre, String correo, String telefono, String ocupacion, int estado) {
+    public Usuario(int id_usuario, int documento, String nombre, String correo, String telefono, String ocupacion, int estado) {
+        this.id_usuario = id_usuario;
         this.documento = documento;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
         this.ocupacion = ocupacion;
         this.estado = estado;
+    }
+
+    public Usuario(int documento) {
+        this.documento = documento;
+    }
+
+    public Usuario() {
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public int getDocumento() {
@@ -77,7 +94,8 @@ public class Usuario {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Usuario{");
-        sb.append("documento=").append(documento);
+        sb.append("id_usuario=").append(id_usuario);
+        sb.append(", documento=").append(documento);
         sb.append(", nombre=").append(nombre);
         sb.append(", correo=").append(correo);
         sb.append(", telefono=").append(telefono);
@@ -86,5 +104,4 @@ public class Usuario {
         sb.append('}');
         return sb.toString();
     }
-    
 }

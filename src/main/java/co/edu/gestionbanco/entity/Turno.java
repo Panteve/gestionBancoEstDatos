@@ -1,24 +1,50 @@
 package co.edu.gestionbanco.entity;
 
 public class Turno {
+    private int id_turno;
     private String codigo;
     private int usuario_id;
     private int servicio_id;
-    private int prioridad_id;
+    public Prioridad prioridad;
     private String estado;
     private String fecha;
     private String hora;
 
-    public Turno(String codigo, int usuario_id, int servicio_id, int prioridad_id, String estado, String fecha, String hora) {
+    public Turno(int id_turno,String codigo, int usuario_id, int servicio_id, Prioridad prioridad, String estado, String fecha, String hora) {
+        this.id_turno = id_turno;
         this.codigo = codigo;
         this.usuario_id = usuario_id;
         this.servicio_id = servicio_id;
-        this.prioridad_id = prioridad_id;
+        this.prioridad = prioridad;
         this.estado = estado;
         this.fecha = fecha;
         this.hora = hora;
     }
 
+    public Turno() {
+    }
+
+    public Turno(int id_turno, String estado) {
+        this.id_turno = id_turno;
+        this.estado = estado;
+    }
+
+    public int getId_turno() {
+        return id_turno;
+    }
+
+    public void setId_turno(int id_turno) {
+        this.id_turno = id_turno;
+    }
+
+    public Prioridad getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(Prioridad prioridad) {
+        this.prioridad = prioridad;
+    }
+    
     public String getCodigo() {
         return codigo;
     }
@@ -67,14 +93,6 @@ public class Turno {
         this.estado = estado;
     }
 
-    public int getPrioridad_id() {
-        return prioridad_id;
-    }
-
-    public void setPrioridad_id(int prioridad_id) {
-        this.prioridad_id = prioridad_id;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -85,9 +103,16 @@ public class Turno {
         sb.append(", servicio_id=").append(servicio_id);
         sb.append(", cliente_id=").append(usuario_id);
         sb.append(", estado=").append(estado);
-        sb.append(", prioridad_id=").append(prioridad_id);
+        sb.append(", prioridad_id=").append(prioridad);
         sb.append('}');
         return sb.toString();
     }
+
+    public int compareTo(Turno turno) {
+       int currentLevel = this.prioridad.getLEVEL();
+        int paramLevel = turno.prioridad.getLEVEL();
+        return paramLevel - currentLevel;
+    }
+    
     
 }

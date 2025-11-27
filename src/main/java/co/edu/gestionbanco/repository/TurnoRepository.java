@@ -4,6 +4,7 @@
  */
 package co.edu.gestionbanco.repository;
 
+import co.edu.gestionbanco.entity.Prioridad;
 import co.edu.gestionbanco.entity.Turno;
 import co.edu.gestionbanco.util.ConexionBD;
 import java.sql.Connection;
@@ -11,7 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +26,6 @@ public class TurnoRepository {
 
     private ConexionBD conexionBD;
     private PreparedStatement preStm;
-
     //Constructor
     public TurnoRepository() {
         this.conexionBD = new ConexionBD();
@@ -33,21 +36,24 @@ public class TurnoRepository {
     //Conseguir todos los turnos en espera
     public LinkedList<Turno> getAllTurnos() {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM turnos WHERE tur_estado = 'En espera'"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM turnos WHERE estado = 'En espera'"; //Agregar order by para traer en orden la lista por prioridad 
         LinkedList<Turno> turnosList = new LinkedList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
             //Los datos de la tabla se guardan en el resultSet
             ResultSet resultSet = this.preStm.executeQuery();
             while (resultSet.next()) {
+                int nivelPrioridad = resultSet.getInt("prioridad");
+                Prioridad prioridad = Prioridad.fromLevel(nivelPrioridad);
                 turnosList.add(new Turno(
-                        resultSet.getString("tur_codigo"),
-                        resultSet.getInt("tur_id_usuario"),
-                        resultSet.getInt("tur_id_servicio"),
-                        resultSet.getInt("tur_prioridad"),
-                        resultSet.getString("tur_estado"),
-                        resultSet.getString("tur_fecha_creacion"),
-                        resultSet.getString("tur_hora_creacion")
+                        resultSet.getInt("id_turno"),
+                        resultSet.getString("codigo_turno"),
+                        resultSet.getInt("id_usuario"),
+                        resultSet.getInt("id_servicio"),
+                        prioridad,
+                        resultSet.getString("estado"),
+                        resultSet.getString("fecha_creacion"),
+                        resultSet.getString("hora_creacion")
                 ));
             }
         } catch (SQLException e) {
@@ -67,4 +73,107 @@ public class TurnoRepository {
         return turnosList;
     }
 
+    public Turno getTurno(int id_turno) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "SELECT * FROM turnos WHERE id_turno = ?"; //Agregar order by para traer en orden la lista por prioridad 
+        Turno turno = new Turno();
+        try {
+            this.preStm = con.prepareStatement(sqlQuery);
+            this.preStm.setInt(1, id_turno);
+            //Los datos de la tabla se guardan en el resultSet
+            ResultSet resultSet = this.preStm.executeQuery();
+            if (resultSet.next()) {
+                int nivelPrioridad = resultSet.getInt("prioridad");
+                Prioridad prioridad = Prioridad.fromLevel(nivelPrioridad);
+                turno = new Turno(
+                        resultSet.getInt("id_turno"),
+                        resultSet.getString("codigo_turno"),
+                        resultSet.getInt("id_usuario"),
+                        resultSet.getInt("id_servicio"),
+                        prioridad,
+                        resultSet.getString("estado"),
+                        resultSet.getString("fecha_creacion"),
+                        resultSet.getString("hora_creacion")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return turno;
+    }
+    public boolean actualizarEstadoTurno(Turno turno) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "UPDATE productos SET estado = ? WHERE id_turno  = ?";
+        try {
+            if (this.preStm == null) {
+                this.preStm = con.prepareStatement(sqlQuery);
+                this.preStm.setString(1, turno.getEstado());
+                this.preStm.setInt(2, turno.getId_turno());
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return true;
+    }
+    
+    public boolean crearTurno(Turno turno) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "INSERT INTO turnos VALUES(null,?,?,?,?,?,?,?)";
+        String estado = "En espera";       
+        java.sql.Time hora_creacion = java.sql.Time.valueOf(LocalTime.now());
+        java.sql.Date fecha_creacion = java.sql.Date.valueOf(LocalDate.now());
+        try {
+            if (this.preStm == null) {
+                this.preStm = con.prepareStatement(sqlQuery);
+                this.preStm.setString(1, turno.getCodigo());
+                this.preStm.setInt(2, turno.getUsuario_id());
+                this.preStm.setInt(3, turno.getServicio_id());
+                this.preStm.setInt(4, turno.prioridad.getLEVEL());
+                this.preStm.setString(5, estado);
+                this.preStm.setDate(6, fecha_creacion);
+                this.preStm.setTime(7, hora_creacion);
+                
+                int response = this.preStm.executeUpdate();
+                if (response > 0) {
+                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return true;
+    } 
 }

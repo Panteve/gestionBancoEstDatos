@@ -30,29 +30,15 @@ public class CrearTurno extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-        panGeneracionTurno5 = new javax.swing.JPanel();
-        lblPan5Titulo = new javax.swing.JLabel();
-        lblPan5pregunta = new javax.swing.JLabel();
-        pnaPan5ContenedorTicket = new javax.swing.JPanel();
-        lblPan5TituloTurno = new javax.swing.JLabel();
-        sepa1 = new javax.swing.JSeparator();
-        lblPan5Codigo = new javax.swing.JLabel();
-        sepa2 = new javax.swing.JSeparator();
-        lblFecha = new javax.swing.JLabel();
-        lblPan5TituloNombre = new javax.swing.JLabel();
-        lblTituloServicio = new javax.swing.JLabel();
         panDiscapacidad4 = new javax.swing.JPanel();
         lblPan4pregunta = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        panEscogerServicio3 = new javax.swing.JPanel();
-        lblPan3pregunta = new javax.swing.JLabel();
-        lblPan3bienvenida = new javax.swing.JLabel();
-        btnPan3PagoServicios = new javax.swing.JButton();
-        btnPan3NuevoProducto = new javax.swing.JButton();
-        btnPan3RetiroDeposito = new javax.swing.JButton();
-        btnPan3Asesoria = new javax.swing.JButton();
+        panEscogerCliente1 = new javax.swing.JPanel();
+        lblPan1pregunta = new javax.swing.JLabel();
+        btnPan1Si = new javax.swing.JButton();
+        btnPan1No = new javax.swing.JButton();
         panIngresarDoc2 = new javax.swing.JPanel();
         lblPan2pregunta = new javax.swing.JLabel();
         btnPan2Teclado5 = new javax.swing.JButton();
@@ -69,10 +55,24 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         btnPan2Teclado9 = new javax.swing.JButton();
         txtPan2Documento = new javax.swing.JTextField();
         btnPan2Continuar = new javax.swing.JButton();
-        panEscogerCliente1 = new javax.swing.JPanel();
-        lblPan1pregunta = new javax.swing.JLabel();
-        btnPan1Si = new javax.swing.JButton();
-        btnPan1No = new javax.swing.JButton();
+        panEscogerServicio3 = new javax.swing.JPanel();
+        lblPan3pregunta = new javax.swing.JLabel();
+        lblPan3bienvenida = new javax.swing.JLabel();
+        btnPan3PagoServicios = new javax.swing.JButton();
+        btnPan3NuevoProducto = new javax.swing.JButton();
+        btnPan3RetiroDeposito = new javax.swing.JButton();
+        btnPan3Asesoria = new javax.swing.JButton();
+        panGeneracionTurno5 = new javax.swing.JPanel();
+        lblPan5Titulo = new javax.swing.JLabel();
+        lblPan5pregunta = new javax.swing.JLabel();
+        pnaPan5ContenedorTicket = new javax.swing.JPanel();
+        lblPan5TituloTurno = new javax.swing.JLabel();
+        sepa1 = new javax.swing.JSeparator();
+        lblPan5Codigo = new javax.swing.JLabel();
+        sepa2 = new javax.swing.JSeparator();
+        lblFecha = new javax.swing.JLabel();
+        lblPan5TituloNombre = new javax.swing.JLabel();
+        lblTituloServicio = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -80,112 +80,6 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         jPasswordField1.setText("jPasswordField1");
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblPan5Titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPan5Titulo.setText("Turno generado");
-
-        lblPan5pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPan5pregunta.setText("¡Gracias, por confiar en nosotros!");
-
-        pnaPan5ContenedorTicket.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblPan5TituloTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblPan5TituloTurno.setText("Tu turno:");
-
-        sepa1.setBackground(new java.awt.Color(0, 0, 0));
-        sepa1.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblPan5Codigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblPan5Codigo.setText("*******");
-
-        sepa2.setBackground(new java.awt.Color(0, 0, 0));
-        sepa2.setForeground(new java.awt.Color(0, 0, 0));
-
-        lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblFecha.setText("*******");
-
-        lblPan5TituloNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblPan5TituloNombre.setText("Espere a ser llamado");
-
-        lblTituloServicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTituloServicio.setText("Sin el ticket no puede ser atendido");
-
-        javax.swing.GroupLayout pnaPan5ContenedorTicketLayout = new javax.swing.GroupLayout(pnaPan5ContenedorTicket);
-        pnaPan5ContenedorTicket.setLayout(pnaPan5ContenedorTicketLayout);
-        pnaPan5ContenedorTicketLayout.setHorizontalGroup(
-            pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sepa1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(sepa2)
-            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(lblPan5TituloNombre)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addComponent(lblPan5Codigo)
-                        .addGap(123, 123, 123))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addComponent(lblPan5TituloTurno)
-                        .addGap(110, 110, 110))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addComponent(lblFecha)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addComponent(lblTituloServicio)
-                        .addGap(17, 17, 17))))
-        );
-        pnaPan5ContenedorTicketLayout.setVerticalGroup(
-            pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblPan5TituloTurno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sepa1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblPan5Codigo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepa2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblPan5TituloNombre)
-                .addGap(18, 18, 18)
-                .addComponent(lblTituloServicio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(lblFecha)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout panGeneracionTurno5Layout = new javax.swing.GroupLayout(panGeneracionTurno5);
-        panGeneracionTurno5.setLayout(panGeneracionTurno5Layout);
-        panGeneracionTurno5Layout.setHorizontalGroup(
-            panGeneracionTurno5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
-                .addGroup(panGeneracionTurno5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(lblPan5pregunta))
-                    .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
-                        .addComponent(lblPan5Titulo))
-                    .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(264, Short.MAX_VALUE))
-        );
-        panGeneracionTurno5Layout.setVerticalGroup(
-            panGeneracionTurno5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(lblPan5Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPan5pregunta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
-        );
-
-        getContentPane().add(panGeneracionTurno5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 380));
 
         lblPan4pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPan4pregunta.setText("¿Cumple alguna condición para atención preferencial?");
@@ -244,73 +138,43 @@ public class CrearTurno extends javax.swing.JInternalFrame {
 
         getContentPane().add(panDiscapacidad4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 370));
 
-        lblPan3pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPan3pregunta.setText("¿Que servicio desea realizar?");
+        lblPan1pregunta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPan1pregunta.setText("¿Ya eres cliente del BBVA?");
 
-        lblPan3bienvenida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPan3bienvenida.setText("Bienvenido ");
+        btnPan1Si.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan1Si.setText("Sí, soy cliente BBVA");
 
-        btnPan3PagoServicios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPan3PagoServicios.setText("Pago de servicios");
-        btnPan3PagoServicios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPan3PagoServiciosActionPerformed(evt);
-            }
-        });
+        btnPan1No.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan1No.setText("No, aún no soy cliente");
 
-        btnPan3NuevoProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPan3NuevoProducto.setText("Nuevo producto");
-
-        btnPan3RetiroDeposito.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPan3RetiroDeposito.setText("Retiro o deposito");
-
-        btnPan3Asesoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPan3Asesoria.setText("Asesoria ");
-        btnPan3Asesoria.setToolTipText("");
-
-        javax.swing.GroupLayout panEscogerServicio3Layout = new javax.swing.GroupLayout(panEscogerServicio3);
-        panEscogerServicio3.setLayout(panEscogerServicio3Layout);
-        panEscogerServicio3Layout.setHorizontalGroup(
-            panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPan3Asesoria, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPan3PagoServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPan3NuevoProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPan3RetiroDeposito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panEscogerCliente1Layout = new javax.swing.GroupLayout(panEscogerCliente1);
+        panEscogerCliente1.setLayout(panEscogerCliente1Layout);
+        panEscogerCliente1Layout.setHorizontalGroup(
+            panEscogerCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panEscogerCliente1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
-                        .addComponent(lblPan3bienvenida)
-                        .addGap(342, 342, 342))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
-                        .addComponent(lblPan3pregunta)
-                        .addGap(274, 274, 274))))
+                .addComponent(lblPan1pregunta)
+                .addGap(260, 260, 260))
+            .addGroup(panEscogerCliente1Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panEscogerServicio3Layout.setVerticalGroup(
-            panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panEscogerServicio3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(lblPan3bienvenida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPan3pregunta)
-                .addGap(48, 48, 48)
-                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPan3PagoServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPan3NuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPan3RetiroDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPan3Asesoria, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+        panEscogerCliente1Layout.setVerticalGroup(
+            panEscogerCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panEscogerCliente1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPan1pregunta)
+                .addGap(108, 108, 108)
+                .addGroup(panEscogerCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(126, 126, 126))
         );
 
-        getContentPane().add(panEscogerServicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 370));
+        getContentPane().add(panEscogerCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 370));
 
         lblPan2pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPan2pregunta.setText("Por favor, ingresa tu número de documento para continuar con la solicitud.");
@@ -494,43 +358,179 @@ public class CrearTurno extends javax.swing.JInternalFrame {
 
         getContentPane().add(panIngresarDoc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 820, 370));
 
-        lblPan1pregunta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblPan1pregunta.setText("¿Ya eres cliente del BBVA?");
+        lblPan3pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPan3pregunta.setText("¿Que servicio desea realizar?");
 
-        btnPan1Si.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPan1Si.setText("Sí, soy cliente BBVA");
+        lblPan3bienvenida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPan3bienvenida.setText("Bienvenido ");
 
-        btnPan1No.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPan1No.setText("No, aún no soy cliente");
+        btnPan3PagoServicios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan3PagoServicios.setText("Pago de servicios");
+        btnPan3PagoServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPan3PagoServiciosActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout panEscogerCliente1Layout = new javax.swing.GroupLayout(panEscogerCliente1);
-        panEscogerCliente1.setLayout(panEscogerCliente1Layout);
-        panEscogerCliente1Layout.setHorizontalGroup(
-            panEscogerCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panEscogerCliente1Layout.createSequentialGroup()
+        btnPan3NuevoProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan3NuevoProducto.setText("Nuevo producto");
+
+        btnPan3RetiroDeposito.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan3RetiroDeposito.setText("Retiro o deposito");
+
+        btnPan3Asesoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan3Asesoria.setText("Asesoria ");
+        btnPan3Asesoria.setToolTipText("");
+
+        javax.swing.GroupLayout panEscogerServicio3Layout = new javax.swing.GroupLayout(panEscogerServicio3);
+        panEscogerServicio3.setLayout(panEscogerServicio3Layout);
+        panEscogerServicio3Layout.setHorizontalGroup(
+            panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPan3Asesoria, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPan3PagoServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPan3NuevoProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPan3RetiroDeposito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(110, 110, 110))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblPan1pregunta)
-                .addGap(260, 260, 260))
-            .addGroup(panEscogerCliente1Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
+                        .addComponent(lblPan3bienvenida)
+                        .addGap(342, 342, 342))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEscogerServicio3Layout.createSequentialGroup()
+                        .addComponent(lblPan3pregunta)
+                        .addGap(274, 274, 274))))
         );
-        panEscogerCliente1Layout.setVerticalGroup(
-            panEscogerCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panEscogerCliente1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPan1pregunta)
-                .addGap(108, 108, 108)
-                .addGroup(panEscogerCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(126, 126, 126))
+        panEscogerServicio3Layout.setVerticalGroup(
+            panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panEscogerServicio3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblPan3bienvenida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPan3pregunta)
+                .addGap(48, 48, 48)
+                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPan3PagoServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPan3NuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(panEscogerServicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPan3RetiroDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPan3Asesoria, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panEscogerCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 370));
+        getContentPane().add(panEscogerServicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 370));
+
+        lblPan5Titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPan5Titulo.setText("Turno generado");
+
+        lblPan5pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPan5pregunta.setText("¡Gracias, por confiar en nosotros!");
+
+        pnaPan5ContenedorTicket.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblPan5TituloTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPan5TituloTurno.setText("Tu turno:");
+
+        sepa1.setBackground(new java.awt.Color(0, 0, 0));
+        sepa1.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblPan5Codigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblPan5Codigo.setText("*******");
+
+        sepa2.setBackground(new java.awt.Color(0, 0, 0));
+        sepa2.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFecha.setText("*******");
+
+        lblPan5TituloNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPan5TituloNombre.setText("Espere a ser llamado");
+
+        lblTituloServicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTituloServicio.setText("Sin el ticket no puede ser atendido");
+
+        javax.swing.GroupLayout pnaPan5ContenedorTicketLayout = new javax.swing.GroupLayout(pnaPan5ContenedorTicket);
+        pnaPan5ContenedorTicket.setLayout(pnaPan5ContenedorTicketLayout);
+        pnaPan5ContenedorTicketLayout.setHorizontalGroup(
+            pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(sepa1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(sepa2)
+            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(lblPan5TituloNombre)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                        .addComponent(lblPan5Codigo)
+                        .addGap(123, 123, 123))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                        .addComponent(lblPan5TituloTurno)
+                        .addGap(110, 110, 110))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                        .addComponent(lblFecha)
+                        .addGap(124, 124, 124))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                        .addComponent(lblTituloServicio)
+                        .addGap(17, 17, 17))))
+        );
+        pnaPan5ContenedorTicketLayout.setVerticalGroup(
+            pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblPan5TituloTurno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sepa1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblPan5Codigo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sepa2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPan5TituloNombre)
+                .addGap(18, 18, 18)
+                .addComponent(lblTituloServicio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(lblFecha)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panGeneracionTurno5Layout = new javax.swing.GroupLayout(panGeneracionTurno5);
+        panGeneracionTurno5.setLayout(panGeneracionTurno5Layout);
+        panGeneracionTurno5Layout.setHorizontalGroup(
+            panGeneracionTurno5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
+                .addGroup(panGeneracionTurno5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
+                        .addGap(269, 269, 269)
+                        .addComponent(lblPan5pregunta))
+                    .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
+                        .addGap(340, 340, 340)
+                        .addComponent(lblPan5Titulo))
+                    .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(264, Short.MAX_VALUE))
+        );
+        panGeneracionTurno5Layout.setVerticalGroup(
+            panGeneracionTurno5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panGeneracionTurno5Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(lblPan5Titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPan5pregunta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26))
+        );
+
+        getContentPane().add(panGeneracionTurno5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 830, 380));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Generar turno");

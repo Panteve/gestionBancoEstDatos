@@ -4,6 +4,7 @@
 
 package co.edu.gestionbanco;
 
+import co.edu.gestionbanco.repository.TurnoRepository;
 import co.edu.gestionbanco.util.ConexionBD;
 
 /**
@@ -15,5 +16,8 @@ public class GestionBanco {
     public static void main(String[] args) {
         ConexionBD conexion = new ConexionBD();
         conexion.getConectionDB();
+        
+        TurnoRepository turnos = new TurnoRepository();
+        System.out.println(turnos.getTurno(2));
     }
 }

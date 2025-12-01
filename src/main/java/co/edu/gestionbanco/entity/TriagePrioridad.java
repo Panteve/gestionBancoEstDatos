@@ -6,9 +6,11 @@ package co.edu.gestionbanco.entity;
 
 
 public enum TriagePrioridad {
-    LEVEL1("DISCAPACITADO",1),
+    //Entre mayor el numero mayor la prioridad
+    LEVEL0("NINGUNA",0),
+    LEVEL1("MAYOR",1),
     LEVEL2("EMBARAZADA",2),
-    LEVEL3("MAYOR",3);
+    LEVEL3("DISCAPACITADO",3);
     
     private final int LEVEL;
     private final String DESCRIPTION;

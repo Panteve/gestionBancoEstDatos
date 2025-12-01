@@ -4,6 +4,14 @@
  */
 package co.edu.gestionbanco.ui;
 
+import co.edu.gestionbanco.entity.Turno;
+import co.edu.gestionbanco.repository.TurnoRepository;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,13 +26,59 @@ public class VisualizarTurnos extends javax.swing.JInternalFrame {
      */
     public VisualizarTurnos() {
         initComponents();
-        Object[][] data = new Object[1][columnas.length]; 
-        data[0][0] = "poo1";
-        data[0][1] = 5;
-        DefaultTableModel model = new DefaultTableModel(data, columnas);
-        tblDatos.setModel(model);
+        inicializarTabla(traerDatos());
+        estilizarTabla();
 
     }
+    
+    public void inicializarTabla(Queue<Turno> turnos){
+    // Convertir la cola prioritaria en una lista
+    List<Turno> listaTurnos = new ArrayList<>(turnos);
+
+    Object[][] data = new Object[listaTurnos.size()][columnas.length];
+
+    for (int i = 0; i < listaTurnos.size(); i++) {
+        Turno turno = listaTurnos.get(i);
+
+        data[i][0] = turno.getCodigo();
+        data[i][1] = 5; // ejemplo
+    }
+
+    DefaultTableModel model = new DefaultTableModel(data, columnas);
+    tblDatos.setModel(model);
+}
+
+    
+    public Queue<Turno> traerDatos() {
+        TurnoRepository turRepository = new TurnoRepository();
+        Queue<Turno> turnoList = turRepository.getAllTurnos();
+        
+        return turnoList;
+    }
+    public void estilizarTabla() {
+
+    // Centrar texto
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+    centrado.setHorizontalAlignment(SwingConstants.CENTER);
+
+    for (int i = 0; i < tblDatos.getColumnCount(); i++) {
+        tblDatos.getColumnModel().getColumn(i).setCellRenderer(centrado);
+    }
+
+    // Filas más grandes
+    tblDatos.setRowHeight(35);
+
+    // Mostrar solo 5 filas visibles
+    int filasVisibles = 5;
+    int altoFila = tblDatos.getRowHeight();
+    int altoHeader = tblDatos.getTableHeader().getPreferredSize().height;
+
+    jScrollPane1.setPreferredSize(new Dimension(
+            jScrollPane1.getPreferredSize().width,
+            altoHeader + (altoFila * filasVisibles)
+    ));
+}
+
 
 
     /**

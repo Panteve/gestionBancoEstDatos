@@ -26,11 +26,7 @@ public class Usuario {
         this.ocupacion = ocupacion;
         this.estado = estado;
     }
-
-    public Usuario(int documento) {
-        this.documento = documento;
-    }
-
+    
     public Usuario() {
     }
 

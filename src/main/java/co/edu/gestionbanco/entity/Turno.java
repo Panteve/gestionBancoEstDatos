@@ -1,6 +1,6 @@
 package co.edu.gestionbanco.entity;
 
-public class Turno {
+public class Turno implements Comparable<Turno> {
     private int id_turno;
     private String codigo;
     private int usuario_id;
@@ -28,7 +28,7 @@ public class Turno {
         this.id_turno = id_turno;
         this.estado = estado;
     }
-
+    
     public int getId_turno() {
         return id_turno;
     }
@@ -107,7 +107,8 @@ public class Turno {
         sb.append('}');
         return sb.toString();
     }
-
+    
+    @Override
     public int compareTo(Turno turno) {
        int currentLevel = this.prioridad.getLEVEL();
         int paramLevel = turno.prioridad.getLEVEL();

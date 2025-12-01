@@ -12,14 +12,24 @@ public class Servicio {
     private int id_servicio;
     private String nombre;
     private String descripcion;
+    private int exclusivoCliente;
 
-    public Servicio(int id_servicio, String nombre, String descripcion) {
+    public Servicio(int id_servicio, String nombre, String descripcion,int exclusivoCliente ) {
         this.id_servicio = id_servicio;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.exclusivoCliente = exclusivoCliente;
+    }
+    
+    public Servicio() {
     }
 
-    public Servicio() {
+    public int getExclusivoCliente() {
+        return exclusivoCliente;
+    }
+
+    public void setExclusivoCliente(int exclusivoCliente) {
+        this.exclusivoCliente = exclusivoCliente;
     }
     
     public int getId_servicio() {

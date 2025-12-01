@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,7 +37,10 @@ public class TurnoRepository {
     //METODOS CRUD 
     //Conseguir todos los turnos en espera
     // Hacer que se peuda escoger si es para solo los de espera, par atodos para los completados y asi
-    public LinkedList<Turno> getAllTurnos() {
+    //Hacer que sea solo los turnos del dia
+    
+    
+    public Queue<Turno> getAllTurnos() {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM turnos WHERE estado = 'En espera'"; //Agregar order by para traer en orden la lista por prioridad 
         LinkedList<Turno> turnosList = new LinkedList<>();
@@ -66,13 +71,55 @@ public class TurnoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
             }
         }
-        return turnosList;
+        Queue<Turno> turnos = new PriorityQueue<>(turnosList);
+        return turnos;
     }
+    
+    //Seleccion de sentencia
+    public String eleccionSentenciaCodigo(String eleccion){
+        String sqlQuery = "";
+        if ("discapacidad".equals(eleccion)) {
+            sqlQuery = "SELECT * FROM turnos WHERE estado = 'En espera' AND codigo_turno LIKE 'P%' ORDER BY id_turno DESC LIMIT 1";
+        } else if ("normal".equals(eleccion)) {
+            sqlQuery = "SELECT *  FROM turnos  WHERE estado = 'En espera'  AND codigo_turno NOT LIKE 'P%' ORDER BY id_turno DESC  LIMIT 1";
+        }
+        return sqlQuery;
+    }
+    
+    public String getUltimoTurno(String sqlQuery) {
+        Connection con = conexionBD.getConectionDB();
+        String codigoTurno = "";
+        try {
+            this.preStm = con.prepareStatement(sqlQuery);
+            //Los datos de la tabla se guardan en el resultSet
+            ResultSet resultSet = this.preStm.executeQuery();
+            if (resultSet.next()) {
+                codigoTurno = resultSet.getString("codigo_turno");   
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return codigoTurno;
+    }
+    
 
     public Turno getTurno(int id_turno) {
         Connection con = conexionBD.getConectionDB();
@@ -106,6 +153,7 @@ public class TurnoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -131,6 +179,7 @@ public class TurnoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -170,6 +219,7 @@ public class TurnoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }

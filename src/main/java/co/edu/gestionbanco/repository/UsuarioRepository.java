@@ -60,6 +60,7 @@ public class UsuarioRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -97,6 +98,7 @@ public class UsuarioRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -104,6 +106,7 @@ public class UsuarioRepository {
         }
         return usuario;
     }
+
     public boolean actualizarUsuario(Usuario usuario) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "UPDATE usuarios SET nombre = ?, correo = ?, telefono = ?, ocupacion = ?";
@@ -124,6 +127,7 @@ public class UsuarioRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -132,9 +136,9 @@ public class UsuarioRepository {
         return true;
     }
     
-    public boolean registrarUsuario(Usuario usuario) {
+    public boolean registrarCliente(Usuario usuario) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO usuarios VALUES(null,?,?,?,?,?,?,?)";
+        String sqlQuery = "INSERT INTO usuarios VALUES(null,?,?,?,?,?,?)";
         int estado = 1;       
         try {
             if (this.preStm == null) {
@@ -144,7 +148,6 @@ public class UsuarioRepository {
                 this.preStm.setString(3, usuario.getCorreo());
                 this.preStm.setString(4, usuario.getTelefono());
                 this.preStm.setString(5, usuario.getOcupacion());
-                this.preStm.setInt(6, estado); 
                 
                 int response = this.preStm.executeUpdate();
                 if (response > 0) {
@@ -160,6 +163,7 @@ public class UsuarioRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -168,7 +172,37 @@ public class UsuarioRepository {
         return true;
     } 
     
-    public boolean bajaUsuario(int id) {
+    public boolean registrarInvitado(int documento) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "INSERT INTO usuarios (documento) VALUES (?)";    
+        try {
+            if (this.preStm == null) {
+                this.preStm = con.prepareStatement(sqlQuery);
+                this.preStm.setInt(1, documento);
+                int response = this.preStm.executeUpdate();
+                if (response > 0) {
+                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return true;
+    }
+    
+    public boolean bajaCliente(int id) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "UPDATE usuarios SET estado = 0 WHERE id_usuario = ?";
         try {
@@ -190,6 +224,7 @@ public class UsuarioRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }

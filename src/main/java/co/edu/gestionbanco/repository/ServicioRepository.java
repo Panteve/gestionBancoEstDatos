@@ -42,7 +42,8 @@ public class ServicioRepository {
                 servicio = new Servicio(
                         resultSet.getInt("id_servicio"),
                         resultSet.getString("nombre"),
-                        resultSet.getString("descripcion")
+                        resultSet.getString("descripcion"),
+                        resultSet.getInt("para_cliente")
                 );
             }
         } catch (SQLException e) {
@@ -62,9 +63,9 @@ public class ServicioRepository {
         return servicio;
     }
     
-    public  List<Servicio> getAllTurnos() {
+    public  List<Servicio> getAllServicios() {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM turnos WHERE estado = 'En espera'"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM servicios"; //Agregar order by para traer en orden la lista por prioridad 
         List<Servicio> servicioList = new ArrayList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -74,7 +75,8 @@ public class ServicioRepository {
                 servicioList.add(new Servicio(
                         resultSet.getInt("id_servicio"),
                         resultSet.getString("nombre"),
-                        resultSet.getString("descripcion")
+                        resultSet.getString("descripcion"),
+                        resultSet.getInt("para_cliente")
                 ));
             }
         } catch (SQLException e) {

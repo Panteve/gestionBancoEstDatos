@@ -145,6 +145,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Realizar pago"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPagarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

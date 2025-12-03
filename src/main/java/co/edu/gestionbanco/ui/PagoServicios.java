@@ -4,6 +4,12 @@
  */
 package co.edu.gestionbanco.ui;
 
+import co.edu.gestionbanco.entity.PagoServicio;
+import co.edu.gestionbanco.entity.Usuario;
+import co.edu.gestionbanco.repository.PagarServicioRepository;
+import co.edu.gestionbanco.repository.UsuarioRepository;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DIEGO
@@ -70,6 +76,11 @@ public class PagoServicios extends javax.swing.JInternalFrame {
 
         btnPagar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPagar.setText("Realizar pago");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +143,25 @@ public class PagoServicios extends javax.swing.JInternalFrame {
     private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdentificacionActionPerformed
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        UsuarioRepository usuRepository = new UsuarioRepository();
+        PagarServicioRepository pagarRepository = new PagarServicioRepository();
+        
+        int documento = Integer.parseInt(txtIdentificacion.getText());
+        String referencia = txtReferencia.getText();
+        float valor = Float.parseFloat(txtValor.getText());
+        
+        Usuario usuario = usuRepository.getUsuario(documento);
+        
+        if(usuario.getId_usuario() != 0){
+            PagoServicio pago = new PagoServicio(documento, referencia, valor);
+            pagarRepository.registrarPagoServicio(pago);
+        }else{
+            JOptionPane.showInputDialog(null,"Numero de documento no encontrado");
+            txtIdentificacion.setText("");
+        }
+    }//GEN-LAST:event_btnPagarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -30,7 +30,7 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         lblIdentificacion = new javax.swing.JLabel();
         lblReferencia = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
-        txtReferencia1 = new javax.swing.JTextField();
+        txtReferencia = new javax.swing.JTextField();
         lblValor = new javax.swing.JLabel();
         txtIdentificacion = new javax.swing.JTextField();
         btnPagar = new javax.swing.JButton();
@@ -51,10 +51,10 @@ public class PagoServicios extends javax.swing.JInternalFrame {
             }
         });
 
-        txtReferencia1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtReferencia1.addActionListener(new java.awt.event.ActionListener() {
+        txtReferencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtReferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtReferencia1ActionPerformed(evt);
+                txtReferenciaActionPerformed(evt);
             }
         });
 
@@ -84,21 +84,17 @@ public class PagoServicios extends javax.swing.JInternalFrame {
                         .addGap(82, 82, 82)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblIdentificacion)
-                            .addComponent(lblValor))
+                            .addComponent(lblValor)
+                            .addComponent(lblReferencia))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtReferencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(btnPagar)))
                 .addContainerGap(149, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(84, 84, 84)
-                    .addComponent(lblReferencia)
-                    .addContainerGap(330, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +102,9 @@ public class PagoServicios extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addComponent(lblTitulo)
                 .addGap(16, 16, 16)
-                .addComponent(txtReferencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblReferencia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdentificacion)
@@ -118,11 +116,6 @@ public class PagoServicios extends javax.swing.JInternalFrame {
                 .addGap(36, 36, 36)
                 .addComponent(btnPagar)
                 .addContainerGap(70, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(81, 81, 81)
-                    .addComponent(lblReferencia)
-                    .addContainerGap(227, Short.MAX_VALUE)))
         );
 
         pack();
@@ -132,9 +125,9 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
 
-    private void txtReferencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReferencia1ActionPerformed
+    private void txtReferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReferenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtReferencia1ActionPerformed
+    }//GEN-LAST:event_txtReferenciaActionPerformed
 
     private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         // TODO add your handling code here:
@@ -148,7 +141,7 @@ public class PagoServicios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtIdentificacion;
-    private javax.swing.JTextField txtReferencia1;
+    private javax.swing.JTextField txtReferencia;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

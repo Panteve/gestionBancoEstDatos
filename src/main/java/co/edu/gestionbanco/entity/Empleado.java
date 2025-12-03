@@ -18,6 +18,7 @@ public class Empleado {
     private String cargo;
     private String contraseña;
     private int estado;
+    private int caja;
 
     public Empleado(int id_empleado, int documento, String nombre, String correo, String telefono, String cargo, String contraseña, int estado) {
         this.id_empleado = id_empleado;
@@ -97,6 +98,14 @@ public class Empleado {
         this.estado = estado;
     }
 
+    public int getCaja() {
+        return caja;
+    }
+
+    public void setCaja(int caja) {
+        this.caja = caja;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -109,11 +118,8 @@ public class Empleado {
         sb.append(", cargo=").append(cargo);
         sb.append(", contrase\u00f1a=").append(contraseña);
         sb.append(", estado=").append(estado);
+        sb.append(", caja=").append(caja);
         sb.append('}');
         return sb.toString();
-    }
-    
-    
-    
-    
+    } 
 }

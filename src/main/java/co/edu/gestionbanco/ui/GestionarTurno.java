@@ -4,17 +4,98 @@
  */
 package co.edu.gestionbanco.ui;
 
+import co.edu.gestionbanco.entity.HistorialAtencion;
+import co.edu.gestionbanco.entity.Servicio;
+import co.edu.gestionbanco.entity.Turno;
+import co.edu.gestionbanco.entity.Usuario;
+import co.edu.gestionbanco.repository.HistorialAtencionRepository;
+import co.edu.gestionbanco.repository.ServicioRepository;
+import co.edu.gestionbanco.repository.TurnoRepository;
+import co.edu.gestionbanco.repository.UsuarioRepository;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.swing.JOptionPane;
+
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DIEGO
  */
 public class GestionarTurno extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form GestionarTurno
-     */
-    public GestionarTurno() {
+    private Escritorio escritorio;
+    private final String columnas[] = {"Turno"};
+    Queue<Turno> turnoList;
+    Turno turnoAtendido;
+    String horaLlamado;
+    int idEmpleado;
+
+    TurnoRepository turRepository = new TurnoRepository();
+    ServicioRepository serRepository = new ServicioRepository();
+    UsuarioRepository usuRepository = new UsuarioRepository();
+    HistorialAtencionRepository histRepository = new HistorialAtencionRepository();
+
+    public GestionarTurno(Escritorio escritorio) {
+        this.escritorio = escritorio;
         initComponents();
+        empezarTrabajo();
+    }
+
+    public void setTabla(Queue<Turno> turnos) {
+        List<Turno> listaTurnos = new ArrayList<>(turnos);
+
+        Object[][] data = new Object[listaTurnos.size()][columnas.length];
+
+        for (int i = 0; i < listaTurnos.size(); i++) {
+            Turno turno = listaTurnos.get(i);
+            data[i][0] = turno.getCodigo();
+        }
+
+        DefaultTableModel model = new DefaultTableModel(data, columnas);
+        tblDatos.setModel(model);
+    }
+
+    private void empezarTrabajo() {
+        int opcion = JOptionPane.showConfirmDialog(rootPane, "Empezar a trabajar");
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            idEmpleado = escritorio.empleado.getId_empleado();
+            turnoList = turRepository.getAllTurnos();
+            turnoAtendido = turnoList.poll();
+            setTabla(turnoList);
+            cambiarTurno();
+        } else {
+            this.dispose();
+        }
+    }
+
+    //Este metodo solo cambia lo mostrado en la pantalla, toma la hora en la que se llamo al usuario 
+    //y setea la caja en la cual esta siendo atendido el turno y se cambia el estado a proceso
+    //Aparte tambien manda ese turno al escritorio para que lo muestre en la tabla que esta alla 
+    private void cambiarTurno() {
+        horaLlamado = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        Servicio servicio = serRepository.getServicio(turnoAtendido.getServicio_id());
+        Usuario usuario = usuRepository.getUsuario(turnoAtendido.getUsuario_id());
+
+        turnoAtendido.setCaja(escritorio.empleado.getCaja());
+        turnoAtendido.setEstado("Proceso");
+        turRepository.actualizarEstadoTurno(turnoAtendido);
+        escritorio.agregarTurno(turnoAtendido);
+
+        lblCodigo.setText(turnoAtendido.getCodigo());
+        lblNombre.setText(usuario.getNombre());
+        lblServicio.setText(servicio.getNombre());
+    }
+
+    //Crea un regsitro del historial de atencion 
+    private void guardarHistorialAtencion(String horaLLamado, String horaFinalizacion) {
+        HistorialAtencion historial = new HistorialAtencion(idEmpleado, turnoAtendido.getId_turno(), horaLLamado, horaFinalizacion);
+        histRepository.registrarHistorialAtencion(historial);
     }
 
     /**
@@ -33,12 +114,11 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         sepa1 = new javax.swing.JSeparator();
         lblCodigo = new javax.swing.JLabel();
         sepa2 = new javax.swing.JSeparator();
-        lblFecha = new javax.swing.JLabel();
         lblTituloNombre = new javax.swing.JLabel();
         lblTituloServicio = new javax.swing.JLabel();
         lblServicio = new javax.swing.JLabel();
-        lblNombre1 = new javax.swing.JLabel();
-        btnPausa = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         btnTerminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
@@ -66,25 +146,22 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         sepa1.setForeground(new java.awt.Color(0, 0, 0));
 
         lblCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblCodigo.setText("*******");
+        lblCodigo.setText("***");
 
         sepa2.setBackground(new java.awt.Color(0, 0, 0));
         sepa2.setForeground(new java.awt.Color(0, 0, 0));
 
-        lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblFecha.setText("*******");
-
         lblTituloNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloNombre.setText("Nombre: ");
 
-        lblTituloServicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTituloServicio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloServicio.setText("Servicio solicitado: ");
 
         lblServicio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblServicio.setText("*******");
 
-        lblNombre1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblNombre1.setText("*******");
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNombre.setText("*******");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,27 +172,23 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(21, 21, 21)
                         .addComponent(lblTituloNombre)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNombre1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNombre))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
+                        .addGap(57, 57, 57)
+                        .addComponent(lblTituloServicio))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(lblServicio))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
                         .addComponent(lblCodigo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblTituloServicio)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblServicio)))
-                .addGap(0, 44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTituloTurno)
-                .addGap(59, 59, 59))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(lblFecha)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addComponent(lblTituloTurno)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,27 +201,21 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
                 .addComponent(lblCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepa2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTituloNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblNombre1)
-                        .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblServicio)
-                    .addComponent(lblTituloServicio))
+                    .addComponent(lblTituloNombre)
+                    .addComponent(lblNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTituloServicio)
                 .addGap(18, 18, 18)
-                .addComponent(lblFecha)
-                .addContainerGap())
+                .addComponent(lblServicio)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        btnPausa.setText("Pausa");
-        btnPausa.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPausaActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -185,13 +252,13 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(78, 78, 78)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,11 +267,11 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
                 .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -212,25 +279,47 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPausaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPausaActionPerformed
+    //Se manda mensjae de confiramcion si quiere salir de trabajar, en caso de ser si se hace todo el proceso de actualizar turno 
+    //y guardar el historial para luego cerrar la ventana
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(rootPane, "¿Seguro desea salir?");
+        if (opcion == JOptionPane.YES_OPTION) {
+            String horaFinalizacion = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            turnoAtendido.setEstado("Atendido");
+            guardarHistorialAtencion(horaLlamado, horaFinalizacion);
+            turRepository.actualizarEstadoTurno(turnoAtendido);
+            escritorio.quitarTurno(turnoAtendido);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
-        // TODO add your handling code here:
+        String horaFinalizacion = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        //Como ya se termino el turno entonces se setea el estado en Atendido
+        turnoAtendido.setEstado("Atendido");
+        //Luego se actualiza en la base de datos ese estado
+        turRepository.actualizarEstadoTurno(turnoAtendido);
+        //Se guarda el historia de atencion en la base de datos
+        guardarHistorialAtencion(horaLlamado, horaFinalizacion);
+        //Se llama el metodo del escritorio para quitar el turno de la tabla del escritorio
+        escritorio.quitarTurno(turnoAtendido);
+        //Se cambia el turno atendido con el primero de la queue y se elemina de la misma
+        turnoAtendido = turnoList.poll();
+        //Se llama el metodo cambiar turno para que tome el nuevo turno atendido y lo muestre
+        cambiarTurno();
+        //Y se actualiza la tabla
+        setTabla(turnoList);
     }//GEN-LAST:event_btnTerminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPausa;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTerminar;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCodigo;
-    private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblServicio;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTituloNombre;

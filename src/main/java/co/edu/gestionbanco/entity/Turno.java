@@ -9,6 +9,7 @@ public class Turno implements Comparable<Turno> {
     private String estado;
     private String fecha;
     private String hora;
+    private int caja;
 
     public Turno(int id_turno,String codigo, int usuario_id, int servicio_id, TriagePrioridad prioridad, String estado, String fecha, String hora) {
         this.id_turno = id_turno;
@@ -27,6 +28,14 @@ public class Turno implements Comparable<Turno> {
     public Turno(int id_turno, String estado) {
         this.id_turno = id_turno;
         this.estado = estado;
+    }
+
+    public int getCaja() {
+        return caja;
+    }
+
+    public void setCaja(int caja) {
+        this.caja = caja;
     }
     
     public int getId_turno() {

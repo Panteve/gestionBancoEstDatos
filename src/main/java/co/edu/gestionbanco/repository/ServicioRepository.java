@@ -4,9 +4,7 @@
  */
 package co.edu.gestionbanco.repository;
 
-import co.edu.gestionbanco.entity.TriagePrioridad;
 import co.edu.gestionbanco.entity.Servicio;
-import co.edu.gestionbanco.entity.Turno;
 import co.edu.gestionbanco.util.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

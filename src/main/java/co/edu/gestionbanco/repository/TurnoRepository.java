@@ -42,7 +42,7 @@ public class TurnoRepository {
     
     public Queue<Turno> getAllTurnos() {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM turnos WHERE estado = 'En espera'"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM turnos WHERE estado = 'Espera'"; 
         LinkedList<Turno> turnosList = new LinkedList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -85,9 +85,9 @@ public class TurnoRepository {
     public String eleccionSentenciaCodigo(String eleccion){
         String sqlQuery = "";
         if ("discapacidad".equals(eleccion)) {
-            sqlQuery = "SELECT * FROM turnos WHERE estado = 'En espera' AND codigo_turno LIKE 'P%' ORDER BY id_turno DESC LIMIT 1";
+            sqlQuery = "SELECT * FROM turnos WHERE estado IN ('Espera','Proceso') AND codigo_turno LIKE 'P%' ORDER BY id_turno DESC LIMIT 1";
         } else if ("normal".equals(eleccion)) {
-            sqlQuery = "SELECT *  FROM turnos  WHERE estado = 'En espera'  AND codigo_turno NOT LIKE 'P%' ORDER BY id_turno DESC  LIMIT 1";
+            sqlQuery = "SELECT *  FROM turnos  WHERE estado IN ('Espera','Proceso')  AND codigo_turno NOT LIKE 'P%' ORDER BY id_turno DESC  LIMIT 1";
         }
         return sqlQuery;
     }
@@ -163,12 +163,17 @@ public class TurnoRepository {
     }
     public boolean actualizarEstadoTurno(Turno turno) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "UPDATE productos SET estado = ? WHERE id_turno  = ?";
+        String sqlQuery = "UPDATE turnos SET estado = ? WHERE id_turno  = ?";
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setString(1, turno.getEstado());
                 this.preStm.setInt(2, turno.getId_turno());
+                
+                int response = this.preStm.executeUpdate();
+                if (response > 0) {
+                    JOptionPane.showMessageDialog(null, "Actualizacion exitoso");
+                }
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());

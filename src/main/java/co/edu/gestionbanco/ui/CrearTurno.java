@@ -61,6 +61,8 @@ public class CrearTurno extends javax.swing.JInternalFrame {
     }
 
     public boolean crearTurno() {
+        String fecha = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         String sqlQuery;
         String codigo;
         if (turno.prioridad.getLEVEL() != 0) {
@@ -77,10 +79,8 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         //Set estado
         turno.setEstado("En espera");
         //Set fecha
-        String fecha = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         turno.setFecha(fecha);
         //Set Hora
-        String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         turno.setHora(hora);
         return repository.crearTurno(turno) ? true : false;
     }

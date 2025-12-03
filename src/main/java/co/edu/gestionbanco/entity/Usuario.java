@@ -15,17 +15,38 @@ public class Usuario {
     private String correo;
     private String telefono;
     private String ocupacion;
+    private String fechaNacimiento;
+    private String lugarExpedicion;
+    private String fechaExpedicion;
     private int estado;
 
-    public Usuario(int id_usuario, int documento, String nombre, String correo, String telefono, String ocupacion, int estado) {
+    public Usuario(int id_usuario, int documento, String nombre, String correo, String telefono, String ocupacion, String fechaNacimiento, String lugarExpedicion, String fehcaExpedicion, int estado) {
         this.id_usuario = id_usuario;
         this.documento = documento;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
         this.ocupacion = ocupacion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.lugarExpedicion = lugarExpedicion;
+        this.fechaExpedicion = fehcaExpedicion;
         this.estado = estado;
     }
+
+    public Usuario(int documento, String nombre, String correo, String telefono, String ocupacion, String fechaNacimiento, String lugarExpedicion, String fechaExpedicion) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.ocupacion = ocupacion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.lugarExpedicion = lugarExpedicion;
+        this.fechaExpedicion = fechaExpedicion;
+    }
+    
+    
+
+    
     
     public Usuario() {
     }
@@ -86,6 +107,30 @@ public class Usuario {
         this.estado = estado;
     }
 
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getLugarExpedicion() {
+        return lugarExpedicion;
+    }
+
+    public void setLugarExpedicion(String lugarExpedicion) {
+        this.lugarExpedicion = lugarExpedicion;
+    }
+
+    public String getFechaExpedicion() {
+        return fechaExpedicion;
+    }
+
+    public void setFechaExpedicion(String fechaExpedicion) {
+        this.fechaExpedicion = fechaExpedicion;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -96,8 +141,13 @@ public class Usuario {
         sb.append(", correo=").append(correo);
         sb.append(", telefono=").append(telefono);
         sb.append(", ocupacion=").append(ocupacion);
+        sb.append(", fechaNacimiento=").append(fechaNacimiento);
+        sb.append(", lugarNacimiento=").append(lugarExpedicion);
+        sb.append(", fechaExpedicion=").append(fechaExpedicion);
         sb.append(", estado=").append(estado);
         sb.append('}');
         return sb.toString();
     }
+
+
 }

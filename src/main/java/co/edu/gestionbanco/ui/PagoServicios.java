@@ -155,7 +155,7 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         Usuario usuario = usuRepository.getUsuario(documento);
         
         if(usuario.getId_usuario() != 0){
-            PagoServicio pago = new PagoServicio(documento, referencia, valor);
+            PagoServicio pago = new PagoServicio(usuario.getId_usuario(), referencia, valor);
             pagarRepository.registrarPagoServicio(pago);
         }else{
             JOptionPane.showInputDialog(null,"Numero de documento no encontrado");

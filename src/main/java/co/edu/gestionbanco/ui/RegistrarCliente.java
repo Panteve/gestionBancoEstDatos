@@ -4,6 +4,9 @@
  */
 package co.edu.gestionbanco.ui;
 
+import co.edu.gestionbanco.entity.Usuario;
+import co.edu.gestionbanco.repository.UsuarioRepository;
+
 /**
  *
  * @author DIEGO
@@ -27,7 +30,17 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         for (String ciudad : ciudades) {
             combLugarExpedicion.addItem(ciudad);
         }
+    }
 
+    //Resetea los txt 
+    public void resetTxt() {
+        txtDocumento.setText("");
+        txtNombres.setText("");
+        txtCorreo.setText("");
+        txtOcupacion.setText("");
+        ftxtFechaNacimiento.setText("");
+        combLugarExpedicion.setSelectedIndex(0);
+        ftxtFechaExpedicion.setText("");
     }
 
     /**
@@ -40,16 +53,14 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
-        lblApellidos = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         lblNombres = new javax.swing.JLabel();
         txtOcupacion = new javax.swing.JTextField();
         lblIdentificacion = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
         lblCorreo = new javax.swing.JLabel();
         txtNumContacto = new javax.swing.JTextField();
         lblNumContacto = new javax.swing.JLabel();
-        txtCorreo1 = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         lblFechaNacimiento = new javax.swing.JLabel();
         lblFechaExpedicion = new javax.swing.JLabel();
         lblFechaNacimiento1 = new javax.swing.JLabel();
@@ -60,12 +71,11 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         combLugarExpedicion = new javax.swing.JComboBox<>();
         btnResgistrar = new javax.swing.JButton();
         btnLimpiar1 = new javax.swing.JButton();
+        txtDocumento = new javax.swing.JTextField();
+        lblDocumento = new javax.swing.JLabel();
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Registrar cliente");
-
-        lblApellidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblApellidos.setText("Apellidos:");
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,12 +95,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblIdentificacion.setText("N° de identificacion:");
 
-        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidosActionPerformed(evt);
-            }
-        });
-
         lblCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCorreo.setText("Correo:");
 
@@ -103,9 +107,9 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         lblNumContacto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNumContacto.setText("N° de contacto");
 
-        txtCorreo1.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo1ActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
             }
         });
 
@@ -157,6 +161,15 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        txtDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocumentoActionPerformed(evt);
+            }
+        });
+
+        lblDocumento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDocumento.setText("Documento");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,48 +177,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblIdentificacion)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblApellidos)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNombres)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(186, 186, 186)
-                                        .addComponent(btnLimpiar1)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblCorreo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblNumContacto)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblFechaExpedicion1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(combLugarExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(20, 20, 20))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(162, 162, 162)
-                                        .addComponent(btnResgistrar)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -223,7 +194,53 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                                 .addComponent(lblFechaNacimiento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDocumento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblIdentificacion)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblNombres)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(186, 186, 186)
+                                        .addComponent(btnLimpiar1)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lblCorreo)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lblNumContacto)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(92, 92, 92)
+                                                .addComponent(lblFechaExpedicion1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(combLugarExpedicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(20, 20, 20))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(btnResgistrar)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(257, 257, 257)
                 .addComponent(lblTitulo)
@@ -239,14 +256,15 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombres)
                     .addComponent(lblCorreo)
-                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblApellidos)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNumContacto)
-                    .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(lblDocumento)
+                    .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNumContacto)
+                        .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdentificacion)
                     .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,17 +300,13 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOcupacionActionPerformed
 
-    private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidosActionPerformed
-
     private void txtNumContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumContactoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumContactoActionPerformed
 
-    private void txtCorreo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo1ActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo1ActionPerformed
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void ftxtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtFechaNacimientoActionPerformed
         // TODO add your handling code here:
@@ -307,12 +321,33 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtIdentificacionActionPerformed
 
     private void btnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarActionPerformed
-        // TODO add your handling code here:
+        UsuarioRepository usuRepository = new UsuarioRepository();
+
+        int documento = Integer.parseInt(txtDocumento.getText());
+        String nombre = txtNombres.getText();
+        String correo = txtCorreo.getText();
+        String telefono = txtCorreo.getText();
+        String ocupacion = txtOcupacion.getText();
+        String fechaNacimiento = ftxtFechaNacimiento.getText();
+        String lugarExpedicion = String.valueOf(combLugarExpedicion.getSelectedItem());
+        String fechaExpedicion = ftxtFechaExpedicion.getText();
+
+        Usuario usuarioEncontrado = usuRepository.getUsuario(documento);
+
+        if (usuarioEncontrado.getId_usuario() != 0) {
+            Usuario usuario = new Usuario(usuarioEncontrado.getId_usuario(), documento, nombre, correo, telefono, ocupacion, fechaNacimiento, lugarExpedicion, fechaExpedicion, usuarioEncontrado.getEstado());
+            usuRepository.actualizarUsuario(usuario);
+        }
+        resetTxt();
     }//GEN-LAST:event_btnResgistrarActionPerformed
 
     private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
-        // TODO add your handling code here:
+        resetTxt();
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
+
+    private void txtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocumentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -321,8 +356,8 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> combLugarExpedicion;
     private javax.swing.JFormattedTextField ftxtFechaExpedicion;
     private javax.swing.JFormattedTextField ftxtFechaNacimiento;
-    private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblDocumento;
     private javax.swing.JLabel lblFechaExpedicion;
     private javax.swing.JLabel lblFechaExpedicion1;
     private javax.swing.JLabel lblFechaNacimiento;
@@ -331,8 +366,8 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNumContacto;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCorreo1;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNumContacto;

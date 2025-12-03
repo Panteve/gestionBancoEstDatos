@@ -23,63 +23,6 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblIdentificacion" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtIdentificacion" min="-2" pref="140" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblApellidos" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtApellidos" min="-2" pref="130" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblNombres" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtNombres" min="-2" pref="130" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
-                                      <Component id="btnLimpiar1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace pref="98" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblCorreo" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txtCorreo1" min="-2" pref="130" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblNumContacto" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txtNumContacto" min="-2" pref="130" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblFechaExpedicion1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="combLugarExpedicion" min="-2" pref="101" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                                      <Component id="btnResgistrar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -105,6 +48,69 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblDocumento" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtDocumento" min="-2" pref="130" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblIdentificacion" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtIdentificacion" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblNombres" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtNombres" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                                      <Component id="btnLimpiar1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace pref="113" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="lblCorreo" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="txtCorreo" min="-2" pref="130" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="lblNumContacto" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="txtNumContacto" min="-2" pref="130" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                              <Component id="lblFechaExpedicion1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="combLugarExpedicion" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+                                      <Component id="btnResgistrar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -124,16 +130,18 @@
                   <Component id="txtNombres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNombres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCorreo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNumContacto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNumContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Component id="lblNumContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNumContacto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblIdentificacion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtIdentificacion" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -174,14 +182,6 @@
         <Property name="text" type="java.lang.String" value="Registrar cliente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblApellidos">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Apellidos:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtNombres">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombresActionPerformed"/>
@@ -208,11 +208,6 @@
         <Property name="text" type="java.lang.String" value="N&#xb0; de identificacion:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtApellidos">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidosActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblCorreo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -234,9 +229,9 @@
         <Property name="text" type="java.lang.String" value="N&#xb0; de contacto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCorreo1">
+    <Component class="javax.swing.JTextField" name="txtCorreo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCorreo1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCorreoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFechaNacimiento">
@@ -323,6 +318,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiar1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDocumento">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDocumentoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDocumento">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Documento"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

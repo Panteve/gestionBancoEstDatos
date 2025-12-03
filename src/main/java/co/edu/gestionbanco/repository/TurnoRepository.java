@@ -197,8 +197,8 @@ public class TurnoRepository {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "INSERT INTO turnos VALUES(null,?,?,?,?,?,?,?)";
         String estado = "En espera";       
-        java.sql.Time hora_creacion = java.sql.Time.valueOf(LocalTime.now());
-        java.sql.Date fecha_creacion = java.sql.Date.valueOf(LocalDate.now());
+        java.sql.Time horaCreacion = java.sql.Time.valueOf(LocalTime.now());
+        java.sql.Date fechaCreacion = java.sql.Date.valueOf(LocalDate.now());
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
@@ -207,8 +207,8 @@ public class TurnoRepository {
                 this.preStm.setInt(3, turno.getServicio_id());
                 this.preStm.setInt(4, turno.prioridad.getLEVEL());
                 this.preStm.setString(5, estado);
-                this.preStm.setDate(6, fecha_creacion);
-                this.preStm.setTime(7, hora_creacion);
+                this.preStm.setDate(6, fechaCreacion);
+                this.preStm.setTime(7, horaCreacion);
                 
                 int response = this.preStm.executeUpdate();
                 if (response > 0) {

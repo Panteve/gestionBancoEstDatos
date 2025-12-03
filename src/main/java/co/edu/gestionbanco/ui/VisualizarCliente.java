@@ -4,6 +4,8 @@
  */
 package co.edu.gestionbanco.ui;
 
+import co.edu.gestionbanco.repository.UsuarioRepository;
+
 /**
  *
  * @author DIEGO
@@ -198,7 +200,11 @@ public class VisualizarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        UsuarioRepository usuRepository = new UsuarioRepository();
+        int documento = Integer.parseInt(txtIdentificacion.getText());
+        
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 

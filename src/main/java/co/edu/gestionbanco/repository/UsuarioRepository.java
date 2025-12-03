@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -48,6 +50,9 @@ public class UsuarioRepository {
                         resultSet.getString("correo"),
                         resultSet.getString("telefono"),
                         resultSet.getString("ocupacion"),
+                        resultSet.getString("fechaNacimiento"),
+                        resultSet.getString("lugarNacimiento"),
+                        resultSet.getString("fechaExpedicion"),
                         resultSet.getInt("estado")
                 ));
             }
@@ -86,6 +91,9 @@ public class UsuarioRepository {
                         resultSet.getString("correo"),
                         resultSet.getString("telefono"),
                         resultSet.getString("ocupacion"),
+                        resultSet.getString("fechaNacimiento"),
+                        resultSet.getString("lugarNacimiento"),
+                        resultSet.getString("fechaExpedicion"),
                         resultSet.getInt("estado")
                 );
             }
@@ -109,14 +117,20 @@ public class UsuarioRepository {
 
     public boolean actualizarUsuario(Usuario usuario) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "UPDATE usuarios SET nombre = ?, correo = ?, telefono = ?, ocupacion = ?";
+        String sqlQuery = "UPDATE usuarios SET nombre = ?, correo = ?, telefono = ?, ocupacion = ?, fechaNacimiento = ?,lugarNacimiento = ?,fechaExpedicion = ? WHERE id_usuario = ?";
         try {
             if (this.preStm == null) {
+                java.sql.Date fechaNacimiento = java.sql.Date.valueOf(usuario.getFechaNacimiento());
+                java.sql.Date fechaExpedicion = java.sql.Date.valueOf(usuario.getFechaExpedicion());
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setString(1, usuario.getNombre());
                 this.preStm.setString(2, usuario.getCorreo());
                 this.preStm.setString(3, usuario.getTelefono());
                 this.preStm.setString(4, usuario.getOcupacion());
+                this.preStm.setDate(5, fechaNacimiento);
+                this.preStm.setString(6, usuario.getLugarExpedicion());
+                this.preStm.setDate(7, fechaExpedicion);
+                this.preStm.setInt(8, usuario.getId_usuario());
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -135,42 +149,7 @@ public class UsuarioRepository {
         }
         return true;
     }
-    
-    public boolean registrarCliente(Usuario usuario) {
-        Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO usuarios VALUES(null,?,?,?,?,?,?)";
-        int estado = 1;       
-        try {
-            if (this.preStm == null) {
-                this.preStm = con.prepareStatement(sqlQuery);
-                this.preStm.setInt(1, usuario.getDocumento());
-                this.preStm.setString(2, usuario.getNombre());
-                this.preStm.setString(3, usuario.getCorreo());
-                this.preStm.setString(4, usuario.getTelefono());
-                this.preStm.setString(5, usuario.getOcupacion());
-                
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("Error en la sentencia:" + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("error:" + e.getMessage());
-        } finally {
-            if ((con != null) && (this.preStm != null)) {
-                try {
-                    con.close();
-                    this.preStm.close();
-                    this.preStm = null;
-                } catch (SQLException ex) {
-                    System.out.println("error" + ex.getMessage());
-                }
-            }
-        }
-        return true;
-    } 
+     
     
     public boolean registrarInvitado(int documento) {
         Connection con = conexionBD.getConectionDB();

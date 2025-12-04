@@ -13,14 +13,26 @@ public class Producto {
     private int id_usuario;
     private String referencia;
     private String nombre;
-    private int valor;
+    private float valor;
+    private int empresarial;
+    private int estado;
 
-    public Producto(int id_producto, int id_usuario, String referencia, String nombre, int valor) {
+    public Producto(int id_producto, int id_usuario, String referencia, String nombre, float valor, int empresarial, int estado) {
         this.id_producto = id_producto;
         this.id_usuario = id_usuario;
         this.referencia = referencia;
         this.nombre = nombre;
         this.valor = valor;
+        this.empresarial = empresarial;
+        this.estado = estado;
+    }
+
+    public Producto(int id_usuario, String referencia, String nombre, float valor, int empresarial) {
+        this.id_usuario = id_usuario;
+        this.referencia = referencia;
+        this.nombre = nombre;
+        this.valor = valor;
+        this.empresarial = empresarial;
     }
 
     public Producto() {
@@ -58,18 +70,43 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public int getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "id_producto=" + id_producto + ", id_usuario=" + id_usuario + ", referencia=" + referencia + ", nombre=" + nombre + ", valor=" + valor + '}';
+    public int getEmpresarial() {
+        return empresarial;
     }
 
-    
+    public void setEmpresarial(int empresarial) {
+        this.empresarial = empresarial;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Producto{");
+        sb.append("id_producto=").append(id_producto);
+        sb.append(", id_usuario=").append(id_usuario);
+        sb.append(", referencia=").append(referencia);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", valor=").append(valor);
+        sb.append(", empresarial=").append(empresarial);
+        sb.append(", estado=").append(estado);
+        sb.append('}');
+        return sb.toString();
+    }
 }

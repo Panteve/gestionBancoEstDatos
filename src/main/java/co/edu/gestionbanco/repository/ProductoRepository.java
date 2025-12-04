@@ -5,6 +5,7 @@
 package co.edu.gestionbanco.repository;
 
 import co.edu.gestionbanco.entity.Empleado;
+import co.edu.gestionbanco.entity.PagoServicio;
 import co.edu.gestionbanco.entity.Producto;
 import co.edu.gestionbanco.util.ConexionBD;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +32,7 @@ public class ProductoRepository {
     
     public List<Producto> getAllProductosPorUsuario(int id_usuario){
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM productos WHERE id_usuario = ?"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM productos WHERE id_usuario = ?";
         List<Producto> prodcutosList = new ArrayList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -43,7 +45,9 @@ public class ProductoRepository {
                         resultSet.getInt("id_usuario"),
                         resultSet.getString("referenccia"),
                         resultSet.getString("nombre"),
-                        resultSet.getInt("valor")
+                        resultSet.getFloat("valor"),
+                        resultSet.getInt("empresarial"),
+                        resultSet.getInt("estado")
                 ));
             }
         } catch (SQLException e) {
@@ -62,5 +66,40 @@ public class ProductoRepository {
         }
         return prodcutosList;
     }
+    public boolean registrarProducto(Producto producto) { 
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "INSERT INTO pago_servicios VALUES(null,?,?,?,?,?)";      
+        try {
+            if (this.preStm == null) {
+                this.preStm = con.prepareStatement(sqlQuery);
+                this.preStm.setInt(1, producto.getId_usuario());
+                this.preStm.setString(2, producto.getReferencia());
+                this.preStm.setString(3, producto.getNombre());
+                this.preStm.setFloat(4, producto.getValor());
+                this.preStm.setInt(5, producto.getEmpresarial());
+                
+                int response = this.preStm.executeUpdate();
+                if (response > 0) {
+                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return true;
+    }
+    
     
 }

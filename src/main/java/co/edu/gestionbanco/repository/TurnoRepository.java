@@ -196,7 +196,7 @@ public class TurnoRepository {
     public boolean crearTurno(Turno turno) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "INSERT INTO turnos VALUES(null,?,?,?,?,?,?,?)";
-        String estado = "En espera";       
+        String estado = "Espera";       
         java.sql.Time horaCreacion = java.sql.Time.valueOf(LocalTime.now());
         java.sql.Date fechaCreacion = java.sql.Date.valueOf(LocalDate.now());
         try {

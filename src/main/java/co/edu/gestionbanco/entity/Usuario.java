@@ -43,11 +43,8 @@ public class Usuario {
         this.lugarExpedicion = lugarExpedicion;
         this.fechaExpedicion = fechaExpedicion;
     }
-    
-    
 
-    
-    
+
     public Usuario() {
     }
 

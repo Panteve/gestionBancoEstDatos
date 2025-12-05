@@ -6,12 +6,13 @@ package co.edu.gestionbanco.ui;
 
 import co.edu.gestionbanco.entity.Usuario;
 import co.edu.gestionbanco.repository.UsuarioRepository;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author DIEGO
  */
-public class RegistrarCliente extends javax.swing.JInternalFrame {
+public class RegistrarUsuario extends javax.swing.JInternalFrame {
 
     String[] ciudades = {"Arauca", "Armenia", "Barranquilla", "Bogotá", "Bucaramanga", "Cali", "Cartagena", "Cúcuta", "Florencia", "Ibagué", "Leticia",
         "Manizales", "Medellín", "Mitú", "Mocoa", "Montería", "Neiva", "Pasto", "Pereira", "Popayán", "Puerto Carreño",
@@ -21,7 +22,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form RegistrarCliente
      */
-    public RegistrarCliente() {
+    public RegistrarUsuario() {
         initComponents();
         inicializarComboBox();
     }
@@ -38,6 +39,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         txtNombres.setText("");
         txtCorreo.setText("");
         txtOcupacion.setText("");
+        txtNumContacto.setText("");
         ftxtFechaNacimiento.setText("");
         combLugarExpedicion.setSelectedIndex(0);
         ftxtFechaExpedicion.setText("");
@@ -66,13 +68,11 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         lblFechaNacimiento1 = new javax.swing.JLabel();
         ftxtFechaNacimiento = new javax.swing.JFormattedTextField();
         ftxtFechaExpedicion = new javax.swing.JFormattedTextField();
-        txtIdentificacion = new javax.swing.JTextField();
+        txtDocumento = new javax.swing.JTextField();
         lblFechaExpedicion1 = new javax.swing.JLabel();
         combLugarExpedicion = new javax.swing.JComboBox<>();
         btnResgistrar = new javax.swing.JButton();
         btnLimpiar1 = new javax.swing.JButton();
-        txtDocumento = new javax.swing.JTextField();
-        lblDocumento = new javax.swing.JLabel();
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Registrar cliente");
@@ -122,23 +122,23 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         lblFechaNacimiento1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFechaNacimiento1.setText("Fecha de nacimiento:");
 
-        ftxtFechaNacimiento.setText("2025/11/04");
+        ftxtFechaNacimiento.setText("2025-11-04");
         ftxtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtFechaNacimientoActionPerformed(evt);
             }
         });
 
-        ftxtFechaExpedicion.setText("2025/11/04");
+        ftxtFechaExpedicion.setText("2025-11-04");
         ftxtFechaExpedicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtFechaExpedicionActionPerformed(evt);
             }
         });
 
-        txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+        txtDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdentificacionActionPerformed(evt);
+                txtDocumentoActionPerformed(evt);
             }
         });
 
@@ -160,15 +160,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                 btnLimpiar1ActionPerformed(evt);
             }
         });
-
-        txtDocumento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDocumentoActionPerformed(evt);
-            }
-        });
-
-        lblDocumento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblDocumento.setText("Documento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,14 +190,14 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDocumento)
+                                .addComponent(lblNumContacto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblIdentificacion)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,15 +213,10 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(lblCorreo)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(lblNumContacto)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(lblCorreo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(61, 61, 61))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(92, 92, 92)
                                                 .addComponent(lblFechaExpedicion1)
@@ -258,17 +244,13 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addComponent(lblCorreo)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNumContacto)
-                        .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDocumento)
-                        .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNumContacto)
+                    .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdentificacion)
-                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaExpedicion)
@@ -317,9 +299,9 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtFechaExpedicionActionPerformed
 
-    private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
+    private void txtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocumentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdentificacionActionPerformed
+    }//GEN-LAST:event_txtDocumentoActionPerformed
 
     private void btnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
@@ -327,28 +309,26 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         int documento = Integer.parseInt(txtDocumento.getText());
         String nombre = txtNombres.getText();
         String correo = txtCorreo.getText();
-        String telefono = txtCorreo.getText();
+        String telefono = txtNumContacto.getText();
         String ocupacion = txtOcupacion.getText();
         String fechaNacimiento = ftxtFechaNacimiento.getText();
         String lugarExpedicion = String.valueOf(combLugarExpedicion.getSelectedItem());
         String fechaExpedicion = ftxtFechaExpedicion.getText();
 
         Usuario usuarioEncontrado = usuRepository.getUsuario(documento);
-
         if (usuarioEncontrado.getId_usuario() != 0) {
             Usuario usuario = new Usuario(usuarioEncontrado.getId_usuario(), documento, nombre, correo, telefono, ocupacion, fechaNacimiento, lugarExpedicion, fechaExpedicion, usuarioEncontrado.getEstado());
             usuRepository.actualizarUsuario(usuario);
+            resetTxt();
+        }else{
+            JOptionPane.showMessageDialog(null, "N° de identificacion no registra en base de datos");
         }
-        resetTxt();
+        
     }//GEN-LAST:event_btnResgistrarActionPerformed
 
     private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
         resetTxt();
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
-
-    private void txtDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocumentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDocumentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -358,7 +338,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField ftxtFechaExpedicion;
     private javax.swing.JFormattedTextField ftxtFechaNacimiento;
     private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblDocumento;
     private javax.swing.JLabel lblFechaExpedicion;
     private javax.swing.JLabel lblFechaExpedicion1;
     private javax.swing.JLabel lblFechaNacimiento;
@@ -369,7 +348,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDocumento;
-    private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNumContacto;
     private javax.swing.JTextField txtOcupacion;

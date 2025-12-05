@@ -31,6 +31,16 @@ public class Empleado {
         this.estado = estado;
     }
 
+    public Empleado(int documento, String nombre, String correo, String telefono, String cargo, String contraseña) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.cargo = cargo;
+        this.contraseña = contraseña;
+    }
+    
+
     public Empleado() {
     }
 

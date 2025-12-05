@@ -29,6 +29,8 @@ public class Escritorio extends javax.swing.JFrame {
         itemCerrarSesion.setVisible(false);
         itemEditarInformacion.setVisible(false);
         itemGestionTurno.setVisible(false);
+        menuServicios.setVisible(false);
+        itemRegistrarEmpleado.setVisible(false);
         estilizarTabla();
     }
 
@@ -91,6 +93,11 @@ public class Escritorio extends javax.swing.JFrame {
         itemCerrarSesion.setVisible(true);
         itemEditarInformacion.setVisible(true);
         itemGestionTurno.setVisible(true);
+        menuServicios.setVisible(true);
+        
+        if(empleado.getCargo().equals("Admin")){
+            
+        }itemRegistrarEmpleado.setVisible(true);
         inicioSesion.dispose();
         lblBienvenida.setText("Bienvenido, " + empleado.getNombre());
         lblCargo.setText("Cargo: " + empleado.getCargo());
@@ -125,6 +132,7 @@ public class Escritorio extends javax.swing.JFrame {
         itemIniciarSesion = new javax.swing.JMenuItem();
         itemCerrarSesion = new javax.swing.JMenuItem();
         itemEditarInformacion = new javax.swing.JMenuItem();
+        itemRegistrarEmpleado = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -302,7 +310,20 @@ public class Escritorio extends javax.swing.JFrame {
         menuEmpleados.add(itemCerrarSesion);
 
         itemEditarInformacion.setText("Editar Informacion");
+        itemEditarInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEditarInformacionActionPerformed(evt);
+            }
+        });
         menuEmpleados.add(itemEditarInformacion);
+
+        itemRegistrarEmpleado.setText("Registrar empleado");
+        itemRegistrarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegistrarEmpleadoActionPerformed(evt);
+            }
+        });
+        menuEmpleados.add(itemRegistrarEmpleado);
 
         jMenuBar1.add(menuEmpleados);
 
@@ -339,14 +360,14 @@ public class Escritorio extends javax.swing.JFrame {
 
     private void itemRegistroCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistroCliActionPerformed
         cerrarVentanasAbiertas();
-        RegistrarCliente registrar = new RegistrarCliente();
+        RegistrarUsuario registrar = new RegistrarUsuario();
         panelPrincipal.add(registrar);
         registrar.setVisible(true);
     }//GEN-LAST:event_itemRegistroCliActionPerformed
 
     private void itemAgregarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarProActionPerformed
         cerrarVentanasAbiertas();
-        VisualizarCliente agregar = new VisualizarCliente();
+        VisualizarUsuario agregar = new VisualizarUsuario();
         panelPrincipal.add(agregar);
         agregar.setVisible(true);
     }//GEN-LAST:event_itemAgregarProActionPerformed
@@ -378,11 +399,22 @@ public class Escritorio extends javax.swing.JFrame {
         itemCerrarSesion.setVisible(false);
         itemEditarInformacion.setVisible(false);
         itemGestionTurno.setVisible(false);
+        menuServicios.setVisible(false);
 
         lblBienvenida.setText(" ");
         lblCargo.setText(" ");
         lblCaja.setText(" ");
     }//GEN-LAST:event_itemCerrarSesionActionPerformed
+
+    private void itemEditarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarInformacionActionPerformed
+        ModificarEmpleDialog modificarEmpleDialog = new ModificarEmpleDialog(this, true);
+        modificarEmpleDialog.setDatos(empleado);
+        modificarEmpleDialog.setVisible(true);
+    }//GEN-LAST:event_itemEditarInformacionActionPerformed
+
+    private void itemRegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemRegistrarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,6 +459,7 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemGestionTurno;
     private javax.swing.JMenuItem itemIniciarSesion;
     private javax.swing.JMenuItem itemPagoServi;
+    private javax.swing.JMenuItem itemRegistrarEmpleado;
     private javax.swing.JMenuItem itemRegistroCli;
     private javax.swing.JMenuItem itemRetiroDeposito;
     private javax.swing.JMenu jMenu1;

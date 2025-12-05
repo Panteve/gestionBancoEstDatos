@@ -109,6 +109,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Informacion"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemEditarInformacionActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemRegistrarEmpleado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar empleado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemRegistrarEmpleadoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

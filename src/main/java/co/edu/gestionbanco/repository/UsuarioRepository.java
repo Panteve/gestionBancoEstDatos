@@ -114,6 +114,36 @@ public class UsuarioRepository {
         }
         return usuario;
     }
+    
+    public int getIdUsuario(int documento) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "SELECT id_usuario FROM usuarios WHERE documento = ?"; //Agregar order by para traer en orden la lista por prioridad 
+        int idUsuario = 0;
+        try {
+            this.preStm = con.prepareStatement(sqlQuery);
+            this.preStm.setInt(1, documento);
+            
+            ResultSet resultSet = this.preStm.executeQuery();
+            if (resultSet.next()) {
+                idUsuario = resultSet.getInt("id_usuario");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return idUsuario;
+    }
 
     public boolean actualizarUsuario(Usuario usuario) {
         Connection con = conexionBD.getConectionDB();
@@ -131,7 +161,11 @@ public class UsuarioRepository {
                 this.preStm.setString(6, usuario.getLugarExpedicion());
                 this.preStm.setDate(7, fechaExpedicion);
                 this.preStm.setInt(8, usuario.getId_usuario());
+                
+                this.preStm.executeUpdate();  
             }
+            
+            
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
         } catch (Exception e) {

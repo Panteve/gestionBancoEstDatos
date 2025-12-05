@@ -34,7 +34,7 @@ public class EmpleadoRepository {
     //Conseguir todos los turnos en espera
     public List<Empleado> getAllEmpleados() {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM empelados WHERE estado = 1"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM empleados WHERE estado = 1"; //Agregar order by para traer en orden la lista por prioridad 
         List<Empleado> empleadosList = new ArrayList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -61,6 +61,7 @@ public class EmpleadoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -99,6 +100,7 @@ public class EmpleadoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -109,7 +111,7 @@ public class EmpleadoRepository {
 
     public boolean actualizarEmpleado(Empleado empleado) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "UPDATE empelados SET nombre = ?, correo = ?, telefono = ?, cargo = ?";
+        String sqlQuery = "UPDATE empleados SET nombre = ?, correo = ?, telefono = ?, cargo = ?, contraseña = ? WHERE id_empleado = ?";
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
@@ -117,6 +119,10 @@ public class EmpleadoRepository {
                 this.preStm.setString(2, empleado.getCorreo());
                 this.preStm.setString(3, empleado.getTelefono());
                 this.preStm.setString(4, empleado.getCargo());
+                this.preStm.setString(5, empleado.getContraseña());
+                this.preStm.setInt(6, empleado.getId_empleado());
+                
+                this.preStm.executeUpdate();
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -127,6 +133,7 @@ public class EmpleadoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -147,7 +154,8 @@ public class EmpleadoRepository {
                 this.preStm.setString(3, empleado.getCorreo());
                 this.preStm.setString(4, empleado.getTelefono());
                 this.preStm.setString(5, empleado.getCargo());
-                this.preStm.setInt(6, estado);
+                this.preStm.setString(6, empleado.getContraseña());
+                this.preStm.setInt(7, estado);
 
                 int response = this.preStm.executeUpdate();
                 if (response > 0) {
@@ -163,6 +171,7 @@ public class EmpleadoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }
@@ -193,6 +202,7 @@ public class EmpleadoRepository {
                 try {
                     con.close();
                     this.preStm.close();
+                    this.preStm = null;
                 } catch (SQLException ex) {
                     System.out.println("error" + ex.getMessage());
                 }

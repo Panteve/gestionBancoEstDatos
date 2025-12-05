@@ -43,7 +43,7 @@ public class ProductoRepository {
                 prodcutosList.add(new Producto(
                         resultSet.getInt("id_producto"),
                         resultSet.getInt("id_usuario"),
-                        resultSet.getString("referenccia"),
+                        resultSet.getString("referencia"),
                         resultSet.getString("nombre"),
                         resultSet.getFloat("valor"),
                         resultSet.getInt("empresarial"),
@@ -68,7 +68,8 @@ public class ProductoRepository {
     }
     public boolean registrarProducto(Producto producto) { 
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO pago_servicios VALUES(null,?,?,?,?,?)";      
+        String sqlQuery = "INSERT INTO productos VALUES(null,?,?,?,?,?,?)";
+        int estado = 1;
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
@@ -77,6 +78,7 @@ public class ProductoRepository {
                 this.preStm.setString(3, producto.getNombre());
                 this.preStm.setFloat(4, producto.getValor());
                 this.preStm.setInt(5, producto.getEmpresarial());
+                this.preStm.setInt(6, producto.getEstado());
                 
                 int response = this.preStm.executeUpdate();
                 if (response > 0) {
@@ -100,6 +102,78 @@ public class ProductoRepository {
         }
         return true;
     }
+    
+    public Producto getProducto(String referencia) { 
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "SELECT * FROM productos WHERE referencia = ?";
+        Producto producto = new Producto();
+        try {
+            this.preStm = con.prepareStatement(sqlQuery);
+            this.preStm.setString(1, referencia);
+            //Los datos de la tabla se guardan en el resultSet
+            ResultSet resultSet = this.preStm.executeQuery();
+            while (resultSet.next()) {
+                producto = new Producto(
+                        resultSet.getInt("id_producto"),
+                        resultSet.getInt("id_usuario"),
+                        resultSet.getString("referencia"),
+                        resultSet.getString("nombre"),
+                        resultSet.getFloat("valor"),
+                        resultSet.getInt("empresarial"),
+                        resultSet.getInt("estado")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return producto;
+    }
+    
+    public boolean updateValorProducto(Producto producto) { 
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "UPDATE productos SET valor = ? WHERE id_producto = ?";      
+        try {
+            if (this.preStm == null) {
+                this.preStm = con.prepareStatement(sqlQuery);
+                this.preStm.setFloat(1, producto.getValor());
+                this.preStm.setInt(2, producto.getId_producto());
+                
+                int response = this.preStm.executeUpdate();
+                if (response > 0) {
+                    JOptionPane.showMessageDialog(null, "Actualizacion exitoso");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return true;
+    }
+    
+    
     
     
 }

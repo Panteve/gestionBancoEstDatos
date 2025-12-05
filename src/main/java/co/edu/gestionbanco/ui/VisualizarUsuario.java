@@ -22,12 +22,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author DIEGO
  */
-public class VisualizarCliente extends javax.swing.JInternalFrame {
+public class VisualizarUsuario extends javax.swing.JInternalFrame {
 
     private final String columnas[] = {"Referencia", "Nombre", "Valor"};
     Usuario usuario;
 
-    public VisualizarCliente() {
+    public VisualizarUsuario() {
         initComponents();
         estilizarTabla();
         btnModificar.setVisible(false);

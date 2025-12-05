@@ -33,6 +33,7 @@ public class Producto {
         this.nombre = nombre;
         this.valor = valor;
         this.empresarial = empresarial;
+
     }
 
     public Producto() {

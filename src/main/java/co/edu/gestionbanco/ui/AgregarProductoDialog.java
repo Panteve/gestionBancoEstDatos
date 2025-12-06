@@ -6,6 +6,7 @@ package co.edu.gestionbanco.ui;
 
 import co.edu.gestionbanco.entity.Producto;
 import co.edu.gestionbanco.repository.ProductoRepository;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,29 +16,33 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
 
     String[] productos = {"Cuenta corriente", "Tarjeta de débito", "Crédito hipotecario", "Crédito de vehículo", "Línea de crédito rotativa"};
     private String id_usuario;
+
     public AgregarProductoDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setCombProductos();
     }
-    public void setId_usuario(String id_usuario){
+
+    public void setId_usuario(String id_usuario) {
         this.id_usuario = id_usuario;
     }
-    private void resetTxt(){
+
+    private void resetTxt() {
         combProductos.setSelectedIndex(0);
         txtReferencia.setText("");
         txtValor.setText("");
         checkEmpresarial.setSelected(false);
     }
+
     private String generarReferencia() {
         int numero = (int) (Math.random() * 90000000) + 10000000; // entre 10000000 y 99999999
         return String.valueOf(numero);
     }
-    
-    private void setCombProductos(){
-         for(String producto: productos){
-             combProductos.addItem(producto);
-         }
+
+    private void setCombProductos() {
+        for (String producto : productos) {
+            combProductos.addItem(producto);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -55,6 +60,7 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
         btnGenerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("AGREGAR PRODUCTO");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("AGREGAR PRODUCTO");
@@ -175,18 +181,24 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
 
         String referencia = id_usuario + generarReferencia();
-        txtReferencia.setText(referencia);  
+        txtReferencia.setText(referencia);
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         ProductoRepository proRepository = new ProductoRepository();
-        
-        float valor = Float.parseFloat(txtValor.getText());
+
+        String valorStr = txtValor.getText();
+        float valor;
+        if (!valorStr.matches("\\d*(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(null, "Valor no valido, solo numeros");
+            return;
+        }
+        valor = Float.parseFloat(valorStr);
         String nombre = String.valueOf(combProductos.getSelectedItem());
-        int empresarial = checkEmpresarial.isSelected() ? 1:0;
-        
+        int empresarial = checkEmpresarial.isSelected() ? 1 : 0;
+
         Producto producto = new Producto(Integer.parseInt(id_usuario), txtReferencia.getText(), nombre, valor, empresarial);
-        
+
         proRepository.registrarProducto(producto);
         resetTxt();
     }//GEN-LAST:event_btnCrearActionPerformed

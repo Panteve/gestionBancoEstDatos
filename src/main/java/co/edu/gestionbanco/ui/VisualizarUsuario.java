@@ -24,13 +24,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VisualizarUsuario extends javax.swing.JInternalFrame {
 
-    private final String columnas[] = {"Referencia", "Nombre", "Valor"};
+    private final String COLUMNAS[] = {"Referencia", "Nombre", "Valor"};
     Usuario usuario;
 
     public VisualizarUsuario() {
         initComponents();
         estilizarTabla();
         btnModificar.setVisible(false);
+        
     }
 
     public void estilizarTabla() {
@@ -44,7 +45,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
     }
 
     public void setDatosTabla(List<Producto> listProductos) {
-        Object[][] data = new Object[listProductos.size()][columnas.length];
+        Object[][] data = new Object[listProductos.size()][COLUMNAS.length];
 
         for (int i = 0; i < listProductos.size(); i++) {
             Producto producto = listProductos.get(i);
@@ -52,7 +53,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
             data[i][1] = producto.getNombre();
             data[i][2] = producto.getValor();
         }
-        DefaultTableModel model = new DefaultTableModel(data, columnas);
+        DefaultTableModel model = new DefaultTableModel(data, COLUMNAS);
         tblDatos.setModel(model);
     }
 

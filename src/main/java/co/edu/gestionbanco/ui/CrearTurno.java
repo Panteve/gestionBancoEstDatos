@@ -11,6 +11,8 @@ import co.edu.gestionbanco.repository.TurnoRepository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.DefaultDesktopManager;
+import javax.swing.JComponent;
 
 /**
  *
@@ -28,8 +30,15 @@ public class CrearTurno extends javax.swing.JInternalFrame {
 
     public CrearTurno() {
         initComponents();
+        panelPrincipalCrear.setDesktopManager(new DefaultDesktopManager() {
+            @Override
+            public void dragFrame(JComponent f, int newX, int newY) {
+                
+            }
+        });
         panelPrincipalCrear.add(primerPaso);
         primerPaso.setVisible(true);
+        this.setClosable(true);
     }
 
     public void pasarSegundoPaso() {
@@ -92,14 +101,14 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         if (turno.getPrioridad().getLEVEL() != 0) {
             letra = "P";
         }
-        
+
         //Si el codigo anterior esta vacio entonces lo inicia en 1 de lo contrario si parsea el numero que trae y leugo le suma 1 
-        if(codigoAnterior.isBlank()) {
+        if (codigoAnterior.isBlank()) {
             numero = 1;
-        }else{
-           numeroStr = codigoAnterior.substring(1);
-           numero = Integer.parseInt(numeroStr);
-        } 
+        } else {
+            numeroStr = codigoAnterior.substring(1);
+            numero = Integer.parseInt(numeroStr);
+        }
 
         // Si el número llega a 99 se reinicia a 01
         if (numero == 99) {

@@ -133,6 +133,9 @@ public class Escritorio extends javax.swing.JFrame {
         itemCerrarSesion = new javax.swing.JMenuItem();
         itemEditarInformacion = new javax.swing.JMenuItem();
         itemRegistrarEmpleado = new javax.swing.JMenuItem();
+        menuReportes = new javax.swing.JMenu();
+        itemTurnos = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -327,6 +330,21 @@ public class Escritorio extends javax.swing.JFrame {
 
         jMenuBar1.add(menuEmpleados);
 
+        menuReportes.setText("Reportes");
+
+        itemTurnos.setText("Turnos");
+        itemTurnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemTurnosActionPerformed(evt);
+            }
+        });
+        menuReportes.add(itemTurnos);
+
+        jMenuItem1.setText("Buscar turno");
+        menuReportes.add(jMenuItem1);
+
+        jMenuBar1.add(menuReportes);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,8 +431,18 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_itemEditarInformacionActionPerformed
 
     private void itemRegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarEmpleadoActionPerformed
-        // TODO add your handling code here:
+        cerrarVentanasAbiertas();
+        RegistrarEmpleado resgitrarEmpleado = new RegistrarEmpleado();
+        panelPrincipal.add(resgitrarEmpleado);
+        resgitrarEmpleado.setVisible(true);
     }//GEN-LAST:event_itemRegistrarEmpleadoActionPerformed
+
+    private void itemTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTurnosActionPerformed
+        cerrarVentanasAbiertas();
+        ReporteTurnos reporteTurnos = new ReporteTurnos();
+        panelPrincipal.add(reporteTurnos);
+        reporteTurnos.setVisible(true);
+    }//GEN-LAST:event_itemTurnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,9 +490,11 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemRegistrarEmpleado;
     private javax.swing.JMenuItem itemRegistroCli;
     private javax.swing.JMenuItem itemRetiroDeposito;
+    private javax.swing.JMenuItem itemTurnos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBienvenida;
@@ -473,6 +503,7 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloTabla;
     private javax.swing.JLabel lblTituloTabla1;
     private javax.swing.JMenu menuEmpleados;
+    private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menuServicios;
     private javax.swing.JMenu menuTurnos;
     private javax.swing.JDesktopPane panelPrincipal;

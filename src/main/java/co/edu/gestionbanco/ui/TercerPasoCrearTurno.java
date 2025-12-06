@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
 
-    private final String columnas[] = {"Servicio", "Descripcion"};
+    private final String COLUMNAS[] = {"Servicio", "Descripcion"};
 
     //Para tener la informacion de todos los servicios
     private List<Servicio> serviciosLista;
@@ -40,7 +40,7 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
 
     public void inicializarTabla(List<Servicio> servicios) {
         this.serviciosLista = servicios;
-        Object[][] data = new Object[servicios.size()][columnas.length];
+        Object[][] data = new Object[servicios.size()][COLUMNAS.length];
         
         //Filtro para servicios de clientes y de no clientes (Tablas de verdad importantes)
         servicios = servicios.stream().filter(s -> s.getExclusivoCliente() == 0 || principal.esCliente).collect(Collectors.toList());        
@@ -53,15 +53,15 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
 
         }
 
-        DefaultTableModel model = new DefaultTableModel(data, columnas);
+        DefaultTableModel model = new DefaultTableModel(data, COLUMNAS);
         tblDatos.setModel(model);
     }
 
     public List<Servicio> traerDatos() {
         ServicioRepository serRepository = new ServicioRepository();
-        List<Servicio> turnoList = serRepository.getAllServicios();
+        List<Servicio> serList = serRepository.getAllServicios();
 
-        return turnoList;
+        return serList;
     }
 
     /**
@@ -84,6 +84,8 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
         lblPan3pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPan3pregunta.setText("¿Que servicio desea realizar?");
 
+        tblDatos.setAutoCreateRowSorter(true);
+        tblDatos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -94,7 +96,15 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
             new String [] {
                 "Servicio", "Descipcion"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDatosMouseClicked(evt);
@@ -116,9 +126,9 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
                         .addGap(295, 295, 295)
                         .addComponent(lblPan3pregunta))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(170, Short.MAX_VALUE))
+                        .addGap(124, 124, 124)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,8 +138,8 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblPan3pregunta)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();

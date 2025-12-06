@@ -43,6 +43,7 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         this.escritorio = escritorio;
         initComponents();
         empezarTrabajo();
+        this.setClosable(true);
     }
 
     public void setTabla(Queue<Turno> turnos) {

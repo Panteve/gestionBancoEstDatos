@@ -33,6 +33,7 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         estilizarTabla();
         txtFechaDesde.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         txtFechaHasta.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        this.setClosable(true);
     }
 
     private void estilizarTabla() {
@@ -107,7 +108,6 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         tblDatos.setModel(model);
 
         //Para que no se vea el ID del turno
-        //Se necesita por si el usuario quiere ver un turno en especifico
         tblDatos.getColumnModel().getColumn(0).setMinWidth(0);
         tblDatos.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDatos.getColumnModel().getColumn(0).setPreferredWidth(0);
@@ -132,6 +132,8 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         combServicios = new javax.swing.JComboBox<>();
         txtAtendido = new javax.swing.JTextField();
         txtCliente = new javax.swing.JTextField();
+
+        setTitle("Reportes");
 
         tblDatos.setAutoCreateRowSorter(true);
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(

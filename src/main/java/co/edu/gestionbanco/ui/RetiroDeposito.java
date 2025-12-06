@@ -22,6 +22,7 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
     public RetiroDeposito() {
         initComponents();
         setCombTipos();
+        this.setClosable(true);
     }
 
     private void setCombTipos() {
@@ -59,6 +60,8 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         lblValorActual = new javax.swing.JLabel();
         txtValorActual = new javax.swing.JTextField();
+
+        setTitle("Retiro o deposito");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Retiro o deposito");
@@ -200,12 +203,24 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         ProductoRepository proRepository = new ProductoRepository();
-
-        int documento = Integer.parseInt(txtIdentificacion.getText());
+        
+        String documentoStr = txtIdentificacion.getText();
+        int documento;
+        
+        if (!documentoStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            txtIdentificacion.requestFocus();
+            return;
+        }
+        documento = Integer.parseInt(documentoStr);
+        
         int idUsuario = usuRepository.getIdUsuario(documento);
         if (idUsuario != 0) {
             List<Producto> listaProductos = proRepository.getAllProductosPorUsuario(idUsuario);
             setCombCuentas(listaProductos);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encuntra el documento");
+            txtIdentificacion.requestFocus();
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -215,14 +230,23 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtIdentificacionActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
-        float valor = Float.parseFloat(txtValor.getText());
+        
+        String valorStr = txtValor.getText();
         float valorActual = productoSeleccionado.getValor();
         float valorNuevo = valorActual;
+        float valor; 
+        
+        if (!valorStr.matches("\\d*(\\.\\d+)?")) {
+            txtValor.requestFocus();
+            JOptionPane.showMessageDialog(null, "Valor no valido, solo numeros");
+            return;
+        }
+        valor = Float.parseFloat(valorStr);
+
         if (combTipo.getSelectedIndex() == 0) {
-            valorNuevo = valorActual - valor;
+            valorNuevo -= valor;
         } else {
-            valorNuevo = valorActual + valor;
+            valorNuevo += valor;
         }
         
         ProductoRepository proRepository = new ProductoRepository();

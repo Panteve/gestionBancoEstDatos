@@ -23,14 +23,13 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
 
     }
 
-    public void crearTurno() {
-        if (principal.crearTurno()) {
+    private void crearTurno() {
+        if(principal.crearTurno()) {
             mostrarTurno();
         };
-
     }
 
-    public void mostrarTurno() {
+    private void mostrarTurno() {
         lblCodigo.setText(principal.turno.getCodigo());
         lblFechaHora.setText(principal.turno.getFecha() + " " + principal.turno.getHora());
 

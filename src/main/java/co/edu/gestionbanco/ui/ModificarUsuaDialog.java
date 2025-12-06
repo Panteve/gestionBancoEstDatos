@@ -6,6 +6,7 @@ package co.edu.gestionbanco.ui;
 
 import co.edu.gestionbanco.entity.Usuario;
 import co.edu.gestionbanco.repository.UsuarioRepository;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -182,10 +183,29 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         String nombre = txtNombres.getText();
+        if (!nombre.matches("[a-zA-Z ]+")) {
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            txtNombres.requestFocus();
+            return;
+        }
         String correo = txtCorreo.getText();
+        if (!correo.matches("[a-zA-Z0-9]*@+[a-zA-Z0-9]*")){
+            JOptionPane.showMessageDialog(null, "Correo no valido");
+            txtCorreo.requestFocus();
+            return;
+        }
         String ocupacion = txtOcupacion.getText();
+        if (!ocupacion.matches("[a-zA-Z]+")){
+            JOptionPane.showMessageDialog(null, "Cargo no valido, solo letras");
+            txtOcupacion.requestFocus();
+            return;
+        }
         String telefono = txtTelefono.getText();
-
+        if (!telefono.matches("\\d+")){
+            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            txtTelefono.requestFocus();
+            return;
+        }
         usuario.setNombre(nombre);
         usuario.setCorreo(correo);
         usuario.setOcupacion(ocupacion);

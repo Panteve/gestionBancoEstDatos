@@ -16,10 +16,11 @@ public class InicioSesion extends javax.swing.JInternalFrame {
 
     private Escritorio escritorio;
     EmpleadoRepository repository = new EmpleadoRepository();
-    
+
     public InicioSesion(Escritorio escritorio) {
         this.escritorio = escritorio;
         initComponents();
+        this.setClosable(true);
     }
 
     /**
@@ -39,6 +40,8 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         lblCaja = new javax.swing.JLabel();
         txtCaja = new javax.swing.JTextField();
         txtIdentificacion = new javax.swing.JTextField();
+
+        setTitle("Inicio de sesion");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Iniciar sesion");
@@ -140,19 +143,33 @@ public class InicioSesion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCajaActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        int documento = Integer.parseInt(txtIdentificacion.getText());
+        String documentoStr = txtIdentificacion.getText(); 
+        if (!documentoStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            txtIdentificacion.requestFocus();
+            return;
+        }
+        int documento = Integer.parseInt(documentoStr);
         String contraseña = txtContraseña.getText();
-        int caja = Integer.parseInt(txtCaja.getText());
+        
+        String cajaStr = txtCaja.getText();
+        if (!cajaStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Caja no valida, solo numeros");
+            txtCaja.requestFocus();
+            return;
+        }
+        int caja = Integer.parseInt(cajaStr);
+        
         Empleado empleado = repository.getEmpleado(documento);
-        if(contraseña.equals(empleado.getContraseña())){
+        if (contraseña.equals(empleado.getContraseña())) {
             empleado.setCaja(caja);
             escritorio.empleado = empleado;
             escritorio.serEmpleado(this);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
             txtContraseña.setText("");
         }
-        
+
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed

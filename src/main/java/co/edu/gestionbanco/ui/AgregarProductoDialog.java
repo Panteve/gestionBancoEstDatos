@@ -186,20 +186,22 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         ProductoRepository proRepository = new ProductoRepository();
-
+        
+        String nombre = String.valueOf(combProductos.getSelectedItem());
+        int empresarial = checkEmpresarial.isSelected() ? 1 : 0;
+                
         String valorStr = txtValor.getText();
-        float valor;
         if (!valorStr.matches("\\d*(\\.\\d+)?")) {
+            txtValor.requestFocus();
             JOptionPane.showMessageDialog(null, "Valor no valido, solo numeros");
             return;
         }
-        valor = Float.parseFloat(valorStr);
-        String nombre = String.valueOf(combProductos.getSelectedItem());
-        int empresarial = checkEmpresarial.isSelected() ? 1 : 0;
+        
+        float valor = Float.parseFloat(valorStr);
 
         Producto producto = new Producto(Integer.parseInt(id_usuario), txtReferencia.getText(), nombre, valor, empresarial);
-
         proRepository.registrarProducto(producto);
+        
         resetTxt();
     }//GEN-LAST:event_btnCrearActionPerformed
 

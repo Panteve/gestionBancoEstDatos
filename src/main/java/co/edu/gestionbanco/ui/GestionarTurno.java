@@ -46,7 +46,7 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         this.setClosable(true);
     }
 
-    public void setTabla(Queue<Turno> turnos) {
+    private void setTabla(Queue<Turno> turnos) {
         List<Turno> listaTurnos = new ArrayList<>(turnos);
 
         Object[][] data = new Object[listaTurnos.size()][columnas.length];
@@ -134,6 +134,8 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        setTitle("Gestion de turno");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Gestor de turnos");

@@ -25,16 +25,17 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     public RegistrarUsuario() {
         initComponents();
         inicializarComboBox();
+        this.setClosable(true);
     }
 
-    public void inicializarComboBox() {
+    private void inicializarComboBox() {
         for (String ciudad : ciudades) {
             combLugarExpedicion.addItem(ciudad);
         }
     }
 
     //Resetea los txt 
-    public void resetTxt() {
+    private void resetTxt() {
         txtDocumento.setText("");
         txtNombres.setText("");
         txtCorreo.setText("");
@@ -73,6 +74,8 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         combLugarExpedicion = new javax.swing.JComboBox<>();
         btnResgistrar = new javax.swing.JButton();
         btnLimpiar1 = new javax.swing.JButton();
+
+        setTitle("Registrar usuario");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTitulo.setText("Registrar cliente");
@@ -122,14 +125,22 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         lblFechaNacimiento1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFechaNacimiento1.setText("Fecha de nacimiento:");
 
-        ftxtFechaNacimiento.setText("2025-11-04");
+        try {
+            ftxtFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         ftxtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtFechaNacimientoActionPerformed(evt);
             }
         });
 
-        ftxtFechaExpedicion.setText("2025-11-04");
+        try {
+            ftxtFechaExpedicion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         ftxtFechaExpedicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtFechaExpedicionActionPerformed(evt);
@@ -210,18 +221,17 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
                                         .addComponent(btnLimpiar1)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(92, 92, 92)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                                                 .addComponent(lblCorreo)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(61, 61, 61))
+                                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(92, 92, 92)
                                                 .addComponent(lblFechaExpedicion1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(combLugarExpedicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                .addComponent(combLugarExpedicion, 0, 113, Short.MAX_VALUE)))
                                         .addGap(20, 20, 20))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(162, 162, 162)
@@ -305,8 +315,10 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
 
     private void btnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
-
-        int documento = Integer.parseInt(txtDocumento.getText());
+        String formatoFechaRegex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
+        
+        String documentoStr = txtDocumento.getText();
+        int documento = 0;
         String nombre = txtNombres.getText();
         String correo = txtCorreo.getText();
         String telefono = txtNumContacto.getText();
@@ -314,6 +326,43 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         String fechaNacimiento = ftxtFechaNacimiento.getText();
         String lugarExpedicion = String.valueOf(combLugarExpedicion.getSelectedItem());
         String fechaExpedicion = ftxtFechaExpedicion.getText();
+        
+        if (!documentoStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            txtDocumento.requestFocus();
+            return;
+        }
+        documento = Integer.parseInt(documentoStr);
+        if (!nombre.matches("[a-zA-Z ]+")){
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            txtNombres.requestFocus();
+            return;
+        }
+        if (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}")){
+            JOptionPane.showMessageDialog(null, "Correo no valido");
+            txtCorreo.requestFocus();
+            return;
+        }
+        if (!telefono.matches("\\d+")){
+            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            txtNumContacto.requestFocus();
+            return;
+        }
+        if (!ocupacion.matches("[a-zA-Z ]+")){
+            JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras");
+            txtNombres.requestFocus();
+            return;
+        }
+        if (!fechaNacimiento.matches(formatoFechaRegex)) {
+            ftxtFechaNacimiento.requestFocus();
+            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD");
+            return;
+        }
+        if (!fechaExpedicion.matches(formatoFechaRegex)) {
+            ftxtFechaNacimiento.requestFocus();
+            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD");
+            return;
+        }
 
         Usuario usuarioEncontrado = usuRepository.getUsuario(documento);
         if (usuarioEncontrado.getId_usuario() != 0) {
@@ -322,6 +371,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             resetTxt();
         }else{
             JOptionPane.showMessageDialog(null, "N° de identificacion no registra en base de datos");
+            txtDocumento.requestFocus();
         }
         
     }//GEN-LAST:event_btnResgistrarActionPerformed

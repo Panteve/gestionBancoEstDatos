@@ -15,12 +15,13 @@ import javax.swing.JOptionPane;
 public class ModificarEmpleDialog extends javax.swing.JDialog {
 
     Empleado empleado;
+
     public ModificarEmpleDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
 
         initComponents();
     }
-    
+
     public void setDatos(Empleado empleadoEscritorio) {
         empleado = empleadoEscritorio;
         txtNombres.setText(empleado.getNombre());
@@ -208,10 +209,31 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         EmpleadoRepository empleRepository = new EmpleadoRepository();
         String nombre = txtNombres.getText();
+        if (!nombre.matches("[a-zA-Z ]+")){
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            txtNombres.requestFocus();
+            return;
+        }
         String correo = txtCorreo.getText();
+        if (!correo.matches("[a-zA-Z0-9]*@+[a-zA-Z0-9]*")){
+            JOptionPane.showMessageDialog(null, "Correo no valido");
+            txtCorreo.requestFocus();
+            return;
+        }
         String cargo = txtCargo.getText();
-        String telefono = txtTelefono.getText();
+        if (!cargo.matches("[a-zA-Z]+")){
+            JOptionPane.showMessageDialog(null, "Cargo no valido, solo letras");
+            txtCargo.requestFocus();
+            return;
+        }
         
+        String telefono = txtTelefono.getText();
+        if (!telefono.matches("\\d+")){
+            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            txtTelefono.requestFocus();
+            return;
+        }
+
         empleado.setNombre(nombre);
         empleado.setCorreo(correo);
         empleado.setCargo(cargo);
@@ -226,11 +248,11 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void txtContraseñaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusGained
-       String contraseña = JOptionPane.showInputDialog("Ingrese la nueva contraseña");
-       txtNombres.requestFocus();
-       empleado.setContraseña(contraseña);
-       txtContraseña.setText(contraseña);
-       
+        String contraseña = JOptionPane.showInputDialog("Ingrese la nueva contraseña");
+        txtNombres.requestFocus();
+        empleado.setContraseña(contraseña);
+        txtContraseña.setText(contraseña);
+
     }//GEN-LAST:event_txtContraseñaFocusGained
 
     public static void main(String args[]) {

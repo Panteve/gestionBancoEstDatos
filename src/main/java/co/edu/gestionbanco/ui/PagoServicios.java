@@ -21,6 +21,7 @@ public class PagoServicios extends javax.swing.JInternalFrame {
      */
     public PagoServicios() {
         initComponents();
+        this.setClosable(true);
     }
 
     /**
@@ -148,12 +149,31 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         UsuarioRepository usuRepository = new UsuarioRepository();
         PagarServicioRepository pagarRepository = new PagarServicioRepository();
         
-        int documento = Integer.parseInt(txtIdentificacion.getText());
+        String documentoStr = txtIdentificacion.getText();
+        if (!documentoStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            txtIdentificacion.requestFocus();
+            return;
+        }
+        int documento = Integer.parseInt(documentoStr);
+        
+        
         String referencia = txtReferencia.getText();
-        float valor = Float.parseFloat(txtValor.getText());
+        if (!referencia.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Referencia no valida, solo numeros");
+            txtReferencia.requestFocus();
+            return;
+        }
+        
+        String valorStr = txtValor.getText();
+        if (!valorStr.matches("\\d*(\\.\\d+)?")) {
+            txtValor.requestFocus();
+            JOptionPane.showMessageDialog(null, "Valor no valido, solo numeros");
+            return;
+        }
+        float valor = Float.parseFloat(valorStr);
         
         Usuario usuario = usuRepository.getUsuario(documento);
-        
         if(usuario.getId_usuario() != 0){
             PagoServicio pago = new PagoServicio(usuario.getId_usuario(), referencia, valor);
             pagarRepository.registrarPagoServicio(pago);

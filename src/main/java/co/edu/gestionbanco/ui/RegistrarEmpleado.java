@@ -17,6 +17,7 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
     
     public RegistrarEmpleado() {
         initComponents();
+        this.setClosable(true);
     }
 
     /**
@@ -42,6 +43,8 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
         txtTelefono = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
+
+        setTitle("Registrar empleado");
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegistrar.setText("Registrar");
@@ -202,14 +205,41 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
         EmpleadoRepository empleRepository = new EmpleadoRepository();
         
         String nombre = txtNombres.getText();
-        int documento = Integer.parseInt(txtDocumento.getText());
-        String correo = txtCorreo.getText();
-        String cargo = txtCargo.getText();
-        String telefono = txtTelefono.getText();
-        String contraseña = new String(txtContraseña.getPassword());;
+        if (!nombre.matches("[a-zA-Z ]+")){
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            txtNombres.requestFocus();
+            return;
+        }
         
-        Empleado empleado = new Empleado(documento, nombre, correo, telefono, cargo, contraseña);
+        String documentoStr = txtDocumento.getText(); 
+        if (!documentoStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            txtDocumento.requestFocus();
+            return;
+        }
+        int documento = Integer.parseInt(documentoStr);
 
+        String correo = txtCorreo.getText();
+        if (!correo.matches("[a-zA-Z0-9]*@+[a-zA-Z0-9]*")){
+            JOptionPane.showMessageDialog(null, "Correo no valido");
+            txtCorreo.requestFocus();
+            return;
+        }
+        
+        String cargo = txtCargo.getText();
+        if (!cargo.matches("[a-zA-Z]+")){
+            JOptionPane.showMessageDialog(null, "Cargo no valido, solo letras");
+            txtCargo.requestFocus();
+            return;
+        }
+        String telefono = txtTelefono.getText();
+        if (!telefono.matches("\\d+")){
+            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            txtTelefono.requestFocus();
+            return;
+        }
+        String contraseña = new String(txtContraseña.getPassword());
+        Empleado empleado = new Empleado(documento, nombre, correo, telefono, cargo, contraseña);
         empleRepository.registrarEmpelado(empleado);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed

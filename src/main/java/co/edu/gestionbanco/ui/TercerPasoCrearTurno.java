@@ -30,7 +30,7 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
         inicializarTabla(traerDatos());
     }
     
-    public void colocarNombre(){
+    private void colocarNombre(){
         if(principal.esCliente){
             String text = lblPan3bienvenida.getText();
             text +=  ", "+principal.usuario.getNombre();
@@ -38,7 +38,7 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
         }
     }
 
-    public void inicializarTabla(List<Servicio> servicios) {
+    private void inicializarTabla(List<Servicio> servicios) {
         this.serviciosLista = servicios;
         Object[][] data = new Object[servicios.size()][COLUMNAS.length];
         
@@ -57,7 +57,7 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
         tblDatos.setModel(model);
     }
 
-    public List<Servicio> traerDatos() {
+    private List<Servicio> traerDatos() {
         ServicioRepository serRepository = new ServicioRepository();
         List<Servicio> serList = serRepository.getAllServicios();
 

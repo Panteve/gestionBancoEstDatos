@@ -31,10 +31,11 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         initComponents();
         estilizarTabla();
         btnModificar.setVisible(false);
+        this.setClosable(true);
         
     }
 
-    public void estilizarTabla() {
+    private void estilizarTabla() {
         // Centrar texto
         DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
         centrado.setHorizontalAlignment(SwingConstants.CENTER);
@@ -44,7 +45,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         }
     }
 
-    public void setDatosTabla(List<Producto> listProductos) {
+    private void setDatosTabla(List<Producto> listProductos) {
         Object[][] data = new Object[listProductos.size()][COLUMNAS.length];
 
         for (int i = 0; i < listProductos.size(); i++) {
@@ -57,7 +58,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         tblDatos.setModel(model);
     }
 
-    public void setDatosUsuario() {
+    private void setDatosUsuario() {
         txtNombre.setText(usuario.getNombre());
         txtOcupacion.setText(usuario.getOcupacion());
         txtCorreo.setText(usuario.getCorreo());
@@ -84,6 +85,8 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         lblCorreo = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+
+        setTitle("Visualizar usuarios");
 
         lblProductos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblProductos.setText("Productos");
@@ -257,10 +260,16 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         ProductoRepository proRepository = new ProductoRepository();
-        int documento = Integer.parseInt(txtIdentificacion.getText());
-
+        
+        String documentoStr = txtIdentificacion.getText();
+        if (!documentoStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            txtIdentificacion.requestFocus();
+            return;
+        }
+        int documento = Integer.parseInt(documentoStr);
+        
         usuario = usuRepository.getUsuario(documento);
-
         if (usuario.getId_usuario() != 0) {
             setDatosUsuario();
             btnModificar.setVisible(true);

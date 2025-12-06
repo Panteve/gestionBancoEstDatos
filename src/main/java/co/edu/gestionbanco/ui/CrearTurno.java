@@ -94,7 +94,7 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         return repository.crearTurno(turno) ? true : false;
     }
 
-    public String generarSiguienteCodigo(String codigoAnterior) {
+    private String generarSiguienteCodigo(String codigoAnterior) {
         String letra = servicio.getNombre().substring(0, 1);
         String numeroStr = "00";
         int numero = 0;
@@ -129,6 +129,8 @@ public class CrearTurno extends javax.swing.JInternalFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         panelPrincipalCrear = new javax.swing.JDesktopPane();
+
+        setTitle("Crear turno");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

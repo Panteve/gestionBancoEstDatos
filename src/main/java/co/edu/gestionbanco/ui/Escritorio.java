@@ -31,6 +31,7 @@ public class Escritorio extends javax.swing.JFrame {
         itemGestionTurno.setVisible(false);
         menuServicios.setVisible(false);
         itemRegistrarEmpleado.setVisible(false);
+        menuReportes.setVisible(false);
         estilizarTabla();
     }
 
@@ -94,10 +95,11 @@ public class Escritorio extends javax.swing.JFrame {
         itemEditarInformacion.setVisible(true);
         itemGestionTurno.setVisible(true);
         menuServicios.setVisible(true);
-        
+        menuReportes.setVisible(true);
+        itemRegistrarEmpleado.setVisible(true);
         if(empleado.getCargo().equals("Admin")){
             
-        }itemRegistrarEmpleado.setVisible(true);
+        }
         inicioSesion.dispose();
         lblBienvenida.setText("Bienvenido, " + empleado.getNombre());
         lblCargo.setText("Cargo: " + empleado.getCargo());
@@ -135,7 +137,6 @@ public class Escritorio extends javax.swing.JFrame {
         itemRegistrarEmpleado = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
         itemTurnos = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -331,6 +332,11 @@ public class Escritorio extends javax.swing.JFrame {
         jMenuBar1.add(menuEmpleados);
 
         menuReportes.setText("Reportes");
+        menuReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuReportesActionPerformed(evt);
+            }
+        });
 
         itemTurnos.setText("Turnos");
         itemTurnos.addActionListener(new java.awt.event.ActionListener() {
@@ -339,9 +345,6 @@ public class Escritorio extends javax.swing.JFrame {
             }
         });
         menuReportes.add(itemTurnos);
-
-        jMenuItem1.setText("Buscar turno");
-        menuReportes.add(jMenuItem1);
 
         jMenuBar1.add(menuReportes);
 
@@ -418,6 +421,8 @@ public class Escritorio extends javax.swing.JFrame {
         itemEditarInformacion.setVisible(false);
         itemGestionTurno.setVisible(false);
         menuServicios.setVisible(false);
+        itemRegistrarEmpleado.setVisible(false);
+        menuReportes.setVisible(false);
 
         lblBienvenida.setText(" ");
         lblCargo.setText(" ");
@@ -437,11 +442,15 @@ public class Escritorio extends javax.swing.JFrame {
         resgitrarEmpleado.setVisible(true);
     }//GEN-LAST:event_itemRegistrarEmpleadoActionPerformed
 
+    private void menuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportesActionPerformed
+        
+    }//GEN-LAST:event_menuReportesActionPerformed
+
     private void itemTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTurnosActionPerformed
         cerrarVentanasAbiertas();
-        ReporteTurnos reporteTurnos = new ReporteTurnos();
-        panelPrincipal.add(reporteTurnos);
-        reporteTurnos.setVisible(true);
+        ReporteTurnos reporteTurno = new ReporteTurnos();
+        panelPrincipal.add(reporteTurno);
+        reporteTurno.setVisible(true);
     }//GEN-LAST:event_itemTurnosActionPerformed
 
     /**
@@ -494,7 +503,6 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBienvenida;

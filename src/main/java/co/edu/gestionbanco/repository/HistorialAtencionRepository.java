@@ -5,7 +5,6 @@
 package co.edu.gestionbanco.repository;
 
 import co.edu.gestionbanco.entity.HistorialAtencion;
-import co.edu.gestionbanco.entity.Usuario;
 import co.edu.gestionbanco.util.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,8 +26,8 @@ public class HistorialAtencionRepository {
         this.conexionBD = new ConexionBD();
         this.preStm = null;
     }
-    
-     public List<HistorialAtencion> getAllHistorialAtencion() {
+
+    public List<HistorialAtencion> getAllHistorialAtencion() {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM historial_atencion";
         List<HistorialAtencion> historialAtencionList = new ArrayList<>();
@@ -44,7 +42,6 @@ public class HistorialAtencionRepository {
                         resultSet.getInt("id_turno"),
                         resultSet.getString("Hora Llamado"),
                         resultSet.getString("Hora Finalizacion")
-
                 ));
             }
         } catch (SQLException e) {
@@ -64,9 +61,9 @@ public class HistorialAtencionRepository {
         }
         return historialAtencionList;
     }
-     
-     //Este metodo se debe usar en conjunto para saber informacion de atencion de un turno por lo tanto se debe buscar por el id del turno
-     public HistorialAtencion getHistorialAtencion(int id_turno) {
+
+    //Este metodo se debe usar en conjunto para saber informacion de atencion de un turno por lo tanto se debe buscar por el id del turno
+    public HistorialAtencion getHistorialAtencion(int id_turno) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM historial_atencion WHERE id_turno = ?";
         HistorialAtencion historial = new HistorialAtencion();
@@ -101,10 +98,10 @@ public class HistorialAtencionRepository {
         }
         return historial;
     }
-     
-     public boolean registrarHistorialAtencion(HistorialAtencion historial) { 
+
+    public boolean registrarHistorialAtencion(HistorialAtencion historial) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO historial_atencion VALUES(null,?,?,?,?)";      
+        String sqlQuery = "INSERT INTO historial_atencion VALUES(null,?,?,?,?)";
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
@@ -112,11 +109,8 @@ public class HistorialAtencionRepository {
                 this.preStm.setInt(2, historial.getId_turno());
                 this.preStm.setString(3, historial.getHoraLlamado());
                 this.preStm.setString(4, historial.getHoraFinalizacion());
-                
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                }
+
+                this.preStm.executeUpdate();
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -134,5 +128,5 @@ public class HistorialAtencionRepository {
             }
         }
         return true;
-    } 
+    }
 }

@@ -18,6 +18,7 @@ import java.util.List;
  * @author DIEGO
  */
 public class ServicioRepository {
+
     //Atributos 
     private ConexionBD conexionBD;//Objeto
     private PreparedStatement preStm;
@@ -27,7 +28,7 @@ public class ServicioRepository {
         this.conexionBD = new ConexionBD();
         this.preStm = null;
     }
-    
+
     public Servicio getServicio(int id_turno) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM servicios WHERE id_servicio = ?"; //Agregar order by para traer en orden la lista por prioridad 
@@ -60,8 +61,8 @@ public class ServicioRepository {
         }
         return servicio;
     }
-    
-    public  List<Servicio> getAllServicios() {
+
+    public List<Servicio> getAllServicios() {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM servicios"; //Agregar order by para traer en orden la lista por prioridad 
         List<Servicio> servicioList = new ArrayList<>();

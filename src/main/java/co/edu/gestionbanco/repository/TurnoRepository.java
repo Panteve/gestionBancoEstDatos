@@ -17,7 +17,6 @@ import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +27,7 @@ public class TurnoRepository {
 
     private ConexionBD conexionBD;
     private PreparedStatement preStm;
+
     //Constructor
     public TurnoRepository() {
         this.conexionBD = new ConexionBD();
@@ -38,11 +38,9 @@ public class TurnoRepository {
     //Conseguir todos los turnos en espera
     // Hacer que se peuda escoger si es para solo los de espera, par atodos para los completados y asi
     //Hacer que sea solo los turnos del dia
-    
-    
     public Queue<Turno> getAllTurnos() {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM turnos WHERE estado = 'Espera'"; 
+        String sqlQuery = "SELECT * FROM turnos WHERE estado = 'Espera'";
         LinkedList<Turno> turnosList = new LinkedList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -80,9 +78,9 @@ public class TurnoRepository {
         Queue<Turno> turnos = new PriorityQueue<>(turnosList);
         return turnos;
     }
-    
+
     //Seleccion de sentencia
-    public String eleccionSentenciaCodigo(String eleccion){
+    public String eleccionSentenciaCodigo(String eleccion) {
         String sqlQuery = "";
         if ("discapacidad".equals(eleccion)) {
             sqlQuery = "SELECT * FROM turnos WHERE estado IN ('Espera','Proceso') AND codigo_turno LIKE 'P%' ORDER BY id_turno DESC LIMIT 1";
@@ -91,7 +89,7 @@ public class TurnoRepository {
         }
         return sqlQuery;
     }
-    
+
     public String getUltimoTurno(String sqlQuery) {
         Connection con = conexionBD.getConectionDB();
         String codigoTurno = "";
@@ -100,7 +98,7 @@ public class TurnoRepository {
             //Los datos de la tabla se guardan en el resultSet
             ResultSet resultSet = this.preStm.executeQuery();
             if (resultSet.next()) {
-                codigoTurno = resultSet.getString("codigo_turno");   
+                codigoTurno = resultSet.getString("codigo_turno");
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -119,7 +117,6 @@ public class TurnoRepository {
         }
         return codigoTurno;
     }
-    
 
     public Turno getTurno(int id_turno) {
         Connection con = conexionBD.getConectionDB();
@@ -161,6 +158,7 @@ public class TurnoRepository {
         }
         return turno;
     }
+
     public boolean actualizarEstadoTurno(Turno turno) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "UPDATE turnos SET estado = ? WHERE id_turno  = ?";
@@ -169,11 +167,9 @@ public class TurnoRepository {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setString(1, turno.getEstado());
                 this.preStm.setInt(2, turno.getId_turno());
-                
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Actualizacion exitoso");
-                }
+
+                this.preStm.executeUpdate();
+
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -192,11 +188,11 @@ public class TurnoRepository {
         }
         return true;
     }
-    
+
     public boolean crearTurno(Turno turno) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "INSERT INTO turnos VALUES(null,?,?,?,?,?,?,?)";
-        String estado = "Espera";       
+        String estado = "Espera";
         java.sql.Time horaCreacion = java.sql.Time.valueOf(LocalTime.now());
         java.sql.Date fechaCreacion = java.sql.Date.valueOf(LocalDate.now());
         try {
@@ -209,11 +205,9 @@ public class TurnoRepository {
                 this.preStm.setString(5, estado);
                 this.preStm.setDate(6, fechaCreacion);
                 this.preStm.setTime(7, horaCreacion);
-                
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                }
+
+                this.preStm.executeUpdate();
+
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -231,5 +225,5 @@ public class TurnoRepository {
             }
         }
         return true;
-    } 
+    }
 }

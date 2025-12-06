@@ -4,8 +4,6 @@
  */
 package co.edu.gestionbanco.repository;
 
-import co.edu.gestionbanco.entity.Empleado;
-import co.edu.gestionbanco.entity.PagoServicio;
 import co.edu.gestionbanco.entity.Producto;
 import co.edu.gestionbanco.util.ConexionBD;
 import java.sql.Connection;
@@ -14,13 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author DIEGO
  */
 public class ProductoRepository {
+
     private ConexionBD conexionBD;
     private PreparedStatement preStm;
 
@@ -29,8 +27,8 @@ public class ProductoRepository {
         this.conexionBD = new ConexionBD();
         this.preStm = null;
     }
-    
-    public List<Producto> getAllProductosPorUsuario(int id_usuario){
+
+    public List<Producto> getAllProductosPorUsuario(int id_usuario) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM productos WHERE id_usuario = ?";
         List<Producto> prodcutosList = new ArrayList<>();
@@ -66,7 +64,8 @@ public class ProductoRepository {
         }
         return prodcutosList;
     }
-    public boolean registrarProducto(Producto producto) { 
+
+    public boolean registrarProducto(Producto producto) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "INSERT INTO productos VALUES(null,?,?,?,?,?,?)";
         int estado = 1;
@@ -79,11 +78,9 @@ public class ProductoRepository {
                 this.preStm.setFloat(4, producto.getValor());
                 this.preStm.setInt(5, producto.getEmpresarial());
                 this.preStm.setInt(6, producto.getEstado());
-                
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                }
+
+                this.preStm.executeUpdate();
+
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -102,8 +99,8 @@ public class ProductoRepository {
         }
         return true;
     }
-    
-    public Producto getProducto(String referencia) { 
+
+    public Producto getProducto(String referencia) {
         Connection con = conexionBD.getConectionDB();
         String sqlQuery = "SELECT * FROM productos WHERE referencia = ?";
         Producto producto = new Producto();
@@ -140,20 +137,18 @@ public class ProductoRepository {
         }
         return producto;
     }
-    
-    public boolean updateValorProducto(Producto producto) { 
+
+    public boolean updateValorProducto(Producto producto) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "UPDATE productos SET valor = ? WHERE id_producto = ?";      
+        String sqlQuery = "UPDATE productos SET valor = ? WHERE id_producto = ?";
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setFloat(1, producto.getValor());
                 this.preStm.setInt(2, producto.getId_producto());
-                
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Actualizacion exitoso");
-                }
+
+                this.preStm.executeUpdate();
+
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -172,8 +167,5 @@ public class ProductoRepository {
         }
         return true;
     }
-    
-    
-    
-    
+
 }

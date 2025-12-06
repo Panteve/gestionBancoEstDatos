@@ -11,11 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -192,10 +190,8 @@ public class UsuarioRepository {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setInt(1, documento);
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                }
+                this.preStm.executeUpdate();
+
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -223,10 +219,7 @@ public class UsuarioRepository {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setInt(1, id);
 
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
-                }
+                this.preStm.executeUpdate();
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());

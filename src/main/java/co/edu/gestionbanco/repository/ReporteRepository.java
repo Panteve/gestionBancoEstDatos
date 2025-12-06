@@ -75,7 +75,7 @@ public class ReporteRepository {
             this.preStm = con.prepareStatement(sqlQuery);
             this.preStm.setDate(1, fechaDesdeSql);
             this.preStm.setDate(2, fechaHastaSql);
-            
+
             if (!docEmpleadoStr.isBlank()) {
                 this.preStm.setInt(indice, Integer.parseInt(docEmpleadoStr));
                 indice++;

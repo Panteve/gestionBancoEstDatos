@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -121,7 +120,7 @@ public class EmpleadoRepository {
                 this.preStm.setString(4, empleado.getCargo());
                 this.preStm.setString(5, empleado.getContraseña());
                 this.preStm.setInt(6, empleado.getId_empleado());
-                
+
                 this.preStm.executeUpdate();
             }
         } catch (SQLException e) {
@@ -157,10 +156,7 @@ public class EmpleadoRepository {
                 this.preStm.setString(6, empleado.getContraseña());
                 this.preStm.setInt(7, estado);
 
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                }
+                this.preStm.executeUpdate();
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
@@ -188,10 +184,7 @@ public class EmpleadoRepository {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setInt(1, id);
 
-                int response = this.preStm.executeUpdate();
-                if (response > 0) {
-                    JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
-                }
+                this.preStm.executeUpdate();
             }
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());

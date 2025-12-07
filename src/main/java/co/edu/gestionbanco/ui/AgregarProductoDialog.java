@@ -49,7 +49,6 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
         combProductos = new javax.swing.JComboBox<>();
         btnCrear = new javax.swing.JButton();
         lblReferencia = new javax.swing.JLabel();
@@ -58,14 +57,16 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
         txtValor = new javax.swing.JTextField();
         checkEmpresarial = new javax.swing.JCheckBox();
         btnGenerar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AGREGAR PRODUCTO");
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitulo.setText("AGREGAR PRODUCTO");
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         combProductos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(combProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 70, 321, 43));
 
         btnCrear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCrear.setText("Crear");
@@ -74,30 +75,39 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
                 btnCrearActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 118, 44));
 
-        lblReferencia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblReferencia.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblReferencia.setText("Referencia:");
+        getContentPane().add(lblReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 164, 120, 25));
 
         txtReferencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtReferencia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtReferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtReferenciaActionPerformed(evt);
             }
         });
         txtReferencia.setEditable(false);
+        getContentPane().add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 162, 215, 31));
 
-        lblValor.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblValor.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblValor.setText("Valor:");
+        getContentPane().add(lblValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 209, 120, 25));
 
         txtValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorActionPerformed(evt);
             }
         });
+        getContentPane().add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 205, 215, -1));
 
         checkEmpresarial.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         checkEmpresarial.setText("Empresarial");
+        checkEmpresarial.setToolTipText("");
+        getContentPane().add(checkEmpresarial, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 181, 130, -1));
 
         btnGenerar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGenerar.setText("Generar");
@@ -106,66 +116,33 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
                 btnGenerarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 80, 118, 44));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(combProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkEmpresarial)
-                    .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(112, 112, 112))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(280, 280, 280))
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Agregar productos");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(261, 261, 261)
+                .addComponent(lblTitulo)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lblTitulo)
-                        .addGap(18, 18, 18)
-                        .addComponent(combProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 31, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(checkEmpresarial)))
-                .addGap(61, 61, 61)
-                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -255,6 +232,7 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnGenerar;
     private javax.swing.JCheckBox checkEmpresarial;
     private javax.swing.JComboBox<String> combProductos;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblReferencia;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblValor;

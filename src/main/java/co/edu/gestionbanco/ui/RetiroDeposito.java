@@ -48,7 +48,6 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
         combTipo = new javax.swing.JComboBox<>();
         lblValor = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
@@ -60,18 +59,18 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         lblValorActual = new javax.swing.JLabel();
         txtValorActual = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         setTitle("Retiro o deposito");
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitulo.setText("Retiro o deposito");
-
         combTipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lblValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblValor.setText("Valor:");
 
         txtValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorActionPerformed(evt);
@@ -86,7 +85,7 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
             }
         });
 
-        lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblIdentificacion.setText("N° de identificacion:");
 
         combCuentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -96,10 +95,11 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNCuenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNCuenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNCuenta.setText("N° de cuenta:");
 
         txtIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtIdentificacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdentificacionActionPerformed(evt);
@@ -114,64 +114,84 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
             }
         });
 
-        lblValorActual.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValorActual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblValorActual.setText("Saldo actual:");
 
         txtValorActual.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtValorActual.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtValorActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorActualActionPerformed(evt);
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setText("Retiro o deposito");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(250, 250, 250))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(lblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(combTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(lblValor)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(combTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblValorActual)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtValorActual, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblIdentificacion)
                                     .addComponent(lblNCuenta))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(combCuentas, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))))
-                        .addGap(26, 26, 26)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(129, 129, 129))
+                                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblValor)
+                            .addComponent(lblValorActual))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtValorActual, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(txtValor))))
+                .addGap(44, 44, 44)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(298, 298, 298)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblTitulo)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(combTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(lblIdentificacion)
@@ -190,7 +210,7 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnAceptar)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,6 +297,7 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> combCuentas;
     private javax.swing.JComboBox<String> combTipo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblNCuenta;
     private javax.swing.JLabel lblTitulo;

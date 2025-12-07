@@ -28,87 +28,75 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblpregunta = new javax.swing.JLabel();
         btnEmbarazada = new javax.swing.JButton();
         btnMayor = new javax.swing.JButton();
         btnDiscapacidad = new javax.swing.JButton();
         btnNO = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblpregunta = new javax.swing.JLabel();
 
-        lblpregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblpregunta.setText("¿Cumple alguna condición para atención preferencial?");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnEmbarazada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEmbarazada.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnEmbarazada.setText("Embarazada");
         btnEmbarazada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmbarazadaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEmbarazada, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 210, 70));
 
-        btnMayor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnMayor.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnMayor.setText("Adulto mayor");
         btnMayor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMayorActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 210, 70));
 
-        btnDiscapacidad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDiscapacidad.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnDiscapacidad.setText("Persona con discapacidad");
         btnDiscapacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiscapacidadActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 300, 90));
 
-        btnNO.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnNO.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnNO.setText("No");
         btnNO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNOActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 210, 70));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(150, 162, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblpregunta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblpregunta.setForeground(new java.awt.Color(255, 255, 255));
+        lblpregunta.setText("¿Cumple alguna condición para atención preferencial?");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
                 .addComponent(lblpregunta)
-                .addGap(139, 139, 139))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(btnEmbarazada, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(btnDiscapacidad)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnNO, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99))))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblpregunta)
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEmbarazada, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDiscapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNO, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,6 +127,7 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEmbarazada;
     private javax.swing.JButton btnMayor;
     private javax.swing.JButton btnNO;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblpregunta;
     // End of variables declaration//GEN-END:variables
 }

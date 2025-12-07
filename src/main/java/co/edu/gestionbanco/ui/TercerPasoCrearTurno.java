@@ -73,15 +73,13 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblPan3bienvenida = new javax.swing.JLabel();
         lblPan3pregunta = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        lblPan3bienvenida = new javax.swing.JLabel();
 
-        lblPan3bienvenida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPan3bienvenida.setText("Bienvenido ");
-
-        lblPan3pregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblPan3pregunta.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblPan3pregunta.setText("¿Que servicio desea realizar?");
 
         tblDatos.setAutoCreateRowSorter(true);
@@ -112,34 +110,58 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblDatos);
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(850, 50));
+
+        lblPan3bienvenida.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPan3bienvenida.setForeground(new java.awt.Color(255, 255, 255));
+        lblPan3bienvenida.setText("Bienvenido ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(369, 369, 369)
+                .addComponent(lblPan3bienvenida)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPan3bienvenida)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblPan3bienvenida)
-                .addGap(363, 363, 363))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(lblPan3pregunta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblPan3pregunta)
+                        .addGap(325, 325, 325))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lblPan3bienvenida)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPan3pregunta)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -154,9 +176,16 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblPan3bienvenida;
     private javax.swing.JLabel lblPan3pregunta;
+    private javax.swing.JLabel lblpregunta;
+    private javax.swing.JLabel lblpregunta1;
+    private javax.swing.JLabel lblpregunta2;
     private javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
 }

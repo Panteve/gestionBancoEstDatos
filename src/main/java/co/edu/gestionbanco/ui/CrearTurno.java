@@ -33,10 +33,12 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         panelPrincipalCrear.setDesktopManager(new DefaultDesktopManager() {
             @Override
             public void dragFrame(JComponent f, int newX, int newY) {
-                
+
             }
         });
+
         panelPrincipalCrear.add(primerPaso);
+        primerPaso.setResizable(false);
         primerPaso.setVisible(true);
         this.setClosable(true);
     }
@@ -45,6 +47,7 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         SegundoPasoCrerTurno segundoPaso = new SegundoPasoCrerTurno(this);
         panelPrincipalCrear.add(segundoPaso);
         primerPaso.setVisible(false);
+        segundoPaso.setResizable(false);
         segundoPaso.setVisible(true);
     }
 
@@ -52,6 +55,7 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         TercerPasoCrearTurno tercerPaso = new TercerPasoCrearTurno(this);
         panelPrincipalCrear.add(tercerPaso);
         segundoPaso.setVisible(false);
+        tercerPaso.setResizable(false);
         tercerPaso.setVisible(true);
     }
 
@@ -59,6 +63,7 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         CuartoPasoCrearTurno cuartoPaso = new CuartoPasoCrearTurno(this);
         panelPrincipalCrear.add(cuartoPaso);
         tercerPaso.setVisible(false);
+        cuartoPaso.setResizable(false);
         cuartoPaso.setVisible(true);
     }
 
@@ -66,6 +71,7 @@ public class CrearTurno extends javax.swing.JInternalFrame {
         QuintoPasoCrearTurno quintoPaso = new QuintoPasoCrearTurno(this);
         panelPrincipalCrear.add(quintoPaso);
         cuartoPaso.setVisible(false);
+        quintoPaso.setResizable(false);
         quintoPaso.setVisible(true);
     }
 

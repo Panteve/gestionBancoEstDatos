@@ -41,7 +41,6 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         lblTelefono = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtCargo = new javax.swing.JTextField();
@@ -52,16 +51,16 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
         lblCargo = new javax.swing.JLabel();
         lblContraseña = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblTelefono.setText("Telefono:");
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitulo.setText("MODIFICAR EMPLEADO");
-
         txtNombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombresActionPerformed(evt);
@@ -69,6 +68,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
         });
 
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCorreo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCorreoActionPerformed(evt);
@@ -76,6 +76,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
         });
 
         txtCargo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCargoActionPerformed(evt);
@@ -83,6 +84,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
         });
 
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
@@ -110,6 +112,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
         lblContraseña.setText("Contraseña:");
 
         txtContraseña.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtContraseña.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtContraseña.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtContraseñaFocusGained(evt);
@@ -120,6 +123,28 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
                 txtContraseñaActionPerformed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setText("Editar empleado");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(151, 151, 151))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,18 +176,15 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
                                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(lblTitulo)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblTitulo)
-                .addGap(41, 41, 41)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,7 +204,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContraseña)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
@@ -215,7 +237,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
             return;
         }
         String correo = txtCorreo.getText();
-        if (!correo.matches("[a-zA-Z0-9]*@+[a-zA-Z0-9]*")){
+        if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$")){
             JOptionPane.showMessageDialog(null, "Correo no valido");
             txtCorreo.requestFocus();
             return;
@@ -299,6 +321,7 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblCorreo;

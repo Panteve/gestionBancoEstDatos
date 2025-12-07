@@ -32,32 +32,23 @@ public class InicioSesion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
         lblContraseña = new javax.swing.JLabel();
         lblReferencia = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JButton();
         lblCaja = new javax.swing.JLabel();
         txtCaja = new javax.swing.JTextField();
         txtIdentificacion = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
 
         setTitle("Inicio de sesion");
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitulo.setText("Iniciar sesion");
-
-        lblContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblContraseña.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblContraseña.setText("Contraseña:");
 
-        lblReferencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblReferencia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblReferencia.setText("N° de identificacion:");
-
-        txtContraseña.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
-            }
-        });
 
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnIniciarSesion.setText("Inciar Sesion");
@@ -67,10 +58,11 @@ public class InicioSesion extends javax.swing.JInternalFrame {
             }
         });
 
-        lblCaja.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCaja.setText("Caja:");
 
         txtCaja.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCaja.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCajaActionPerformed(evt);
@@ -78,65 +70,87 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         });
 
         txtIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtIdentificacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdentificacionActionPerformed(evt);
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Iniciar sesion");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(214, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(198, 198, 198))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        txtContraseña.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtContraseña.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(lblTitulo))
+                        .addGap(210, 210, 210)
+                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblContraseña)
                             .addComponent(lblReferencia)
-                            .addComponent(lblCaja))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(btnIniciarSesion)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                            .addComponent(lblContraseña, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCaja, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtIdentificacion)
+                                .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblTitulo)
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblReferencia)
-                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContraseña)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCaja)
-                    .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(btnIniciarSesion)
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblContraseña))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCaja))))
+                .addGap(39, 39, 39)
+                .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void txtCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaActionPerformed
         // TODO add your handling code here:
@@ -150,7 +164,7 @@ public class InicioSesion extends javax.swing.JInternalFrame {
             return;
         }
         int documento = Integer.parseInt(documentoStr);
-        String contraseña = txtContraseña.getText();
+        String contraseña = new String(txtContraseña.getPassword());
         
         String cajaStr = txtCaja.getText();
         if (!cajaStr.matches("\\d+")) {
@@ -187,12 +201,13 @@ public class InicioSesion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCaja;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblReferencia;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtCaja;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtIdentificacion;
     // End of variables declaration//GEN-END:variables
 }

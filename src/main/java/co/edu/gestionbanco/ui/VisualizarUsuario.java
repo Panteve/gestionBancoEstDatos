@@ -32,7 +32,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         estilizarTabla();
         btnModificar.setVisible(false);
         this.setClosable(true);
-        
+
     }
 
     private void estilizarTabla() {
@@ -260,7 +260,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         ProductoRepository proRepository = new ProductoRepository();
-        
+
         String documentoStr = txtIdentificacion.getText();
         if (!documentoStr.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
@@ -268,13 +268,13 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
             return;
         }
         int documento = Integer.parseInt(documentoStr);
-        
+
         usuario = usuRepository.getUsuario(documento);
         if (usuario.getId_usuario() != 0) {
             setDatosUsuario();
             btnModificar.setVisible(true);
             setDatosTabla(proRepository.getAllProductosPorUsuario(usuario.getId_usuario()));
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Documento ingresado es incorrecto");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -284,8 +284,10 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         ModificarUsuaDialog modificarUsuaDialog = new ModificarUsuaDialog(parent, true);
 
         modificarUsuaDialog.setDatos(usuario);
-        modificarUsuaDialog.setVisible(true);
         
+        modificarUsuaDialog.setResizable(false);
+        modificarUsuaDialog.setVisible(true);
+
         int documento = Integer.parseInt(txtIdentificacion.getText());
         UsuarioRepository usuRepository = new UsuarioRepository();
         usuario = usuRepository.getUsuario(documento);
@@ -295,11 +297,12 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         JFrame parent = (JFrame) SwingUtilities.getWindowAncestor(this);
         AgregarProductoDialog agregarProDialog = new AgregarProductoDialog(parent, true);
-        
+
         agregarProDialog.setId_usuario(String.valueOf(usuario.getId_usuario()));
+        agregarProDialog.setResizable(false);
         agregarProDialog.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
 

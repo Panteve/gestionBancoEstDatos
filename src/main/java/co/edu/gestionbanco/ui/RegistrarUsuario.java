@@ -55,7 +55,6 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         lblNombres = new javax.swing.JLabel();
         txtOcupacion = new javax.swing.JTextField();
@@ -74,11 +73,10 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         combLugarExpedicion = new javax.swing.JComboBox<>();
         btnResgistrar = new javax.swing.JButton();
         btnLimpiar1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         setTitle("Registrar usuario");
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTitulo.setText("Registrar cliente");
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +84,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNombres.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNombres.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblNombres.setText("Nombres:");
 
         txtOcupacion.addActionListener(new java.awt.event.ActionListener() {
@@ -95,10 +93,10 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblIdentificacion.setText("N° de identificacion:");
 
-        lblCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCorreo.setText("Correo:");
 
         txtNumContacto.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +105,8 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNumContacto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNumContacto.setText("N° de contacto");
+        lblNumContacto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNumContacto.setText("N° de contacto:");
 
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,13 +114,13 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        lblFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblFechaNacimiento.setText("Ocupacion:");
 
-        lblFechaExpedicion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaExpedicion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblFechaExpedicion.setText("Fecha de expedicion:");
 
-        lblFechaNacimiento1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaNacimiento1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblFechaNacimiento1.setText("Fecha de nacimiento:");
 
         try {
@@ -172,6 +170,28 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setText("Registrar cliente");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(268, 268, 268))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,78 +202,68 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFechaNacimiento1)
+                                .addGap(14, 14, 14))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblFechaNacimiento1)
-                                        .addGap(14, 14, 14))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblFechaExpedicion)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ftxtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ftxtFechaExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblFechaExpedicion, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFechaNacimiento, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFechaNacimiento)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftxtFechaExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtNumContacto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                    .addComponent(txtDocumento, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombres, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addComponent(lblCorreo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNumContacto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblIdentificacion)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(80, 80, 80)
                                         .addComponent(lblNombres)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(186, 186, 186)
-                                        .addComponent(btnLimpiar1)))
+                                        .addGap(144, 144, 144))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnLimpiar1)
+                                        .addGap(29, 29, 29)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(92, 92, 92)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblCorreo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblFechaExpedicion1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(combLugarExpedicion, 0, 113, Short.MAX_VALUE)))
-                                        .addGap(20, 20, 20))
+                                        .addGap(64, 64, 64)
+                                        .addComponent(lblFechaExpedicion1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(combLugarExpedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(162, 162, 162)
-                                        .addComponent(btnResgistrar)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(lblTitulo)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(133, 133, 133)
+                                        .addComponent(btnResgistrar))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblIdentificacion)
+                                .addComponent(lblNumContacto)))
+                        .addGap(39, 39, 39))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblTitulo)
-                .addGap(40, 40, 40)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombres)
                     .addComponent(lblCorreo)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombres))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumContacto)
                     .addComponent(txtNumContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -275,11 +285,11 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaNacimiento)
                     .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnResgistrar)
-                    .addComponent(btnLimpiar1))
-                .addGap(66, 66, 66))
+                    .addComponent(btnLimpiar1)
+                    .addComponent(btnResgistrar))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -338,7 +348,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             txtNombres.requestFocus();
             return;
         }
-        if (!correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}")){
+        if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$")){
             JOptionPane.showMessageDialog(null, "Correo no valido");
             txtCorreo.requestFocus();
             return;
@@ -390,6 +400,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> combLugarExpedicion;
     private javax.swing.JFormattedTextField ftxtFechaExpedicion;
     private javax.swing.JFormattedTextField ftxtFechaNacimiento;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblFechaExpedicion;
     private javax.swing.JLabel lblFechaExpedicion1;

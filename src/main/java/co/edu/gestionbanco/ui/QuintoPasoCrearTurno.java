@@ -44,8 +44,6 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
-        lblPregunta = new javax.swing.JLabel();
         pnaPan5ContenedorTicket = new javax.swing.JPanel();
         lblTituloTurno = new javax.swing.JLabel();
         sepa1 = new javax.swing.JSeparator();
@@ -54,12 +52,9 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
         lblFechaHora = new javax.swing.JLabel();
         lblTituloEspere = new javax.swing.JLabel();
         lblTituloSinTicket = new javax.swing.JLabel();
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTitulo.setText("Turno generado");
-
-        lblPregunta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPregunta.setText("¡Gracias, por confiar en nosotros!");
+        lblPregunta = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         pnaPan5ContenedorTicket.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -133,32 +128,52 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17))
         );
 
+        lblPregunta.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lblPregunta.setText("¡Gracias, por confiar en nosotros!");
+
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setText("Turno generado");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(365, 365, 365)
+                .addComponent(lblTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(205, 205, 205)
+                .addGap(293, 293, 293)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(lblPregunta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(lblTitulo))
-                    .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(206, Short.MAX_VALUE))
+                    .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPregunta))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPregunta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,6 +181,7 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblFechaHora;
     private javax.swing.JLabel lblPregunta;

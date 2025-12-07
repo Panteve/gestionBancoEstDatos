@@ -27,14 +27,12 @@ public class PrimerPasoCrearTurno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblPan1pregunta = new javax.swing.JLabel();
         btnPan1No = new javax.swing.JButton();
         btnPan1Si = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblPan1pregunta = new javax.swing.JLabel();
 
-        lblPan1pregunta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblPan1pregunta.setText("¿Ya eres cliente del BBVA?");
-
-        btnPan1No.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan1No.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnPan1No.setText("No, aún no soy cliente");
         btnPan1No.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,7 +40,7 @@ public class PrimerPasoCrearTurno extends javax.swing.JInternalFrame {
             }
         });
 
-        btnPan1Si.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPan1Si.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnPan1Si.setText("Sí, soy cliente BBVA");
         btnPan1Si.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,31 +48,50 @@ public class PrimerPasoCrearTurno extends javax.swing.JInternalFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        lblPan1pregunta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPan1pregunta.setForeground(new java.awt.Color(255, 255, 255));
+        lblPan1pregunta.setText("¿Ya eres cliente del BBVA?");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPan1pregunta)
+                .addGap(302, 302, 302))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPan1pregunta)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111)
-                        .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblPan1pregunta)
-                        .addGap(296, 296, 296))))
+                .addGap(126, 126, 126)
+                .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
+                .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(139, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(lblPan1pregunta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPan1Si, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPan1No, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPan1Si, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(btnPan1No, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(126, 126, 126))
         );
 
@@ -95,6 +112,7 @@ public class PrimerPasoCrearTurno extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPan1No;
     private javax.swing.JButton btnPan1Si;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPan1pregunta;
     // End of variables declaration//GEN-END:variables
 }

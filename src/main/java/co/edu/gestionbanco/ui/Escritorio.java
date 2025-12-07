@@ -368,6 +368,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         CrearTurno crear = new CrearTurno();
         panelPrincipal.add(crear);
+        crear.setResizable(false);
         crear.setVisible(true);
 
     }//GEN-LAST:event_itemGenerarTurnoActionPerformed
@@ -376,6 +377,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         GestionarTurno gestionar = new GestionarTurno(this);
         panelPrincipal.add(gestionar);
+        gestionar.setResizable(false);
         gestionar.setVisible(true);
     }//GEN-LAST:event_itemGestionTurnoActionPerformed
 
@@ -383,6 +385,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         RegistrarUsuario registrar = new RegistrarUsuario();
         panelPrincipal.add(registrar);
+        registrar.setResizable(false);
         registrar.setVisible(true);
     }//GEN-LAST:event_itemRegistroCliActionPerformed
 
@@ -390,6 +393,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         VisualizarUsuario agregar = new VisualizarUsuario();
         panelPrincipal.add(agregar);
+        agregar.setResizable(false);
         agregar.setVisible(true);
     }//GEN-LAST:event_itemAgregarProActionPerformed
 
@@ -397,6 +401,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         PagoServicios pago = new PagoServicios();
         panelPrincipal.add(pago);
+        pago.setResizable(false);
         pago.setVisible(true);
     }//GEN-LAST:event_itemPagoServiActionPerformed
 
@@ -404,6 +409,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         RetiroDeposito retiroDeposito = new RetiroDeposito();
         panelPrincipal.add(retiroDeposito);
+        retiroDeposito.setResizable(false);
         retiroDeposito.setVisible(true);
     }//GEN-LAST:event_itemRetiroDepositoActionPerformed
 
@@ -411,6 +417,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         InicioSesion inicioSesion = new InicioSesion(this);
         panelPrincipal.add(inicioSesion);
+        inicioSesion.setResizable(false);
         inicioSesion.setVisible(true);
     }//GEN-LAST:event_itemIniciarSesionActionPerformed
 
@@ -432,6 +439,7 @@ public class Escritorio extends javax.swing.JFrame {
     private void itemEditarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarInformacionActionPerformed
         ModificarEmpleDialog modificarEmpleDialog = new ModificarEmpleDialog(this, true);
         modificarEmpleDialog.setDatos(empleado);
+        modificarEmpleDialog.setResizable(false);
         modificarEmpleDialog.setVisible(true);
     }//GEN-LAST:event_itemEditarInformacionActionPerformed
 
@@ -439,6 +447,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         RegistrarEmpleado resgitrarEmpleado = new RegistrarEmpleado();
         panelPrincipal.add(resgitrarEmpleado);
+        resgitrarEmpleado.setResizable(false);
         resgitrarEmpleado.setVisible(true);
     }//GEN-LAST:event_itemRegistrarEmpleadoActionPerformed
 
@@ -450,6 +459,7 @@ public class Escritorio extends javax.swing.JFrame {
         cerrarVentanasAbiertas();
         ReporteTurnos reporteTurno = new ReporteTurnos();
         panelPrincipal.add(reporteTurno);
+        reporteTurno.setResizable(false);
         reporteTurno.setVisible(true);
     }//GEN-LAST:event_itemTurnosActionPerformed
 

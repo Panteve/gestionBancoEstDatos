@@ -7,6 +7,7 @@ package co.edu.gestionbanco.ui;
 import co.edu.gestionbanco.entity.Empleado;
 import co.edu.gestionbanco.entity.Turno;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JInternalFrame;
@@ -34,8 +35,8 @@ public class Escritorio extends javax.swing.JFrame {
         menuReportes.setVisible(false);
         estilizarTabla();
     }
-
-    public void estilizarTabla() {
+    
+    private void estilizarTabla() {
         // Centrar texto
         DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
         centrado.setHorizontalAlignment(SwingConstants.CENTER);
@@ -43,19 +44,12 @@ public class Escritorio extends javax.swing.JFrame {
         for (int i = 0; i < tblDatos.getColumnCount(); i++) {
             tblDatos.getColumnModel().getColumn(i).setCellRenderer(centrado);
         }
+        
+        // Aumentar la fuente
+        tblDatos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
-        // Filas más grandes
-        tblDatos.setRowHeight(35);
-
-        // Mostrar solo 5 filas visibles
-        int filasVisibles = 5;
-        int altoFila = tblDatos.getRowHeight();
-        int altoHeader = tblDatos.getTableHeader().getPreferredSize().height;
-
-        jScrollPane1.setPreferredSize(new Dimension(
-                jScrollPane1.getPreferredSize().width,
-                altoHeader + (altoFila * filasVisibles)
-        ));
+        // Aumentar altura de filas
+        tblDatos.setRowHeight(28);
     }
 
     public void agregarTurno(Turno turno) {
@@ -99,9 +93,10 @@ public class Escritorio extends javax.swing.JFrame {
         itemCerrarSesion.setVisible(true);
         itemGestionTurno.setVisible(true);
         menuServicios.setVisible(true);
-        menuReportes.setVisible(true);
+        
         
         if (empleado.getCargo().equals("Admin")) {
+            menuReportes.setVisible(true);
             itemRegistrarEmpleado.setVisible(true);
             itemGestionEmpl.setVisible(true);
         }
@@ -435,6 +430,7 @@ public class Escritorio extends javax.swing.JFrame {
         menuReportes.setVisible(false);
         
         if (empleado.getCargo().equals("Admin")) {
+            menuReportes.setVisible(false);
             itemRegistrarEmpleado.setVisible(false);
             itemGestionEmpl.setVisible(false);
         }

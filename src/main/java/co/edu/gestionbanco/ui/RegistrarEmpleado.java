@@ -223,31 +223,36 @@ public class RegistrarEmpleado extends javax.swing.JInternalFrame {
         String cargo = txtCargo.getText();
         String telefono = txtTelefono.getText();
         if (!nombre.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtNombres.requestFocus();
             return;
         }
         if (!documentoStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtDocumento.requestFocus();
             return;
         }
         int documento = Integer.parseInt(documentoStr);
 
         if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-            JOptionPane.showMessageDialog(null, "Correo no valido");
+            JOptionPane.showMessageDialog(null,  "Correo no valido",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtCorreo.requestFocus();
             return;
         }
 
         if (!cargo.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(null, "Cargo no valido, solo letras");
+            JOptionPane.showMessageDialog(null,  "Cargo no valido, solo letras",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtCargo.requestFocus();
             return;
         }
 
         if (!telefono.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            JOptionPane.showMessageDialog(null,  "Telefono no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtTelefono.requestFocus();
             return;
         }

@@ -160,7 +160,8 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
         float valor;
 
         if (txtValor.getValue() == null) {
-            JOptionPane.showMessageDialog(null, "Digite un valor válido");
+            JOptionPane.showMessageDialog(null, "Digite un valor válido",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtValor.requestFocus();
             return;
         }

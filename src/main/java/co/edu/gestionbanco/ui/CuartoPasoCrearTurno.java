@@ -35,8 +35,6 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         lblpregunta = new javax.swing.JLabel();
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         btnEmbarazada.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnEmbarazada.setText("Embarazada");
         btnEmbarazada.addActionListener(new java.awt.event.ActionListener() {
@@ -44,7 +42,6 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
                 btnEmbarazadaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEmbarazada, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 210, 70));
 
         btnMayor.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnMayor.setText("Adulto mayor");
@@ -53,7 +50,6 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
                 btnMayorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMayor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 210, 70));
 
         btnDiscapacidad.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnDiscapacidad.setText("Persona con discapacidad");
@@ -62,7 +58,6 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
                 btnDiscapacidadActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDiscapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 300, 90));
 
         btnNO.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnNO.setText("No");
@@ -71,7 +66,6 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
                 btnNOActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 210, 70));
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -96,7 +90,40 @@ public class CuartoPasoCrearTurno extends javax.swing.JInternalFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 50));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btnEmbarazada, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150)
+                        .addComponent(btnMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDiscapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(btnNO, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEmbarazada, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMayor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDiscapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnNO, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

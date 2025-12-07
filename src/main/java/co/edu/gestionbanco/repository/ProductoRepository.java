@@ -67,7 +67,7 @@ public class ProductoRepository {
 
     public boolean registrarProducto(Producto producto) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO productos VALUES(null,?,?,?,?,?,?,?)";
+        String sqlQuery = "INSERT INTO productos VALUES(null,?,?,?,?,?,?)";
         int estado = 1;
         try {
             if (this.preStm == null) {
@@ -77,8 +77,7 @@ public class ProductoRepository {
                 this.preStm.setString(3, producto.getNombre());
                 this.preStm.setFloat(4, producto.getValor());
                 this.preStm.setInt(5, producto.getEmpresarial());
-                this.preStm.setInt(6, producto.getEstado());
-                 this.preStm.setInt(7, estado);
+                this.preStm.setInt(6, estado);
 
                 this.preStm.executeUpdate();
 

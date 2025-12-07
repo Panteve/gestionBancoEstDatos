@@ -338,40 +338,47 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         String fechaExpedicion = ftxtFechaExpedicion.getText();
 
         if (!documentoStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtDocumento.requestFocus();
             return;
         }
         documento = Integer.parseInt(documentoStr);
         if (!nombre.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtNombres.requestFocus();
             return;
         }
         if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-            JOptionPane.showMessageDialog(null, "Correo no valido");
+            JOptionPane.showMessageDialog(null, "Correo no valido",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtCorreo.requestFocus();
             return;
         }
 
         if (!telefono.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtNumContacto.requestFocus();
             return;
         }
         if (!ocupacion.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras");
+            JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtNombres.requestFocus();
             return;
         }
         if (!fechaNacimiento.matches(formatoFechaRegex)) {
+             JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             ftxtFechaNacimiento.requestFocus();
-            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD");
             return;
         }
         if (!fechaExpedicion.matches(formatoFechaRegex)) {
-            ftxtFechaNacimiento.requestFocus();
-            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD");
+            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
+            ftxtFechaExpedicion.requestFocus();
             return;
         }
 
@@ -384,7 +391,8 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
             }
             resetTxt();
         } else {
-            JOptionPane.showMessageDialog(null, "N° de identificacion no registra en base de datos");
+            JOptionPane.showMessageDialog(null, "N° de identificacion no registra en base de datos",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtDocumento.requestFocus();
         }
 

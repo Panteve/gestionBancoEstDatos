@@ -116,6 +116,7 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
                 txtValorActualActionPerformed(evt);
             }
         });
+        txtValorActual.setEditable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -224,7 +225,8 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
         int documento;
         
         if (!documentoStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtIdentificacion.requestFocus();
             return;
         }
@@ -235,7 +237,8 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
             List<Producto> listaProductos = proRepository.getAllProductosPorUsuario(idUsuario);
             setCombCuentas(listaProductos);
         }else{
-            JOptionPane.showMessageDialog(null, "No se encuntra el documento");
+            JOptionPane.showMessageDialog(null, "No se encuntra el documento",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtIdentificacion.requestFocus();
         }
 
@@ -252,7 +255,8 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
         float valor; 
         
         if (txtValor.getValue() == null) {
-            JOptionPane.showMessageDialog(null, "Digite un valor válido");
+            JOptionPane.showMessageDialog(null, "Digite un valor válido",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtValor.requestFocus();
             return;
         }

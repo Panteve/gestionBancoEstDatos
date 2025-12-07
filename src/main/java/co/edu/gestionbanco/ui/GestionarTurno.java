@@ -12,12 +12,15 @@ import co.edu.gestionbanco.repository.HistorialAtencionRepository;
 import co.edu.gestionbanco.repository.ServicioRepository;
 import co.edu.gestionbanco.repository.TurnoRepository;
 import co.edu.gestionbanco.repository.UsuarioRepository;
+import java.awt.Font;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -43,7 +46,23 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         this.escritorio = escritorio;
         initComponents();
         empezarTrabajo();
-        this.setClosable(true);
+        estilizarTabla();
+    }
+    
+    private void estilizarTabla() {
+        // Centrar texto
+        DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+        centrado.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tblDatos.getColumnCount(); i++) {
+            tblDatos.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
+        
+        // Aumentar la fuente
+        tblDatos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+
+        // Aumentar altura de filas
+        tblDatos.setRowHeight(28);
     }
 
     private void setTabla(Queue<Turno> turnos) {
@@ -85,13 +104,12 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         horaLlamado = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
         Servicio servicio = serRepository.getServicio(turnoAtendido.getServicio_id());
-        Usuario usuario = usuRepository.getUsuario(turnoAtendido.getUsuario_id());
+        Usuario usuario = usuRepository.getUsuarioById(turnoAtendido.getUsuario_id());
 
         turnoAtendido.setCaja(escritorio.empleado.getCaja());
         turnoAtendido.setEstado("Proceso");
         turRepository.actualizarEstadoTurno(turnoAtendido);
         escritorio.agregarTurno(turnoAtendido);
-
         lblCodigo.setText(turnoAtendido.getCodigo());
         lblNombre.setText(usuario.getNombre());
         lblServicio.setText(servicio.getNombre());
@@ -143,79 +161,39 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         setTitle("Gestion de turno");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloTurno.setText("Turno atendido");
+        jPanel1.add(lblTituloTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 10, -1, -1));
 
         sepa1.setBackground(new java.awt.Color(0, 0, 0));
         sepa1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(sepa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 335, 10));
 
         lblCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblCodigo.setText("***");
+        jPanel1.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 76, -1, -1));
 
         sepa2.setBackground(new java.awt.Color(0, 0, 0));
         sepa2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(sepa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 335, 10));
 
         lblTituloNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloNombre.setText("Nombre: ");
+        jPanel1.add(lblTituloNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 136, -1, -1));
 
         lblTituloServicio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloServicio.setText("Servicio solicitado: ");
+        jPanel1.add(lblTituloServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 180, -1, -1));
 
         lblServicio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblServicio.setText("*******");
+        jPanel1.add(lblServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblNombre.setText("*******");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sepa1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(sepa2)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblTituloNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblNombre))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(lblTituloServicio))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(lblServicio))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(lblCodigo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(lblTituloTurno)))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblTituloTurno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sepa1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCodigo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepa2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTituloNombre)
-                    .addComponent(lblNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTituloServicio)
-                .addGap(18, 18, 18)
-                .addComponent(lblServicio)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
+        jPanel1.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 136, -1, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -271,22 +249,19 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(140, 140, 140)
+                        .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,13 +270,13 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

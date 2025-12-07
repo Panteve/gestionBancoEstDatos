@@ -112,6 +112,46 @@ public class UsuarioRepository {
         }
         return usuario;
     }
+    public Usuario getUsuarioById(int id) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "SELECT * FROM usuarios WHERE id_usuario = ? AND estado = 1"; //Agregar order by para traer en orden la lista por prioridad 
+        Usuario usuario = new Usuario();
+        try {
+            this.preStm = con.prepareStatement(sqlQuery);
+            this.preStm.setInt(1, id);
+            //Los datos de la tabla se guardan en el resultSet
+            ResultSet resultSet = this.preStm.executeQuery();
+            if (resultSet.next()) {
+                usuario = new Usuario(
+                        resultSet.getInt("id_usuario"),
+                        resultSet.getInt("documento"),
+                        resultSet.getString("nombre"),
+                        resultSet.getString("correo"),
+                        resultSet.getString("telefono"),
+                        resultSet.getString("ocupacion"),
+                        resultSet.getString("fechaNacimiento"),
+                        resultSet.getString("lugarNacimiento"),
+                        resultSet.getString("fechaExpedicion"),
+                        resultSet.getInt("estado")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return usuario;
+    }
     
     public int getIdUsuario(int documento) {
         Connection con = conexionBD.getConectionDB();

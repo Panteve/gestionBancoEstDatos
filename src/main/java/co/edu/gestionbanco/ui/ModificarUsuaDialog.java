@@ -221,24 +221,28 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
         String telefono = txtTelefono.getText();
 
         if (!nombre.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
+            JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtNombres.requestFocus();
             return;
         }
 
         if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
-            JOptionPane.showMessageDialog(null, "Correo no valido");
+            JOptionPane.showMessageDialog(null, "Correo no valido",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtCorreo.requestFocus();
             return;
         }
 
         if (!ocupacion.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras");
+            JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtOcupacion.requestFocus();
             return;
         }
         if (!telefono.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtTelefono.requestFocus();
             return;
         }

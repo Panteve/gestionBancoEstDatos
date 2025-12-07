@@ -162,7 +162,8 @@ public class PagoServicios extends javax.swing.JInternalFrame {
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValor))
                 .addGap(37, 37, 37)
-                .addComponent(btnPagar))
+                .addComponent(btnPagar)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,20 +186,23 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         float valor;
 
         if (!documentoStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtIdentificacion.requestFocus();
             return;
         }
         int documento = Integer.parseInt(documentoStr);
 
         if (!referencia.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Referencia no valida, solo numeros");
+            JOptionPane.showMessageDialog(null, "Referencia no valida, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtReferencia.requestFocus();
             return;
         }
 
         if (txtValor.getValue() == null) {
-            JOptionPane.showMessageDialog(null, "Digite un valor válido");
+            JOptionPane.showMessageDialog(null, "Digite un valor válido",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtValor.requestFocus();
             return;
         }
@@ -214,7 +218,8 @@ public class PagoServicios extends javax.swing.JInternalFrame {
                 resetTxt();
             }
         } else {
-            JOptionPane.showInputDialog(null, "Numero de documento no encontrado");
+            JOptionPane.showMessageDialog(null, "Numero de documento no encontrado",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtIdentificacion.requestFocus();
             txtIdentificacion.setText("");
         }

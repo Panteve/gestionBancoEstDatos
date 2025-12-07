@@ -159,7 +159,8 @@ public class InicioSesion extends javax.swing.JInternalFrame {
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         String documentoStr = txtIdentificacion.getText(); 
         if (!documentoStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtIdentificacion.requestFocus();
             return;
         }
@@ -168,7 +169,8 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         
         String cajaStr = txtCaja.getText();
         if (!cajaStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Caja no valida, solo numeros");
+            JOptionPane.showMessageDialog(null, "Caja no valida, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtCaja.requestFocus();
             return;
         }
@@ -177,7 +179,8 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         Empleado empleado = repository.getEmpleado(documento);
         
         if(empleado.getId_empleado() == 0){
-           JOptionPane.showMessageDialog(null, "Documento no registrado");
+            JOptionPane.showMessageDialog(null, "Documento no registrado",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
            txtContraseña.requestFocus();
            return;
         }
@@ -187,7 +190,8 @@ public class InicioSesion extends javax.swing.JInternalFrame {
             escritorio.empleado = empleado;
             escritorio.serEmpleado(this);
         } else {
-            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtContraseña.setText("");
             txtContraseña.requestFocus();
         }

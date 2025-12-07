@@ -57,76 +57,35 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
         lblTitulo = new javax.swing.JLabel();
 
         pnaPan5ContenedorTicket.setBackground(new java.awt.Color(255, 255, 255));
+        pnaPan5ContenedorTicket.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloTurno.setText("Tu turno:");
+        pnaPan5ContenedorTicket.add(lblTituloTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         sepa1.setBackground(new java.awt.Color(0, 0, 0));
         sepa1.setForeground(new java.awt.Color(0, 0, 0));
+        pnaPan5ContenedorTicket.add(sepa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 317, 10));
 
         lblCodigo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblCodigo.setText("***");
+        pnaPan5ContenedorTicket.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 76, -1, -1));
 
         sepa2.setBackground(new java.awt.Color(0, 0, 0));
         sepa2.setForeground(new java.awt.Color(0, 0, 0));
+        pnaPan5ContenedorTicket.add(sepa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 317, 10));
 
         lblFechaHora.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblFechaHora.setText("********** ********");
+        pnaPan5ContenedorTicket.add(lblFechaHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 254, -1, -1));
 
         lblTituloEspere.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloEspere.setText("Espere a ser llamado");
+        pnaPan5ContenedorTicket.add(lblTituloEspere, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 142, -1, -1));
 
         lblTituloSinTicket.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTituloSinTicket.setText("Sin el ticket no puede ser atendido");
-
-        javax.swing.GroupLayout pnaPan5ContenedorTicketLayout = new javax.swing.GroupLayout(pnaPan5ContenedorTicket);
-        pnaPan5ContenedorTicket.setLayout(pnaPan5ContenedorTicketLayout);
-        pnaPan5ContenedorTicketLayout.setHorizontalGroup(
-            pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sepa1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(sepa2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addComponent(lblTituloTurno)
-                        .addGap(110, 110, 110))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addComponent(lblTituloSinTicket)
-                        .addGap(18, 18, 18))))
-            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addGroup(pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lblTituloEspere))
-                    .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(lblCodigo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lblFechaHora)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        pnaPan5ContenedorTicketLayout.setVerticalGroup(
-            pnaPan5ContenedorTicketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnaPan5ContenedorTicketLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblTituloTurno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sepa1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCodigo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepa2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblTituloEspere)
-                .addGap(18, 18, 18)
-                .addComponent(lblTituloSinTicket)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(lblFechaHora)
-                .addGap(17, 17, 17))
-        );
+        pnaPan5ContenedorTicket.add(lblTituloSinTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 185, -1, -1));
 
         lblPregunta.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblPregunta.setText("¡Gracias, por confiar en nosotros!");
@@ -173,7 +132,7 @@ public class QuintoPasoCrearTurno extends javax.swing.JInternalFrame {
                 .addComponent(lblPregunta)
                 .addGap(18, 18, 18)
                 .addComponent(pnaPan5ContenedorTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();

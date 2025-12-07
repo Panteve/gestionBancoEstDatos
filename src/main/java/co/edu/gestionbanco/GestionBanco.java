@@ -32,12 +32,14 @@ public class GestionBanco {
     "Bogotá",                           // lugarExpedicion inventado
     "2014-07-28",                       // fechaExpedicion inventada
     1);       // estado existente
-        UsuarioRepository usuRepository = new UsuarioRepository();
-        usuRepository.actualizarUsuario(usuario);
+        //UsuarioRepository usuRepository = new UsuarioRepository();
+        //usuRepository.actualizarUsuario(usuario);
         //TurnoRepository turnos = new TurnoRepository();
         //System.out.println(turnos.crearTurno(turno));
         //UsuarioRepository repo = new UsuarioRepository();
         //System.out.println(repo.getUsuario(1234567));
+    
         
+            
     }
 }

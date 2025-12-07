@@ -10,6 +10,7 @@ import co.edu.gestionbanco.entity.Usuario;
 import co.edu.gestionbanco.repository.ProductoRepository;
 import co.edu.gestionbanco.repository.UsuarioRepository;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -34,6 +35,8 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         this.setClosable(true);
 
     }
+    
+    
 
     private void estilizarTabla() {
         // Centrar texto
@@ -43,13 +46,25 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblDatos.getColumnCount(); i++) {
             tblDatos.getColumnModel().getColumn(i).setCellRenderer(centrado);
         }
+
+        // Aumentar la fuente
+        tblDatos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+
+        // Aumentar altura de filas
+        tblDatos.setRowHeight(28);
     }
 
     private void setDatosTabla(List<Producto> listProductos) {
+        if(listProductos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Usuario sin productos",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         Object[][] data = new Object[listProductos.size()][COLUMNAS.length];
 
         for (int i = 0; i < listProductos.size(); i++) {
             Producto producto = listProductos.get(i);
+            
             data[i][0] = producto.getReferencia();
             data[i][1] = producto.getNombre();
             data[i][2] = producto.getValor();
@@ -284,7 +299,8 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
 
         String documentoStr = txtIdentificacion.getText();
         if (!documentoStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtIdentificacion.requestFocus();
             return;
         }
@@ -296,7 +312,8 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
             btnModificar.setVisible(true);
             setDatosTabla(proRepository.getAllProductosPorUsuario(usuario.getId_usuario()));
         } else {
-            JOptionPane.showMessageDialog(null, "Documento ingresado es incorrecto");
+            JOptionPane.showMessageDialog(null, "Documento no encontrado",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 

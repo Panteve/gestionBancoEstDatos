@@ -6,8 +6,11 @@ package co.edu.gestionbanco.ui;
 
 import co.edu.gestionbanco.entity.Servicio;
 import co.edu.gestionbanco.repository.ServicioRepository;
+import java.awt.Font;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +30,25 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
         this.principal = principal;
         initComponents();
         colocarNombre();
+        estilizarTabla();
         inicializarTabla(traerDatos());
+        
+    }
+    
+    private void estilizarTabla() {
+        // Centrar texto
+        DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+        centrado.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tblDatos.getColumnCount(); i++) {
+            tblDatos.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
+
+        // Aumentar la fuente
+        tblDatos.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+
+        // Aumentar altura de filas
+        tblDatos.setRowHeight(28);
     }
     
     private void colocarNombre(){
@@ -177,15 +198,9 @@ public class TercerPasoCrearTurno extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblPan3bienvenida;
     private javax.swing.JLabel lblPan3pregunta;
-    private javax.swing.JLabel lblpregunta;
-    private javax.swing.JLabel lblpregunta1;
-    private javax.swing.JLabel lblpregunta2;
     private javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
 }

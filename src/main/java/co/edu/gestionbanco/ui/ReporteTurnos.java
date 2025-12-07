@@ -10,10 +10,16 @@ import co.edu.gestionbanco.entity.Servicio;
 import co.edu.gestionbanco.repository.ReporteRepository;
 import co.edu.gestionbanco.repository.ServicioRepository;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -61,7 +67,7 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         }
     }
 
-    private String formatDuration(Duration tiempo) {
+    private String formateoDuration(Duration tiempo) {
         if (tiempo == null) {
             return "";
         }
@@ -94,9 +100,9 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
             data[i][6] = reporte.getHoraCreacionTurno();
             data[i][7] = reporte.getHoraLlamadoTurno();
             data[i][8] = reporte.getHoraFinalizacionTurno();
-            data[i][9] = formatDuration(reporte.getTiempoEnCola());
-            data[i][10] = formatDuration(reporte.getTiempoAtencion());
-            data[i][11] = formatDuration(reporte.getTiempoTotal());
+            data[i][9] = formateoDuration(reporte.getTiempoEnCola());
+            data[i][10] = formateoDuration(reporte.getTiempoAtencion());
+            data[i][11] = formateoDuration(reporte.getTiempoTotal());
 
         }
         DefaultTableModel model = new DefaultTableModel(data, COLUMNAS) {
@@ -114,10 +120,35 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
 
     }
 
+    private HashMap<String, Duration> calcularPromedios() {
+        HashMap<String, Duration> promedios = new HashMap<>();
+        for (int i = 9; i < 12; i++) {
+            Duration suma = Duration.ZERO;
+            for (int j = 0; j < tblDatos.getRowCount(); j++) {
+                Duration duracion = convertirATiempo(tblDatos.getValueAt(j, i).toString());
+                suma = suma.plus(duracion);
+            }
+            String nombreColumna = tblDatos.getColumnName(i);
+            Duration promedio = suma.dividedBy(tblDatos.getRowCount());
+            promedios.put(nombreColumna, promedio);
+        }
+        return promedios;
+    }
+
+    //Recibe un string con fomrato HH:MM:SS para convertirlo en localTime
+    //y luego devuelve un tipo de dato Duration que contiene el tiempo que paso(Line 163)
+    private Duration convertirATiempo(String tiempo) {
+        LocalTime localTime = LocalTime.parse(tiempo);
+        //LocalTime.MIN es 00:00:00
+        //basicamente es decir ¿Cuánto tiempo hay desde las 00:00:00 hasta la hora del string?"
+        return Duration.between(LocalTime.MIN, localTime);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         lblFechaHasta = new javax.swing.JLabel();
@@ -132,8 +163,23 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         combServicios = new javax.swing.JComboBox<>();
         txtAtendido = new javax.swing.JTextField();
         txtCliente = new javax.swing.JTextField();
+        lblPromedioTotal = new javax.swing.JLabel();
+        lblPromedioAtencion = new javax.swing.JLabel();
+        lblPromedioCola = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setTitle("Reportes");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDatos.setAutoCreateRowSorter(true);
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
@@ -168,14 +214,19 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         tblDatos.setToolTipText("");
         jScrollPane1.setViewportView(tblDatos);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 160, 1570, 446));
+
         lblFechaHasta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblFechaHasta.setText("Hasta:");
+        getContentPane().add(lblFechaHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 65, -1, -1));
 
         lblFiltros.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblFiltros.setText("Filtros");
+        getContentPane().add(lblFiltros, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 14, -1, -1));
 
         lblFechaDesde.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblFechaDesde.setText("Desde:");
+        getContentPane().add(lblFechaDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 65, -1, -1));
 
         try {
             txtFechaDesde.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
@@ -188,6 +239,7 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
                 txtFechaDesdeActionPerformed(evt);
             }
         });
+        getContentPane().add(txtFechaDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 64, 170, -1));
 
         try {
             txtFechaHasta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
@@ -195,6 +247,7 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         txtFechaHasta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtFechaHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 64, 170, -1));
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -203,92 +256,40 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 72, 102, 37));
 
         lblAtendidoPor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAtendidoPor.setText("Atendido por:");
+        getContentPane().add(lblAtendidoPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 113, -1, -1));
 
         lblCliente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCliente.setText("Cliente:");
+        getContentPane().add(lblCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 113, -1, -1));
 
         lblServicio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblServicio.setText("Servicio");
+        getContentPane().add(lblServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 65, -1, -1));
 
         combServicios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(combServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 64, 186, -1));
 
         txtAtendido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtAtendido, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 112, 171, -1));
 
         txtCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 112, 171, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblFechaDesde)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(lblFechaHasta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAtendidoPor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAtendido, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(lblServicio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(combServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(43, 43, 43)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1570, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblFiltros)))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(lblFiltros)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFechaHasta)
-                            .addComponent(lblFechaDesde)
-                            .addComponent(txtFechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblServicio)
-                            .addComponent(combServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAtendidoPor)
-                    .addComponent(lblCliente)
-                    .addComponent(txtAtendido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
+        lblPromedioTotal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblPromedioTotal.setText("Tiempo promedio");
+        getContentPane().add(lblPromedioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 20, -1, -1));
+
+        lblPromedioAtencion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblPromedioAtencion.setText("Tiempo promedio");
+        getContentPane().add(lblPromedioAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, -1, -1));
+
+        lblPromedioCola.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblPromedioCola.setText("Tiempo promedio");
+        getContentPane().add(lblPromedioCola, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -303,27 +304,58 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
         String servicio = String.valueOf(combServicios.getSelectedItem());
 
         if (!fechaDesde.matches(formatoFechaRegex)) {
+            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtFechaDesde.requestFocus();
-            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD");
             return;
         }
         if (!fechaHasta.matches(formatoFechaRegex)) {
+            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
             txtFechaHasta.requestFocus();
-            JOptionPane.showMessageDialog(null, "Fecha no valida. Use el formato YYYY-MM-DD");
             return;
         }
         if (!docEmpleadoStr.isBlank() && !docEmpleadoStr.matches("^[0-9]+$")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
+            txtAtendido.requestFocus();
             return;
         }
 
         if (!docUsuarioStr.isBlank() && !docUsuarioStr.matches("^[0-9]+$")) {
-            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
+            JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros",
+                "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
+            txtCliente.requestFocus();
             return;
         }
 
         ReporteRepository repoRepository = new ReporteRepository();
         setDataTabla(repoRepository.getReporte(fechaDesde, fechaHasta, docEmpleadoStr, docUsuarioStr, servicio));
+
+        HashMap<String, Duration> promedios = calcularPromedios();
+
+        promedios.forEach((tipoPromedio, duracion) -> {
+            long horas = duracion.toHours();
+            long minutos = duracion.toMinutesPart();
+            long segundos = duracion.toSecondsPart();
+            String promedioStr = String.format("%02d:%02d:%02d", horas, minutos, segundos);
+            switch (tipoPromedio) {
+                case "Tiempo en cola":
+                    lblPromedioCola.setText("Tiempo promedio en cola: " + promedioStr);
+                    break;
+                case "Tiempo de atencion":
+                    lblPromedioAtencion.setText("Tiempo promedio en atencion: " + promedioStr);
+                    break;
+                case "Tiempo total":
+                    lblPromedioTotal.setText("Tiempo promedio total " + promedioStr);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        });
+
+        
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtFechaDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaDesdeActionPerformed
@@ -334,12 +366,16 @@ public class ReporteTurnos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> combServicios;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAtendidoPor;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblFechaDesde;
     private javax.swing.JLabel lblFechaHasta;
     private javax.swing.JLabel lblFiltros;
+    private javax.swing.JLabel lblPromedioAtencion;
+    private javax.swing.JLabel lblPromedioCola;
+    private javax.swing.JLabel lblPromedioTotal;
     private javax.swing.JLabel lblServicio;
     private javax.swing.JTable tblDatos;
     private javax.swing.JTextField txtAtendido;

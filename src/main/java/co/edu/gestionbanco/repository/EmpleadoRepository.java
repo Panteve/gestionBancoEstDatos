@@ -71,7 +71,7 @@ public class EmpleadoRepository {
 
     public Empleado getEmpleado(int documento) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM empleados WHERE documento = ?"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM empleados WHERE documento = ? AND estado = 1"; //Agregar order by para traer en orden la lista por prioridad 
         Empleado empleado = new Empleado();
         try {
             this.preStm = con.prepareStatement(sqlQuery);

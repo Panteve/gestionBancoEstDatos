@@ -54,7 +54,12 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
             data[i][1] = producto.getNombre();
             data[i][2] = producto.getValor();
         }
-        DefaultTableModel model = new DefaultTableModel(data, COLUMNAS);
+        DefaultTableModel model = new DefaultTableModel(data, COLUMNAS) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // ninguna celda se puede editar
+            }
+        };
         tblDatos.setModel(model);
     }
 
@@ -85,6 +90,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         lblCorreo = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setTitle("Visualizar usuarios");
 
@@ -155,6 +161,15 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,10 +214,15 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
                                         .addGap(25, 25, 25)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(6, 6, 6)))
                 .addGap(63, 63, 63))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -238,20 +258,21 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
                                 .addComponent(lblOcupacion)
                                 .addComponent(txtOcupacion))
                             .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(79, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(169, 169, 169))))
+                        .addGap(96, 96, 96)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(30, 30, 30)
                     .addComponent(lblIdentificacion)
-                    .addContainerGap(518, Short.MAX_VALUE)))
+                    .addContainerGap(520, Short.MAX_VALUE)))
         );
 
         pack();
@@ -284,7 +305,7 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
         ModificarUsuaDialog modificarUsuaDialog = new ModificarUsuaDialog(parent, true);
 
         modificarUsuaDialog.setDatos(usuario);
-        
+
         modificarUsuaDialog.setResizable(false);
         modificarUsuaDialog.setVisible(true);
 
@@ -305,10 +326,33 @@ public class VisualizarUsuario extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tblDatos.getSelectedRow();
+        if (fila != -1) {
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el producto?",
+                    "INFORMATION_MESSAGE", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE);
+            if (opcion == 0) {
+                String referencia = tblDatos.getValueAt(fila, 0).toString();
+                ProductoRepository proRepository = new ProductoRepository();
+                
+                boolean status = proRepository.bajaProducto(referencia);
+                if (status) {
+                    JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+                    usuario = new Usuario();
+                    this.dispose();
+                }
+            }
+        }
+
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCorreo;

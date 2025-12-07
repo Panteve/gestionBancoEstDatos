@@ -30,7 +30,7 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
     private void resetTxt() {
         combProductos.setSelectedIndex(0);
         txtReferencia.setText("");
-        txtValor.setText("");
+        txtValor.setValue(null);
         checkEmpresarial.setSelected(false);
     }
 
@@ -54,11 +54,11 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
         lblReferencia = new javax.swing.JLabel();
         txtReferencia = new javax.swing.JTextField();
         lblValor = new javax.swing.JLabel();
-        txtValor = new javax.swing.JTextField();
         checkEmpresarial = new javax.swing.JCheckBox();
         btnGenerar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
+        txtValor = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AGREGAR PRODUCTO");
@@ -89,20 +89,11 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
             }
         });
         txtReferencia.setEditable(false);
-        getContentPane().add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 162, 215, 31));
+        getContentPane().add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 215, 31));
 
         lblValor.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblValor.setText("Valor:");
-        getContentPane().add(lblValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 209, 120, 25));
-
-        txtValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 205, 215, -1));
+        getContentPane().add(lblValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 60, 25));
 
         checkEmpresarial.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         checkEmpresarial.setText("Empresarial");
@@ -144,12 +135,12 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 50));
 
+        txtValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        getContentPane().add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 210, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorActionPerformed
 
     private void txtReferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReferenciaActionPerformed
         // TODO add your handling code here:
@@ -163,22 +154,21 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         ProductoRepository proRepository = new ProductoRepository();
-        
+
         String nombre = String.valueOf(combProductos.getSelectedItem());
         int empresarial = checkEmpresarial.isSelected() ? 1 : 0;
-                
-        String valorStr = txtValor.getText();
-        if (!valorStr.matches("\\d*(\\.\\d+)?")) {
+        float valor;
+
+        if (txtValor.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Digite un valor válido");
             txtValor.requestFocus();
-            JOptionPane.showMessageDialog(null, "Valor no valido, solo numeros");
             return;
         }
-        
-        float valor = Float.parseFloat(valorStr);
+        valor = ((Number) txtValor.getValue()).floatValue();
 
         Producto producto = new Producto(Integer.parseInt(id_usuario), txtReferencia.getText(), nombre, valor, empresarial);
         boolean status = proRepository.registrarProducto(producto);
-        if(status){
+        if (status) {
             JOptionPane.showMessageDialog(null, "Producto agregado correctamente");
         }
         resetTxt();
@@ -237,6 +227,6 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtReferencia;
-    private javax.swing.JTextField txtValor;
+    private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

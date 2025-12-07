@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class GestionarTurno extends javax.swing.JInternalFrame {
 
     private Escritorio escritorio;
-    private final String columnas[] = {"Turno"};
+    private final String COLUMNAS[] = {"Turno"};
     Queue<Turno> turnoList;
     Turno turnoAtendido;
     String horaLlamado;
@@ -49,14 +49,18 @@ public class GestionarTurno extends javax.swing.JInternalFrame {
     private void setTabla(Queue<Turno> turnos) {
         List<Turno> listaTurnos = new ArrayList<>(turnos);
 
-        Object[][] data = new Object[listaTurnos.size()][columnas.length];
+        Object[][] data = new Object[listaTurnos.size()][COLUMNAS.length];
 
         for (int i = 0; i < listaTurnos.size(); i++) {
             Turno turno = listaTurnos.get(i);
             data[i][0] = turno.getCodigo();
         }
-
-        DefaultTableModel model = new DefaultTableModel(data, columnas);
+        DefaultTableModel model = new DefaultTableModel(data, COLUMNAS) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // ninguna celda se puede editar
+            }
+        };
         tblDatos.setModel(model);
     }
 

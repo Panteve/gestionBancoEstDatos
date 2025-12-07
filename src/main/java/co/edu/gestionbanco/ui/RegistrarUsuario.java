@@ -326,7 +326,7 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
     private void btnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         String formatoFechaRegex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
-        
+
         String documentoStr = txtDocumento.getText();
         int documento = 0;
         String nombre = txtNombres.getText();
@@ -336,29 +336,30 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         String fechaNacimiento = ftxtFechaNacimiento.getText();
         String lugarExpedicion = String.valueOf(combLugarExpedicion.getSelectedItem());
         String fechaExpedicion = ftxtFechaExpedicion.getText();
-        
+
         if (!documentoStr.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
             txtDocumento.requestFocus();
             return;
         }
         documento = Integer.parseInt(documentoStr);
-        if (!nombre.matches("[a-zA-Z ]+")){
+        if (!nombre.matches("[a-zA-Z ]+")) {
             JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
             txtNombres.requestFocus();
             return;
         }
-        if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$")){
+        if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
             JOptionPane.showMessageDialog(null, "Correo no valido");
             txtCorreo.requestFocus();
             return;
         }
-        if (!telefono.matches("\\d+")){
+
+        if (!telefono.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
             txtNumContacto.requestFocus();
             return;
         }
-        if (!ocupacion.matches("[a-zA-Z ]+")){
+        if (!ocupacion.matches("[a-zA-Z ]+")) {
             JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras");
             txtNombres.requestFocus();
             return;
@@ -378,15 +379,15 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         if (usuarioEncontrado.getId_usuario() != 0) {
             Usuario usuario = new Usuario(usuarioEncontrado.getId_usuario(), documento, nombre, correo, telefono, ocupacion, fechaNacimiento, lugarExpedicion, fechaExpedicion, usuarioEncontrado.getEstado());
             boolean status = usuRepository.actualizarUsuario(usuario);
-            if(status){
-                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente"); 
+            if (status) {
+                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente");
             }
             resetTxt();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "N° de identificacion no registra en base de datos");
             txtDocumento.requestFocus();
         }
-        
+
     }//GEN-LAST:event_btnResgistrarActionPerformed
 
     private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed

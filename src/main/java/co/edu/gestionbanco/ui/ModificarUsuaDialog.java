@@ -49,6 +49,7 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
         btnListo = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -126,6 +127,15 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,13 +156,15 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblOcupacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
@@ -175,9 +187,11 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOcupacion)
                     .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnListo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -202,25 +216,28 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         String nombre = txtNombres.getText();
+        String correo = txtCorreo.getText();
+        String ocupacion = txtOcupacion.getText();
+        String telefono = txtTelefono.getText();
+
         if (!nombre.matches("[a-zA-Z ]+")) {
             JOptionPane.showMessageDialog(null, "Nombre no valido, solo letras");
             txtNombres.requestFocus();
             return;
         }
-        String correo = txtCorreo.getText();
-        if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$")){
+
+        if (!correo.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
             JOptionPane.showMessageDialog(null, "Correo no valido");
             txtCorreo.requestFocus();
             return;
         }
-        String ocupacion = txtOcupacion.getText();
-        if (!ocupacion.matches("[a-zA-Z]+")){
-            JOptionPane.showMessageDialog(null, "Cargo no valido, solo letras");
+
+        if (!ocupacion.matches("[a-zA-Z ]+")) {
+            JOptionPane.showMessageDialog(null, "Ocupacion no valido, solo letras");
             txtOcupacion.requestFocus();
             return;
         }
-        String telefono = txtTelefono.getText();
-        if (!telefono.matches("\\d+")){
+        if (!telefono.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Telefono no valido, solo numeros");
             txtTelefono.requestFocus();
             return;
@@ -231,11 +248,27 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
         usuario.setTelefono(telefono);
 
         boolean status = usuRepository.actualizarUsuario(usuario);
-        if(status){
-            JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente"); 
+        if (status) {
+            JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente");
         }
         this.dispose();
     }//GEN-LAST:event_btnListoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el usuario?",
+                "INFORMATION_MESSAGE", JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE);
+        if (opcion == 0) {
+            UsuarioRepository usuRepository = new UsuarioRepository();
+            boolean status = usuRepository.bajaCliente(usuario.getId_usuario());
+            if (status) {
+                JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
+                usuario = new Usuario();
+                this.dispose();
+            }
+        }
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,6 +313,7 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnListo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCorreo;

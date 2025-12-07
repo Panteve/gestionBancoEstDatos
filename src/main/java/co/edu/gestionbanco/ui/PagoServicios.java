@@ -23,8 +23,8 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         initComponents();
         this.setClosable(true);
     }
-    
-    private void resetTxt(){
+
+    private void resetTxt() {
         txtIdentificacion.setText("");
         txtReferencia.setText("");
         txtValor.setText("");
@@ -41,27 +41,19 @@ public class PagoServicios extends javax.swing.JInternalFrame {
 
         lblIdentificacion = new javax.swing.JLabel();
         lblReferencia = new javax.swing.JLabel();
-        txtValor = new javax.swing.JTextField();
         txtReferencia = new javax.swing.JTextField();
         lblValor = new javax.swing.JLabel();
         txtIdentificacion = new javax.swing.JTextField();
         btnPagar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
+        txtValor = new javax.swing.JFormattedTextField();
 
         lblIdentificacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblIdentificacion.setText("N° de identificacion:");
 
         lblReferencia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblReferencia.setText("N° de referencia:");
-
-        txtValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        txtValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorActionPerformed(evt);
-            }
-        });
 
         txtReferencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtReferencia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -100,7 +92,7 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addGap(169, 169, 169))
         );
@@ -112,60 +104,69 @@ public class PagoServicios extends javax.swing.JInternalFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        txtValor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblReferencia)
-                            .addComponent(lblValor)
-                            .addComponent(lblIdentificacion))
+                        .addComponent(lblIdentificacion)
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(txtIdentificacion)
-                            .addComponent(txtValor)))
+                        .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(lblReferencia))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(123, 123, 123)
+                                .addComponent(lblValor)))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(btnPagar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblIdentificacion)
-                            .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReferencia)
-                            .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57))
+                        .addGap(2, 2, 2)
+                        .addComponent(lblIdentificacion))
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblValor))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btnPagar)
-                .addGap(51, 51, 51))
+                        .addGap(2, 2, 2)
+                        .addComponent(lblReferencia))
+                    .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValor))
+                .addGap(37, 37, 37)
+                .addComponent(btnPagar))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorActionPerformed
 
     private void txtReferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReferenciaActionPerformed
         // TODO add your handling code here:
@@ -178,45 +179,50 @@ public class PagoServicios extends javax.swing.JInternalFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         UsuarioRepository usuRepository = new UsuarioRepository();
         PagarServicioRepository pagarRepository = new PagarServicioRepository();
-        
+
         String documentoStr = txtIdentificacion.getText();
+        String referencia = txtReferencia.getText();
+        float valor;
+
         if (!documentoStr.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Documento no valido, solo numeros");
             txtIdentificacion.requestFocus();
             return;
         }
         int documento = Integer.parseInt(documentoStr);
-        
-        
-        String referencia = txtReferencia.getText();
+
         if (!referencia.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Referencia no valida, solo numeros");
             txtReferencia.requestFocus();
             return;
         }
-        
-        String valorStr = txtValor.getText();
-        if (!valorStr.matches("\\d*(\\.\\d+)?")) {
+
+        if (txtValor.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Digite un valor válido");
             txtValor.requestFocus();
-            JOptionPane.showMessageDialog(null, "Valor no valido, solo numeros");
             return;
         }
-        float valor = Float.parseFloat(valorStr);
-        
+        valor = ((Number) txtValor.getValue()).floatValue();
+
         Usuario usuario = usuRepository.getUsuario(documento);
-        if(usuario.getId_usuario() != 0){
+        if (usuario.getId_usuario() != 0) {
             PagoServicio pago = new PagoServicio(usuario.getId_usuario(), referencia, valor);
             boolean status = pagarRepository.registrarPagoServicio(pago);
-            if(status){
+            
+            if (status) {
                 JOptionPane.showMessageDialog(null, "Pago realizado correctamente");
                 resetTxt();
             }
-        }else{
-            JOptionPane.showInputDialog(null,"Numero de documento no encontrado");
+        } else {
+            JOptionPane.showInputDialog(null, "Numero de documento no encontrado");
             txtIdentificacion.requestFocus();
             txtIdentificacion.setText("");
         }
     }//GEN-LAST:event_btnPagarActionPerformed
+
+    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -228,6 +234,6 @@ public class PagoServicios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblValor;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtReferencia;
-    private javax.swing.JTextField txtValor;
+    private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

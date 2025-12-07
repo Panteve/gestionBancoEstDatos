@@ -30,7 +30,7 @@ public class ProductoRepository {
 
     public List<Producto> getAllProductosPorUsuario(int id_usuario) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM productos WHERE id_usuario = ?";
+        String sqlQuery = "SELECT * FROM productos WHERE id_usuario = ? AND estado = 1";
         List<Producto> prodcutosList = new ArrayList<>();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -67,7 +67,8 @@ public class ProductoRepository {
 
     public boolean registrarProducto(Producto producto) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO productos VALUES(null,?,?,?,?,?,?)";
+        String sqlQuery = "INSERT INTO productos VALUES(null,?,?,?,?,?,?,?)";
+        int estado = 1;
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
@@ -77,6 +78,7 @@ public class ProductoRepository {
                 this.preStm.setFloat(4, producto.getValor());
                 this.preStm.setInt(5, producto.getEmpresarial());
                 this.preStm.setInt(6, producto.getEstado());
+                 this.preStm.setInt(7, estado);
 
                 this.preStm.executeUpdate();
 
@@ -101,7 +103,7 @@ public class ProductoRepository {
 
     public Producto getProducto(String referencia) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM productos WHERE referencia = ?";
+        String sqlQuery = "SELECT * FROM productos WHERE referencia = ? AND estado = 1";
         Producto producto = new Producto();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -166,5 +168,33 @@ public class ProductoRepository {
         }
         return true;
     }
+    
+    public boolean bajaProducto(String referencia) {
+        Connection con = conexionBD.getConectionDB();
+        String sqlQuery = "UPDATE productos SET estado = 0 WHERE referencia = ?";
+        try {
+            if (this.preStm == null) {
+                this.preStm = con.prepareStatement(sqlQuery);
+                this.preStm.setString(1, referencia);
+  
+                this.preStm.executeUpdate();
 
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en la sentencia:" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error:" + e.getMessage());
+        } finally {
+            if ((con != null) && (this.preStm != null)) {
+                try {
+                    con.close();
+                    this.preStm.close();
+                    this.preStm = null;
+                } catch (SQLException ex) {
+                    System.out.println("error" + ex.getMessage());
+                }
+            }
+        }
+        return true;
+    }
 }

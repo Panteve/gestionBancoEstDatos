@@ -74,7 +74,7 @@ public class UsuarioRepository {
 
     public Usuario getUsuario(int documento) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT * FROM usuarios WHERE documento = ?"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT * FROM usuarios WHERE documento = ? AND estado = 1"; //Agregar order by para traer en orden la lista por prioridad 
         Usuario usuario = new Usuario();
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -115,7 +115,7 @@ public class UsuarioRepository {
     
     public int getIdUsuario(int documento) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "SELECT id_usuario FROM usuarios WHERE documento = ?"; //Agregar order by para traer en orden la lista por prioridad 
+        String sqlQuery = "SELECT id_usuario FROM usuarios WHERE documento = ? AND estado = 1"; //Agregar order by para traer en orden la lista por prioridad 
         int idUsuario = 0;
         try {
             this.preStm = con.prepareStatement(sqlQuery);
@@ -184,11 +184,13 @@ public class UsuarioRepository {
     
     public boolean registrarInvitado(int documento) {
         Connection con = conexionBD.getConectionDB();
-        String sqlQuery = "INSERT INTO usuarios (documento) VALUES (?)";    
+        String sqlQuery = "INSERT INTO usuarios (documento,estado) VALUES (?,?)";
+        int estado = 1;
         try {
             if (this.preStm == null) {
                 this.preStm = con.prepareStatement(sqlQuery);
                 this.preStm.setInt(1, documento);
+                this.preStm.setInt(2, estado);
                 this.preStm.executeUpdate();
 
             }

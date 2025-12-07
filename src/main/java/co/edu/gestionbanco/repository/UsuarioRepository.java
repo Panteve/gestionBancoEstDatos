@@ -162,8 +162,7 @@ public class UsuarioRepository {
                 
                 this.preStm.executeUpdate();  
             }
-            
-            
+
         } catch (SQLException e) {
             System.out.println("Error en la sentencia:" + e.getMessage());
         } catch (Exception e) {

@@ -367,7 +367,10 @@ public class RegistrarUsuario extends javax.swing.JInternalFrame {
         Usuario usuarioEncontrado = usuRepository.getUsuario(documento);
         if (usuarioEncontrado.getId_usuario() != 0) {
             Usuario usuario = new Usuario(usuarioEncontrado.getId_usuario(), documento, nombre, correo, telefono, ocupacion, fechaNacimiento, lugarExpedicion, fechaExpedicion, usuarioEncontrado.getEstado());
-            usuRepository.actualizarUsuario(usuario);
+            boolean status = usuRepository.actualizarUsuario(usuario);
+            if(status){
+                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente"); 
+            }
             resetTxt();
         }else{
             JOptionPane.showMessageDialog(null, "N° de identificacion no registra en base de datos");

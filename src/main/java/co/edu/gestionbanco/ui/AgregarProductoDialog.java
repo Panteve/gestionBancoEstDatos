@@ -200,8 +200,10 @@ public class AgregarProductoDialog extends javax.swing.JDialog {
         float valor = Float.parseFloat(valorStr);
 
         Producto producto = new Producto(Integer.parseInt(id_usuario), txtReferencia.getText(), nombre, valor, empresarial);
-        proRepository.registrarProducto(producto);
-        
+        boolean status = proRepository.registrarProducto(producto);
+        if(status){
+            JOptionPane.showMessageDialog(null, "Producto agregado correctamente");
+        }
         resetTxt();
     }//GEN-LAST:event_btnCrearActionPerformed
 

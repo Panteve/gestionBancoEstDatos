@@ -239,7 +239,10 @@ public class ModificarEmpleDialog extends javax.swing.JDialog {
         empleado.setCargo(cargo);
         empleado.setTelefono(telefono);
 
-        empleRepository.actualizarEmpleado(empleado);
+        boolean status = empleRepository.actualizarEmpleado(empleado);
+        if(status){
+            JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente"); 
+        }
         this.dispose();
     }//GEN-LAST:event_btnListoActionPerformed
 

@@ -161,6 +161,13 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         int caja = Integer.parseInt(cajaStr);
         
         Empleado empleado = repository.getEmpleado(documento);
+        
+        if(empleado.getId_empleado() == 0){
+           JOptionPane.showMessageDialog(null, "Documento no registrado");
+           txtContraseña.requestFocus();
+           return;
+        }
+        
         if (contraseña.equals(empleado.getContraseña())) {
             empleado.setCaja(caja);
             escritorio.empleado = empleado;
@@ -168,6 +175,7 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
             txtContraseña.setText("");
+            txtContraseña.requestFocus();
         }
 
     }//GEN-LAST:event_btnIniciarSesionActionPerformed

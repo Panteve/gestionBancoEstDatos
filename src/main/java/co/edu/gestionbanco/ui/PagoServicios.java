@@ -23,6 +23,12 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         initComponents();
         this.setClosable(true);
     }
+    
+    private void resetTxt(){
+        txtIdentificacion.setText("");
+        txtReferencia.setText("");
+        txtValor.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -176,9 +182,14 @@ public class PagoServicios extends javax.swing.JInternalFrame {
         Usuario usuario = usuRepository.getUsuario(documento);
         if(usuario.getId_usuario() != 0){
             PagoServicio pago = new PagoServicio(usuario.getId_usuario(), referencia, valor);
-            pagarRepository.registrarPagoServicio(pago);
+            boolean status = pagarRepository.registrarPagoServicio(pago);
+            if(status){
+                JOptionPane.showMessageDialog(null, "Pago realizado correctamente");
+                resetTxt();
+            }
         }else{
             JOptionPane.showInputDialog(null,"Numero de documento no encontrado");
+            txtIdentificacion.requestFocus();
             txtIdentificacion.setText("");
         }
     }//GEN-LAST:event_btnPagarActionPerformed

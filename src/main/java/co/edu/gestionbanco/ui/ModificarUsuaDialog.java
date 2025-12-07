@@ -211,7 +211,10 @@ public class ModificarUsuaDialog extends javax.swing.JDialog {
         usuario.setOcupacion(ocupacion);
         usuario.setTelefono(telefono);
 
-        usuRepository.actualizarUsuario(usuario);
+        boolean status = usuRepository.actualizarUsuario(usuario);
+        if(status){
+            JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente"); 
+        }
         this.dispose();
     }//GEN-LAST:event_btnListoActionPerformed
 

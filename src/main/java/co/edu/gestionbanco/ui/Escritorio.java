@@ -83,7 +83,7 @@ public class Escritorio extends javax.swing.JFrame {
     private void cerrarVentanasAbiertas() {
         JInternalFrame[] paneles = panelPrincipal.getAllFrames();
         for (int i = 0; i < paneles.length; i++) {
-            if(!"GestionarTurno".equals(paneles[i].getClass().getSimpleName())){
+            if (!"GestionarTurno".equals(paneles[i].getClass().getSimpleName())) {
                 paneles[i].dispose();
             }
         }
@@ -97,8 +97,8 @@ public class Escritorio extends javax.swing.JFrame {
         menuServicios.setVisible(true);
         menuReportes.setVisible(true);
         itemRegistrarEmpleado.setVisible(true);
-        if(empleado.getCargo().equals("Admin")){
-            
+        if (empleado.getCargo().equals("Admin")) {
+
         }
         inicioSesion.dispose();
         lblBienvenida.setText("Bienvenido, " + empleado.getNombre());
@@ -443,7 +443,7 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_itemRegistrarEmpleadoActionPerformed
 
     private void menuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportesActionPerformed
-        
+
     }//GEN-LAST:event_menuReportesActionPerformed
 
     private void itemTurnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTurnosActionPerformed

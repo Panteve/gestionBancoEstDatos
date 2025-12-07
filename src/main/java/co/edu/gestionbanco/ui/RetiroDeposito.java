@@ -252,7 +252,8 @@ public class RetiroDeposito extends javax.swing.JInternalFrame {
         ProductoRepository proRepository = new ProductoRepository();
         productoSeleccionado.setValor(valorNuevo);
         
-        if(proRepository.updateValorProducto(productoSeleccionado)){
+        boolean status = proRepository.updateValorProducto(productoSeleccionado);
+        if(status){
             JOptionPane.showMessageDialog(null, "Transaccion exitosa");
             resetComponentes();
         }
